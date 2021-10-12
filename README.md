@@ -20,5 +20,6 @@ flutter run
 
 ### Donate
 ```
-ZNN Address: z1qpjzv9humm37lk0wkq5l4m2vcpmxuwgtxn5fs2
+BTC Address: 1J3vqxLw4DeeDLu7XUcdiicfFW4xw7TfQC (Bitcoin Network)
+ETH Address: 0x4d582df150b8c5ceb57628409c03bb1e89d0885f (ERC20)
 ```
