@@ -9,11 +9,16 @@
 ```
 git clone https://github.com/nemoryoliver/znn_playground.git
 ```
-2. Install packages dependencies
+2. Install package dependencies
 ```
 flutter pub get
 ```
 3. Run
 ```
 flutter run
+```
+
+### Donate
+```
+ZNN Address: z1qpjzv9humm37lk0wkq5l4m2vcpmxuwgtxn5fs2
 ```
