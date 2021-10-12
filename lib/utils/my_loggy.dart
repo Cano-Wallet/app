@@ -7,8 +7,7 @@ mixin MyLoggy implements LoggyType {
   Loggy<MyLoggy> get loggy => Loggy<MyLoggy>('$runtimeType');
 }
 
-Loggy<MyLoggy> initLoggy(final String className) =>
-    Loggy<MyLoggy>('$className');
+Loggy<MyLoggy> initLoggy(final String className) => Loggy<MyLoggy>(className);
 
 class MyPrinter extends LoggyPrinter {
   const MyPrinter({this.colorize = true}) : super();
@@ -38,7 +37,8 @@ class MyPrinter extends LoggyPrinter {
     final _prefix = _levelPrefixes[record.level];
 
     developer.log(
-      _prefix! + _color!('${record.loggerName}: ${record.message}'),
+      // _prefix! + _color!('${record.loggerName}: ${record.message}'),
+      _prefix! + _color!(record.message),
       name: 'APP',
       error: record.error,
       stackTrace: record.stackTrace,

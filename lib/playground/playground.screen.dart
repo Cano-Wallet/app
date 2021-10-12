@@ -23,6 +23,11 @@ class PlaygroundScreen extends StatelessWidget with MyLoggy {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Text(
+                'Wallet',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              const Divider(),
               Obx(
                 () => DropdownButton<String>(
                   value: controller.accountIndex.toString(),
@@ -91,6 +96,66 @@ class PlaygroundScreen extends StatelessWidget with MyLoggy {
                 title: const Text('Address Core Bytes'),
                 subtitle: Obx(() => Text(controller.addressCoreBytes())),
               ),
+              const Divider(),
+              const Text(
+                'Web Socket API',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              const Divider(),
+              TextField(
+                controller: controller.rpcUrlController,
+                decoration: const InputDecoration(
+                  labelText: 'JSON-RPC URL',
+                ),
+              ),
+              TextField(
+                controller: controller.endpointController,
+                decoration: const InputDecoration(
+                  labelText: 'Endpoint',
+                ),
+              ),
+              TextField(
+                controller: controller.parametersController,
+                decoration: const InputDecoration(
+                  labelText: 'Parameters',
+                  hintText:
+                      'Supports multiple types in array: String, int, double',
+                ),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton.icon(
+                onPressed: controller.request,
+                icon: const Icon(Icons.send),
+                label: const Text('Send Request'),
+              ),
+              const Divider(),
+              ListTile(
+                title: const Text(
+                  'Response',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Obx(() => Text(controller.apiResult())),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Others',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton(
+                    onPressed: controller.info,
+                    child: const Text('Print Info'),
+                  ),
+                  const SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: controller.nativeRequest,
+                    child: const Text('Native Request'),
+                  ),
+                ],
+              )
             ],
           ),
         ),

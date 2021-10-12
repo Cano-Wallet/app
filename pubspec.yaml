@@ -36,6 +36,8 @@ dependencies:
     path: ../znn_sdk_dart/
   get: 4.3.8 # state management
   loggy: 2.0.1 # logger
+  web_socket_channel: ^2.1.0
+  desktop_window: ^0.4.0
 
 dev_dependencies:
   flutter_test:
