@@ -11,7 +11,7 @@ class ZenonManager {
   static final console = Console(name: 'ZenonManager');
 
   static void init() async {
-    if (GetPlatform.isAndroid) await _addAndroidSupportForZenonSDK();
+    await _addMobileSupportForZenonSDK();
 
     final zenon = Zenon();
 
@@ -30,9 +30,9 @@ class ZenonManager {
     console.info('initialized: $initialized');
   }
 
-  // Zenon's Dart SDK doesn't currently support Android, so we add it
-  // This requires a modified SDK as well that changed directory specific for Android
-  static Future<void> _addAndroidSupportForZenonSDK() async {
+  // Zenon's Dart SDK currently doesn't fully support Android & iOS, so we add it
+  // This requires a modified SDK as well that changed directory specific for Android & iOS
+  static Future<void> _addMobileSupportForZenonSDK() async {
     final appDir = await getApplicationSupportDirectory();
 
     // create the directories if unexisting
