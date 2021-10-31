@@ -1,35 +1,23 @@
-import 'package:example/playground/playground.screen.dart';
-import 'package:example/utils/my_loggy.dart';
+import 'package:desktop_window/desktop_window.dart';
+import 'package:example/features/general/connectivity/connectivity_bar.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:loggy/loggy.dart';
-import 'package:desktop_window/desktop_window.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const PlaygroundScreen(),
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        colorScheme: const ColorScheme.dark(),
-      ),
-    );
-  }
-}
+import 'core/zenon.manager.dart';
+import 'features/app/app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  Loggy.initLoggy(
-    logPrinter: const MyPrinter(),
-    logOptions: const LogOptions(LogLevel.all),
-  );
-
+  // init Zenon SDK
+  ZenonManager.init();
+  // setup window size for desktop
   _setupWindowSize();
-  runApp(const MyApp());
+
+  // Initialize Top Controllers
+  Get.lazyPut(() => ConnectivityController());
+
+  // TODO: enable crash reporting
+  runApp(const App());
 }
 
 void _setupWindowSize() async {

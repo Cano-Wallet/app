@@ -1,19 +1,26 @@
 import 'package:bip39/bip39.dart' as bip39;
+import 'package:example/core/utils/console.dart';
+import 'package:example/core/zenon_http_client/zenon_http.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hex/hex.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
-import '../utils/my_loggy.dart';
-
 const _exampleMnemonic =
     'route become dream access impulse price inform obtain engage ski believe awful absent pig thing vibrant possible exotic flee pepper marble rural fire fancy';
 
-const _rpcUrlEndpoint = 'ws://127.0.0.1:35998';
-const _exampleEndpoint = 'embedded.pillar.checkNameAvailability';
+const _rpcUrl = 'ws://188.166.15.29:35998';
+const _exampleMethod = 'embedded.pillar.checkNameAvailability';
 const _exampleParameters = 'nemoryoliver';
 
-class PlaygroundScreenController extends GetxController with MyLoggy {
+class PlaygroundScreenBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut(() => PlaygroundScreenController());
+  }
+}
+
+class PlaygroundScreenController extends GetxController with ConsoleMixin {
   // PROPERTIES
 
   /// Key-Pair / Account Index
@@ -22,7 +29,7 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
   /// Set the strength of the mnemonic phrase
   ///
   /// 256 for 24 word, 128 for 12 word
-  final mnemonicStrength = 256.obs; // default to 24 word phrase
+  final seedStrength = 256.obs; // default to 24 word phrase
 
   /// this holds the request's response to be displayed
   final apiResult = ''.obs;
@@ -40,8 +47,8 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
   final zenon = Zenon();
 
   final mnemonicController = TextEditingController(text: _exampleMnemonic);
-  final rpcUrlController = TextEditingController(text: _rpcUrlEndpoint);
-  final endpointController = TextEditingController(text: _exampleEndpoint);
+  final rpcUrlController = TextEditingController(text: _rpcUrl);
+  final methodController = TextEditingController(text: _exampleMethod);
   final parametersController = TextEditingController(text: _exampleParameters);
 
   final accountDropdownItems =
@@ -54,10 +61,10 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
           )
           .toList();
 
-  final mnemonicStrengthDropdownItems = ['128', '256']
+  final seedStrengthDropdownItems = ['128', '256']
       .map(
         (e) => DropdownMenuItem(
-          child: Text('Mnemonic Strength: $e'),
+          child: Text('Strength: $e'),
           value: e,
         ),
       )
@@ -69,7 +76,7 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
 
   @override
   void onInit() async {
-    subscribeToBroadcasts();
+    // subscribeToBroadcasts();
     process(); // process the initial parameters on app start
     super.onInit();
   }
@@ -79,7 +86,7 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
   /// Generate mnemonic phrase
   void generate() {
     mnemonicController.text = bip39.generateMnemonic(
-      strength: mnemonicStrength.value,
+      strength: seedStrength.value,
     );
 
     process();
@@ -91,7 +98,7 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
     try {
       keyStore = KeyStore.fromMnemonic(mnemonicController.text);
     } catch (e) {
-      return loggy.error(e);
+      return console.error(e.toString());
     }
 
     final keyPair = keyStore.getKeyPair(accountIndex.value);
@@ -117,8 +124,8 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
     process();
   }
 
-  void mnemonicStrengthChanged(String? value) {
-    mnemonicStrength.value = int.parse(value!);
+  void seedStrengthChanged(String? value) {
+    seedStrength.value = int.parse(value!);
     generate();
   }
 
@@ -126,7 +133,7 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
     zenon.wsClient
         .addOnConnectionEstablishedCallback((allResponseBroadcaster) async {
       await allResponseBroadcaster.forEach((e) {
-        loggy.warning('broadcaster: $e');
+        console.warning('broadcaster: $e');
       });
     });
   }
@@ -147,7 +154,9 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
   }
 
   /// Sends the request to the API endpoint
-  void request() async {
+  void wsRequest() async {
+    console.info('sending ws request...');
+
     // clear api result before making the request
     apiResult.value = '';
 
@@ -156,7 +165,7 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
     /// close it before we make the request
     if (!zenon.wsClient.isClosed() &&
         zenon.wsClient.url != rpcUrlController.text) {
-      loggy.warning('stopping web socket');
+      console.warning('stopping web socket');
       zenon.wsClient.stop();
     }
 
@@ -168,33 +177,61 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
       );
 
       /// start subscribing to broadcasts
-      subscribe();
+      // subscribe();
     }
 
-    loggy.info('JSON-RPC Url: ${rpcUrlController.text}');
-    loggy.info('Endpoint: ${endpointController.text}');
+    console.info('JSON-RPC Url: ${rpcUrlController.text}');
+    console.info('Method: ${methodController.text}');
 
     dynamic response;
 
     try {
       response = await zenon.wsClient.sendRequest(
-        endpointController.text,
+        methodController.text,
         parseParameters(),
       );
     } catch (e) {
       apiResult.value = e.toString();
-      return loggy.error(e);
+      return console.error(e.toString());
     }
 
     apiResult.value = response.toString();
-    loggy.info('Response: $response');
+    console.info('Response: $response');
+  }
+
+  /// Sends the request to the API endpoint
+  void httpRequest() async {
+    console.info('sending http request...');
+
+    // clear api result before making the request
+    apiResult.value = '';
+
+    await zenon.httpClient.initialize(rpcUrlController.text);
+
+    console.info('JSON-RPC Url: ${rpcUrlController.text}');
+    console.info('Method: ${methodController.text}');
+
+    dynamic response;
+
+    try {
+      response = await zenon.httpClient.sendRequest(
+        methodController.text,
+        parseParameters(),
+      );
+    } catch (e) {
+      apiResult.value = e.toString();
+      return console.error(e.toString());
+    }
+
+    apiResult.value = response.toString();
+    console.info('Response: $response');
   }
 
   /// demo for making a sdk-native request
   void nativeRequest() async {
     final response =
         await zenon.embedded.pillar.checkNameAvailability('nemoryoliver');
-    loggy.info('native response: $response');
+    console.info('native response: $response');
   }
 
   /// Parse multi-type array parameters
@@ -219,36 +256,36 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
       }
     }
 
-    loggy.info('Parameters: $params');
+    console.info('Parameters: $params');
 
     return params;
   }
 
   void info() async {
-    loggy.debug('--- STATS ---');
+    console.debug('--- STATS ---');
     final stats = zenon.stats;
 
-    loggy.warning('Network Info');
+    console.warning('Network Info');
     final networkInfo = await stats.networkInfo();
-    loggy.info(
+    console.info(
         'network info! id: ${networkInfo.id}, networkId: ${networkInfo.networkId}, name: ${networkInfo.name}, ');
 
-    loggy.warning('OS Info');
-    loggy.info('os info: ${await stats.osInfo()}');
+    console.warning('OS Info');
+    console.info('os info: ${await stats.osInfo()}');
 
-    loggy.warning('Process Info');
+    console.warning('Process Info');
     final processInfo = await stats.processInfo();
-    loggy.info(
+    console.info(
         'process info! pillar: ${processInfo.pillar}, sentinelName: ${processInfo.sentinelName}');
 
-    loggy.warning('Runtime Info');
+    console.warning('Runtime Info');
     final runtimeInfo = await stats.runtimeInfo();
-    loggy.info(
+    console.info(
         'runtime info! timestamp: ${runtimeInfo.frontierMomentum.timestamp}');
 
-    loggy.warning('Sync Info');
+    console.warning('Sync Info');
     final syncInfo = await stats.syncInfo();
-    loggy.info('sync info: ${syncInfo.toJson()}');
+    console.info('sync info: ${syncInfo.toJson()}');
 
     // get current address
     final address = Address(
@@ -256,22 +293,22 @@ class PlaygroundScreenController extends GetxController with MyLoggy {
       HEX.decode(addressCoreBytes.value),
     );
 
-    loggy.debug('--- ACCOUNT INFO ---');
+    console.debug('--- ACCOUNT INFO ---');
     // get account info
     final accountInfo = await zenon.ledger.getAccountInfoByAddress(address);
-    loggy.info('address: ${accountInfo.address}');
-    loggy.info('blockCount: ${accountInfo.blockCount}');
-    loggy.info('qsr: ${accountInfo.qsr()}');
-    loggy.info('znn: ${accountInfo.znn()}');
+    console.info('address: ${accountInfo.address}');
+    console.info('blockCount: ${accountInfo.blockCount}');
+    console.info('qsr: ${accountInfo.qsr()}');
+    console.info('znn: ${accountInfo.znn()}');
 
     if (accountInfo.balanceInfoList!.isNotEmpty) {
-      loggy.debug('--- BALANCE INFO ---');
+      console.debug('--- BALANCE INFO ---');
       // iterate through balance info list
       for (var e in accountInfo.balanceInfoList!) {
-        loggy.info('token: ${e.token}');
-        loggy.info('balance: ${e.balance}');
-        loggy.info('balanceWithDecimals: ${e.balanceWithDecimals}');
-        loggy.info('balanceFormatted: ${e.balanceFormatted}');
+        console.info('token: ${e.token?.toJson()}');
+        console.info('balance: ${e.balance}');
+        console.info('balanceWithDecimals: ${e.balanceWithDecimals}');
+        console.info('balanceFormatted: ${e.balanceFormatted}');
       }
     }
   }

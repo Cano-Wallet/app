@@ -1,15 +1,16 @@
-import 'package:example/playground/playground_screen.controller.dart';
-import 'package:example/utils/my_loggy.dart';
+import 'package:example/core/utils/console.dart';
+import 'package:example/features/playground/playground_screen.controller.dart';
+import 'package:example/features/welcome/welcome.screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class PlaygroundScreen extends StatelessWidget with MyLoggy {
+class PlaygroundScreen extends GetView<PlaygroundScreenController>
+    with ConsoleMixin {
   const PlaygroundScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(PlaygroundScreenController());
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -23,6 +24,12 @@ class PlaygroundScreen extends StatelessWidget with MyLoggy {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              ElevatedButton(
+                child: const Text('Test'),
+                onPressed: () {
+                  Get.to(() => const WelcomeScreen());
+                },
+              ),
               const Text(
                 'Wallet',
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -56,9 +63,9 @@ class PlaygroundScreen extends StatelessWidget with MyLoggy {
                   const SizedBox(width: 20),
                   Obx(
                     () => DropdownButton<String>(
-                      value: controller.mnemonicStrength.toString(),
-                      onChanged: controller.mnemonicStrengthChanged,
-                      items: controller.mnemonicStrengthDropdownItems,
+                      value: controller.seedStrength.toString(),
+                      onChanged: controller.seedStrengthChanged,
+                      items: controller.seedStrengthDropdownItems,
                     ),
                   ),
                 ],
@@ -91,6 +98,9 @@ class PlaygroundScreen extends StatelessWidget with MyLoggy {
               ListTile(
                 title: const Text('Address Long'),
                 subtitle: Obx(() => Text(controller.addressLong())),
+                onTap: () => Clipboard.setData(
+                  ClipboardData(text: controller.addressLong()),
+                ),
               ),
               ListTile(
                 title: const Text('Address Core Bytes'),
@@ -109,9 +119,9 @@ class PlaygroundScreen extends StatelessWidget with MyLoggy {
                 ),
               ),
               TextField(
-                controller: controller.endpointController,
+                controller: controller.methodController,
                 decoration: const InputDecoration(
-                  labelText: 'Endpoint',
+                  labelText: 'Method',
                 ),
               ),
               TextField(
@@ -124,9 +134,15 @@ class PlaygroundScreen extends StatelessWidget with MyLoggy {
               ),
               const SizedBox(height: 20),
               ElevatedButton.icon(
-                onPressed: controller.request,
+                onPressed: controller.wsRequest,
                 icon: const Icon(Icons.send),
-                label: const Text('Send Request'),
+                label: const Text('Send WS Request'),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton.icon(
+                onPressed: controller.httpRequest,
+                icon: const Icon(Icons.send),
+                label: const Text('Send HTTP Request'),
               ),
               const Divider(),
               ListTile(

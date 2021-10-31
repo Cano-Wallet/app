@@ -35,9 +35,19 @@ dependencies:
   znn_sdk_dart:
     path: ../znn_sdk_dart/
   get: 4.3.8 # state management
-  loggy: 2.0.1 # logger
-  web_socket_channel: ^2.1.0
+  logger: ^1.1.0 # logging
+  http: ^0.13.4
   desktop_window: ^0.4.0
+  pull_to_refresh: 2.0.0
+  shimmer: 2.0.0
+  simple_animations: 4.0.1
+  supercharged: 2.1.1
+  flex_color_scheme: ^3.0.1
+  app_settings: 4.1.1
+  connectivity_plus: 2.0.2
+  bubble_tab_indicator: 0.1.6
+  path_provider: ^2.0.6
+  file_picker: 4.1.6
 
 dev_dependencies:
   flutter_test:
