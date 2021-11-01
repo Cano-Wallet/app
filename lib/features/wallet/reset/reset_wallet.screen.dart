@@ -8,26 +8,31 @@ class ResetWalletScreen extends GetView<ResetWalletScreenController> {
 
   @override
   Widget build(BuildContext context) {
-    return CenteredPlaceholder(
-      iconData: Icons.warning,
-      message:
-          'All your wallet data will be erased permanently. Make sure you have a backup of your seed and passphrase before you proceed with erasing the wallet',
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              //
-            },
-            child: const Text('Cancel'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Reset Wallet'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(15),
+        child: CenteredPlaceholder(
+          iconData: Icons.warning,
+          message:
+              'All your wallet data will be erased permanently. Make sure you have a backup of your seed and passphrase before you proceed with erasing the wallet',
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton(
+                onPressed: Get.back,
+                child: const Text('Cancel'),
+              ),
+              const SizedBox(width: 20),
+              ElevatedButton(
+                onPressed: controller.reset,
+                child: const Text('Reset'),
+              )
+            ],
           ),
-          ElevatedButton(
-            onPressed: () {
-              //
-            },
-            child: const Text('Reset'),
-          )
-        ],
+        ),
       ),
     );
   }

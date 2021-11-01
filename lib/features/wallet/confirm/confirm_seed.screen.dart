@@ -20,7 +20,7 @@ class ConfirmSeedScreen extends GetView<ConfirmSeedScreenController>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('Re-enter your seed phrase'),
+              const Text('Confirm your seed phrase'),
               const SizedBox(height: 10),
               controller.passphraseCard,
               const SizedBox(height: 10),

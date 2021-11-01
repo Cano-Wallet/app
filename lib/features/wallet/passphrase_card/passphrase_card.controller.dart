@@ -4,6 +4,12 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 import 'package:bip39/bip39.dart' as bip39;
 
+enum PassphraseMode {
+  create,
+  confirm,
+  import,
+}
+
 class PassphraseCardController extends GetxController with ConsoleMixin {
   // VARIABLES
   final zenon = Zenon();
@@ -19,12 +25,16 @@ class PassphraseCardController extends GetxController with ConsoleMixin {
 
   // FUNCTIONS
 
-  void init({bool confirmMode = false}) {
-    if (!confirmMode) {
+  void init({final mode = PassphraseMode.create}) {
+    if (mode == PassphraseMode.create) {
       // generate seed
       generateSeed();
       // show generated seed
       strengthIndexChanged(0);
+    } else if (mode == PassphraseMode.confirm) {
+      //
+    } else if (mode == PassphraseMode.import) {
+      //
     }
   }
 

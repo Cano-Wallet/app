@@ -1,5 +1,4 @@
 import 'package:example/core/utils/console.dart';
-import 'package:example/features/wallet/passphrase_card/passphrase.card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,8 +10,6 @@ class ImportWalletScreen extends GetView<ImportWalletScreenController>
 
   @override
   Widget build(BuildContext context) {
-    const passphraseCard = PassphraseCard();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Import Wallet'),
@@ -23,13 +20,30 @@ class ImportWalletScreen extends GetView<ImportWalletScreenController>
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              passphraseCard,
+              const Text('Import using your seed phrase'),
+              const SizedBox(height: 10),
+              controller.passphraseCard,
               const SizedBox(height: 10),
               ElevatedButton(
-                onPressed: () {
-                  // final seed = passphraseCard.obtainSeed();
-                },
+                onPressed: controller.importSeed,
                 child: const Text('Continue'),
+              ),
+              const Divider(),
+              TextFormField(
+                controller: controller.passwordController,
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
+                decoration: const InputDecoration(
+                  hintText: 'KeyStore Password',
+                ),
+                // autovalidateMode: AutovalidateMode.onUserInteraction,
+                // validator: (text) => controller.validateSeed(text!), // TODO: validate a strong password
+              ),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: controller.importKeyStoreFile,
+                child: const Text('Import KeyStore File'),
               ),
             ],
           ),

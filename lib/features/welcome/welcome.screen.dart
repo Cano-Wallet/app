@@ -1,11 +1,7 @@
 import 'package:example/core/utils/console.dart';
-import 'package:example/core/utils/globals.dart';
-import 'package:example/core/utils/utils.dart';
-import 'package:example/core/zenon.manager.dart';
 import 'package:example/features/app/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 class WelcomeScreen extends StatelessWidget with ConsoleMixin {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -13,14 +9,12 @@ class WelcomeScreen extends StatelessWidget with ConsoleMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Welcome'),
-      ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text('Welcome'),
+            const SizedBox(height: 20),
             const Text('Select an option to access your wallet'),
             const Divider(),
             ElevatedButton(
@@ -42,12 +36,6 @@ class WelcomeScreen extends StatelessWidget with ConsoleMixin {
               onPressed: null,
             ),
             const Divider(),
-            const Text('Debugging area...'),
-            const Divider(),
-            ElevatedButton(
-              onPressed: () => Get.toNamed(Routes.playground),
-              child: const Text('Playground'),
-            ),
           ],
         ),
       ),

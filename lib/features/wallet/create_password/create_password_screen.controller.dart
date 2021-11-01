@@ -4,8 +4,6 @@ import 'package:example/features/wallet/passphrase_card/passphrase.card.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-import 'package:bip39/bip39.dart' as bip39;
-
 class CreateWalletPasswordScreenBinding extends Bindings {
   @override
   void dependencies() {
@@ -29,9 +27,8 @@ class CreateWalletPasswordScreenController extends GetxController
   void continuePressed() {
     final seed = passphraseCard.obtainSeed();
 
-    // extra check
-    if (!bip39.validateMnemonic(seed)) {
-      return console.error('invalid seed');
+    if (seed == null) {
+      return console.info('invalid seed');
     }
 
     console.info('seed: $seed');

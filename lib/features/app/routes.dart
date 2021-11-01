@@ -16,6 +16,7 @@ abstract class Routes {
   static const resetWallet = '/rese_wallet';
 
   // SCREENS
+  static const welcome = '/welcome';
   static const notifications = '/notifications';
   static const settings = '/settings';
   static const about = '/about';

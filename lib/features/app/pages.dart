@@ -28,6 +28,7 @@ import 'package:example/features/wallet/import/import_wallet.screen.dart';
 import 'package:example/features/wallet/import/import_wallet_screen.controller.dart';
 import 'package:example/features/wallet/reset/reset_wallet.screen.dart';
 import 'package:example/features/wallet/reset/reset_wallet_screen.controller.dart';
+import 'package:example/features/welcome/welcome.screen.dart';
 import 'package:get/get.dart';
 
 import 'routes.dart';
@@ -99,6 +100,10 @@ class AppPages {
     ),
 
     // SCREENS
+    GetPage(
+      name: Routes.welcome,
+      page: () => const WelcomeScreen(),
+    ),
     GetPage(
       name: Routes.notifications,
       page: () => const NotificationsScreen(),

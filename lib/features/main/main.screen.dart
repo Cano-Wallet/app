@@ -9,7 +9,6 @@ import 'package:example/features/sentinels/sentinels.tab.dart';
 import 'package:example/features/staking/staking.tab.dart';
 import 'package:example/features/tokens/tokens.tab.dart';
 import 'package:example/features/transfer/transfer.tab.dart';
-import 'package:example/features/welcome/welcome.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -86,7 +85,7 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
               bottom: _tabBar,
               leading: IconButton(
                 icon: const Icon(Icons.play_arrow),
-                onPressed: () => Get.to(() => const WelcomeScreen()),
+                onPressed: () => Get.toNamed(Routes.playground),
               ),
               actions: [
                 IconButton(

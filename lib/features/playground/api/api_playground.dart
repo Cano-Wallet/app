@@ -17,7 +17,7 @@ class APIPlayground extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Web Socket API',
+              'API',
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             const Divider(),

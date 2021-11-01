@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'api/api_playground.dart';
+import 'others/others_playground.dart';
 
 class PlaygroundScreen extends GetView<PlaygroundScreenController>
     with ConsoleMixin {
@@ -23,6 +24,11 @@ class PlaygroundScreen extends GetView<PlaygroundScreenController>
         title: 'API',
         tab: Tab(text: 'API'),
         child: APIPlayground(),
+      ),
+      const MyTab(
+        title: 'Others',
+        tab: Tab(text: 'Others'),
+        child: OthersPlayground(),
       ),
     ];
 

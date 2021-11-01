@@ -10,9 +10,6 @@ import 'package:get/get.dart';
 import 'package:hex/hex.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
-const _exampleMnemonic =
-    'route become dream access impulse price inform obtain engage ski believe awful absent pig thing vibrant possible exotic flee pepper marble rural fire fancy';
-
 class WalletPlaygroundController extends GetxController with ConsoleMixin {
   static WalletPlaygroundController get to => Get.find();
   // PROPERTIES
@@ -36,7 +33,8 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
 
   // VARIABLES
   final zenon = Zenon();
-  final mnemonicController = TextEditingController(text: _exampleMnemonic);
+  final mnemonicController =
+      TextEditingController(text: ZenonManager.keyStore?.mnemonic);
 
   KeyStore? keyStore;
 
@@ -224,5 +222,9 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
     }
 
     console.info('accountBlock: ${accountBlock.toJson()}');
+  }
+
+  void reset() {
+    //
   }
 }

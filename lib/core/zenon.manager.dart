@@ -12,9 +12,6 @@ class ZenonManager {
 
   static KeyStore? keyStore;
 
-  // get the main key pair
-  static KeyPair get keyPair => keyStore!.getKeyPair(0);
-
   static void init() async {
     await _addMobileSupportForZenonSDK();
 

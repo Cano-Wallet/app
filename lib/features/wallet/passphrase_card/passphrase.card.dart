@@ -4,27 +4,30 @@ import 'package:example/features/wallet/passphrase_card/passphrase_card.controll
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:bip39/bip39.dart' as bip39;
+
 class PassphraseCard extends GetWidget<PassphraseCardController>
     with ConsoleMixin {
-  final bool confirmMode;
+  final PassphraseMode mode;
 
   const PassphraseCard({
     Key? key,
-    this.confirmMode = false,
+    this.mode = PassphraseMode.create,
   }) : super(key: key);
 
-  String obtainSeed() {
-    return controller.seedController.text;
+  String? obtainSeed() {
+    final seed = controller.seedController.text;
+    return bip39.validateMnemonic(seed) ? seed : null;
   }
 
   @override
   Widget build(BuildContext context) {
-    controller.init(confirmMode: confirmMode);
+    controller.init(mode: mode);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (!confirmMode) ...[
+        if (mode == PassphraseMode.create) ...[
           SegmentedSwitch(
             tabs: ['24 words', '12 words'].map((e) => Tab(text: e)).toList(),
             onChanged: controller.strengthIndexChanged,

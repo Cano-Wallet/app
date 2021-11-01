@@ -1,8 +1,8 @@
-import 'package:bip39/bip39.dart' as bip39;
 import 'package:example/core/utils/console.dart';
 import 'package:example/core/zenon.manager.dart';
 import 'package:example/features/app/routes.dart';
 import 'package:example/features/wallet/passphrase_card/passphrase.card.dart';
+import 'package:example/features/wallet/passphrase_card/passphrase_card.controller.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
@@ -16,7 +16,7 @@ class ConfirmSeedScreenBinding extends Bindings {
 
 class ConfirmSeedScreenController extends GetxController with ConsoleMixin {
   // VARIABLES
-  final passphraseCard = const PassphraseCard(confirmMode: true);
+  final passphraseCard = const PassphraseCard(mode: PassphraseMode.confirm);
 
   // PROPERTIES
 
@@ -29,16 +29,14 @@ class ConfirmSeedScreenController extends GetxController with ConsoleMixin {
   void verify() {
     final verificationSeed = passphraseCard.obtainSeed();
 
-    // extra check
-    if (!bip39.validateMnemonic(verificationSeed)) {
-      return console.error('invalid verification seed');
+    if (verificationSeed == null) {
+      return console.info('invalid verification seed');
     }
 
     final originalSeed = Get.parameters['seed'];
 
-    // extra check
-    if (!bip39.validateMnemonic(verificationSeed)) {
-      return console.error('invalid original seed');
+    if (originalSeed == null) {
+      return console.info('invalid original seed');
     }
 
     if (originalSeed != verificationSeed) {
@@ -48,8 +46,10 @@ class ConfirmSeedScreenController extends GetxController with ConsoleMixin {
     console.info('verified: $verificationSeed');
 
     // temporarily save keystore in a static class
-    ZenonManager.keyStore = KeyStore.fromMnemonic(verificationSeed);
+    final keyStore = KeyStore.fromMnemonic(verificationSeed);
 
+    ZenonManager.keyStore = keyStore;
+    Zenon().defaultKeyStore = keyStore;
     Get.offNamedUntil(Routes.main, (route) => false);
   }
 }

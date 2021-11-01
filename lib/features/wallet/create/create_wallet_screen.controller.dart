@@ -1,10 +1,9 @@
 import 'package:example/core/utils/console.dart';
 import 'package:example/features/app/routes.dart';
 import 'package:example/features/wallet/passphrase_card/passphrase.card.dart';
+import 'package:example/features/wallet/passphrase_card/passphrase_card.controller.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-
-import 'package:bip39/bip39.dart' as bip39;
 
 class CreateWalletScreenBinding extends Bindings {
   @override
@@ -15,7 +14,7 @@ class CreateWalletScreenBinding extends Bindings {
 
 class CreateWalletScreenController extends GetxController with ConsoleMixin {
   // VARIABLES
-  final passphraseCard = const PassphraseCard();
+  final passphraseCard = const PassphraseCard(mode: PassphraseMode.create);
 
   // PROPERTIES
 
@@ -28,9 +27,8 @@ class CreateWalletScreenController extends GetxController with ConsoleMixin {
   void continuePressed() {
     final seed = passphraseCard.obtainSeed();
 
-    // extra check
-    if (!bip39.validateMnemonic(seed)) {
-      return console.error('invalid seed');
+    if (seed == null) {
+      return console.info('invalid seed');
     }
 
     console.info('seed: $seed');
