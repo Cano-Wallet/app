@@ -18,6 +18,8 @@ class ImportWalletScreenBinding extends Bindings {
 
 class ImportWalletScreenController extends GetxController with ConsoleMixin {
   // VARIABLES
+  final zenon = Zenon();
+
   final passphraseCard = const PassphraseCard(mode: PassphraseMode.import);
   final passwordController = TextEditingController();
 
@@ -31,6 +33,15 @@ class ImportWalletScreenController extends GetxController with ConsoleMixin {
     }
 
     console.info('seed: $seed');
+
+    final keyStore = KeyStore.fromMnemonic(seed);
+
+    // temporarily save keystore in a static class
+    ZenonManager.keyStore = keyStore;
+    zenon.defaultKeyStore = keyStore;
+    // TODO: save keystore file if suppported
+
+    Get.offNamedUntil(Routes.main, (route) => false);
   }
 
   void importKeyStoreFile() async {
@@ -38,7 +49,6 @@ class ImportWalletScreenController extends GetxController with ConsoleMixin {
     if (file == null) return;
     console.info('file: ${file.path}');
 
-    final zenon = Zenon();
     KeyStore? keyStore;
 
     try {
@@ -55,6 +65,7 @@ class ImportWalletScreenController extends GetxController with ConsoleMixin {
     // temporarily save keystore in a static class
     ZenonManager.keyStore = keyStore;
     zenon.defaultKeyStore = keyStore;
+    // TODO: save keystore file if suppported
 
     Get.offNamedUntil(Routes.main, (route) => false);
   }

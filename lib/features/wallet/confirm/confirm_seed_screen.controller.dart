@@ -47,9 +47,10 @@ class ConfirmSeedScreenController extends GetxController with ConsoleMixin {
 
     // temporarily save keystore in a static class
     final keyStore = KeyStore.fromMnemonic(verificationSeed);
-
     ZenonManager.keyStore = keyStore;
     Zenon().defaultKeyStore = keyStore;
+    // TODO: save keystore file if suppported
+
     Get.offNamedUntil(Routes.main, (route) => false);
   }
 }
