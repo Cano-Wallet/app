@@ -23,8 +23,14 @@ class DelegationStatsCardController extends GetxController
     final zenon = Zenon();
     final address = Address.parse(kTestAddress);
 
-    final delegationInfo =
-        await zenon.embedded.pillar.getDelegatedPillar(address);
+    DelegationInfo? delegationInfo;
+
+    try {
+      delegationInfo = await zenon.embedded.pillar.getDelegatedPillar(address);
+    } catch (e) {
+      return console.error(e.toString());
+    }
+
     if (delegationInfo == null) return console.error('null delegation info');
 
     result.value = '''

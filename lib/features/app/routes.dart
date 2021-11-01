@@ -13,10 +13,13 @@ abstract class Routes {
   static const createWallet = '/create_wallet';
   static const importWallet = '/import_wallet';
   static const confirmSeed = '/confirm_seed';
+  static const resetWallet = '/rese_wallet';
 
   // SCREENS
   static const notifications = '/notifications';
   static const settings = '/settings';
+  static const about = '/about';
+  static const unknown = '/unknown';
 
   // PLAYGROUND
   static const playground = '/playground';

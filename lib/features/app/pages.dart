@@ -1,3 +1,5 @@
+import 'package:example/features/about/about.screen.dart';
+import 'package:example/features/about/about_screen.controller.dart';
 import 'package:example/features/main/main.screen.dart';
 import 'package:example/features/main/main_screen.binding.dart';
 import 'package:example/features/notifications/notifications.screen.dart';
@@ -24,6 +26,8 @@ import 'package:example/features/wallet/create/create_wallet.screen.dart';
 import 'package:example/features/wallet/create/create_wallet_screen.controller.dart';
 import 'package:example/features/wallet/import/import_wallet.screen.dart';
 import 'package:example/features/wallet/import/import_wallet_screen.controller.dart';
+import 'package:example/features/wallet/reset/reset_wallet.screen.dart';
+import 'package:example/features/wallet/reset/reset_wallet_screen.controller.dart';
 import 'package:get/get.dart';
 
 import 'routes.dart';
@@ -39,6 +43,7 @@ class AppPages {
       binding: MainBinding(),
       transition: Transition.fadeIn,
     ),
+
     // LISTS
     GetPage(
       name: Routes.pillarList,
@@ -70,6 +75,7 @@ class AppPages {
       page: () => const PeerListScreen(),
       binding: PeerListScreenBinding(),
     ),
+
     // WALLET SCREENS
     GetPage(
       name: Routes.createWallet,
@@ -86,6 +92,12 @@ class AppPages {
       page: () => const ConfirmSeedScreen(),
       binding: ConfirmSeedScreenBinding(),
     ),
+    GetPage(
+      name: Routes.resetWallet,
+      page: () => const ResetWalletScreen(),
+      binding: ResetWalletScreenBinding(),
+    ),
+
     // SCREENS
     GetPage(
       name: Routes.notifications,
@@ -97,6 +109,12 @@ class AppPages {
       page: () => const SettingsScreen(),
       binding: SettingsScreenBinding(),
     ),
+    GetPage(
+      name: Routes.about,
+      page: () => const AboutScreen(),
+      binding: AboutScreenBinding(),
+    ),
+
     // PLAYGROUND
     GetPage(
       name: Routes.playground,

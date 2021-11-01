@@ -35,9 +35,9 @@ dependencies:
   znn_sdk_dart:
     path: ../znn_sdk_dart/
   get: 4.3.8 # state management
-  logger: ^1.1.0 # logging
+  logger: ^1.1.0
   http: ^0.13.4
-  desktop_window: ^0.4.0
+  desktop_window: ^0.4.0 #set desktop window size
   pull_to_refresh: 2.0.0
   shimmer: 2.0.0
   simple_animations: 4.0.1
@@ -48,6 +48,9 @@ dependencies:
   bubble_tab_indicator: 0.1.6
   path_provider: ^2.0.6
   file_picker: 4.1.6
+  get_storage: 2.0.3
+  flutter_linkify: 5.0.2
+  url_launcher: 6.0.12
 
 dev_dependencies:
   flutter_test:

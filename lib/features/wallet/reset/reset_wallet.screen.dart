@@ -1,7 +1,9 @@
 import 'package:example/features/general/centered_placeholder.widget.dart';
+import 'package:example/features/wallet/reset/reset_wallet_screen.controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ResetWalletScreen extends StatelessWidget {
+class ResetWalletScreen extends GetView<ResetWalletScreenController> {
   const ResetWalletScreen({Key? key}) : super(key: key);
 
   @override

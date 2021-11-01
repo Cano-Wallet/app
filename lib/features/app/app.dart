@@ -1,6 +1,9 @@
+import 'package:example/core/controllers/persistence.controller.dart';
+import 'package:example/core/translations/data.dart';
 import 'package:example/features/app/pages.dart';
 import 'package:example/features/app/routes.dart';
 import 'package:example/features/general/smart_refresher_components.widget.dart';
+import 'package:example/features/general/unknown.screen.dart';
 import 'package:example/features/main/main_screen.binding.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
@@ -13,18 +16,41 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final app = GetMaterialApp(
+    final PersistenceController persistence = Get.find();
+
+    // MATERIAL APP
+    final _materialApp = GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      // LOCALE
+      translationsKeys: translationKeys,
+      locale: Locale(persistence.localeCode.val),
+      fallbackLocale: const Locale('en', 'US'),
+      // NAVIGATION
       initialRoute: Routes.main,
       initialBinding: MainBinding(),
       getPages: AppPages.routes,
       defaultTransition: Transition.native,
       transitionDuration: 200.milliseconds,
-      // light theme
-      theme: FlexColorScheme.light(scheme: FlexScheme.jungle).toTheme,
-      // dark theme
-      darkTheme: FlexColorScheme.dark(scheme: FlexScheme.jungle).toTheme,
+      // THEMING
+      theme: FlexColorScheme.light(scheme: FlexScheme.jungle).toTheme, // light
+      darkTheme:
+          FlexColorScheme.dark(scheme: FlexScheme.jungle).toTheme, // dark
       themeMode: ThemeMode.system,
+      // FONT SCALE
+      builder: (context, child) {
+        final data = MediaQuery.of(context);
+        final scaleFactor =
+            data.textScaleFactor * persistence.fontScaleFactor.val;
+        return MediaQuery(
+          data: data.copyWith(textScaleFactor: scaleFactor),
+          child: child!,
+        );
+      },
+      // UNKNOWN ROUTE FALLBACK SCREEN
+      unknownRoute: GetPage(
+        name: Routes.unknown,
+        page: () => const UnknownScreen(),
+      ),
     );
 
     return RefreshConfiguration(
@@ -42,7 +68,7 @@ class App extends StatelessWidget {
       enableLoadingWhenFailed: true,
       hideFooterWhenNotFull: true,
       enableBallisticLoad: true,
-      child: app,
+      child: _materialApp,
     );
   }
 }

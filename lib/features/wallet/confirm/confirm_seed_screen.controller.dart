@@ -1,9 +1,11 @@
+import 'package:bip39/bip39.dart' as bip39;
 import 'package:example/core/utils/console.dart';
+import 'package:example/core/zenon.manager.dart';
+import 'package:example/features/app/routes.dart';
 import 'package:example/features/wallet/passphrase_card/passphrase.card.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-
-import 'package:bip39/bip39.dart' as bip39;
+import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 class ConfirmSeedScreenBinding extends Bindings {
   @override
@@ -44,5 +46,10 @@ class ConfirmSeedScreenController extends GetxController with ConsoleMixin {
     }
 
     console.info('verified: $verificationSeed');
+
+    // temporarily save keystore in a static class
+    ZenonManager.keyStore = KeyStore.fromMnemonic(verificationSeed);
+
+    Get.offNamedUntil(Routes.main, (route) => false);
   }
 }

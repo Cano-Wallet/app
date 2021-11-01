@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:example/core/animations/animations.dart';
-import 'package:example/core/base_list.controller.dart';
+import 'package:example/core/controllers/base_list.controller.dart';
 import 'package:example/core/utils/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
