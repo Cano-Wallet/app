@@ -3,7 +3,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 import 'balance_card.controller.dart';
 
-class BalanceUI extends GetWidget<BalanceCardController> {
+class BalanceUI extends GetView<BalanceCardController> {
   const BalanceUI({Key? key}) : super(key: key);
 
   @override

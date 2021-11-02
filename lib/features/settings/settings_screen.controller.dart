@@ -1,6 +1,8 @@
-import 'package:example/core/controllers/persistence.controller.dart';
-import 'package:example/features/app/routes.dart';
+import 'package:app/core/controllers/persistence.controller.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/features/app/routes.dart';
 import 'package:get/get.dart';
+import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 class SettingsScreenBinding extends Bindings {
   @override
@@ -9,17 +11,26 @@ class SettingsScreenBinding extends Bindings {
   }
 }
 
-class SettingsScreenController extends GetxController {
+class SettingsScreenController extends GetxController with ConsoleMixin {
   static SettingsScreenController get to => Get.find();
 
   // VARIABLES
   final PersistenceController persistence = Get.find();
 
   // PROPERTIES
+  final address = ''.obs;
 
   // GETTERS
 
   // INIT
+
+  @override
+  void onInit() async {
+    final _address = await Zenon().defaultKeyPair?.address;
+    address.value = _address != null ? _address.toString() : 'No address';
+    console.info('address: ${address.value}');
+    super.onInit();
+  }
 
   // FUNCTIONS
 

@@ -1,4 +1,4 @@
-import 'package:example/features/sentinels/sentinel_list/sentinel_list_screen.controller.dart';
+import 'package:app/features/sentinels/sentinel_list/sentinel_list_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

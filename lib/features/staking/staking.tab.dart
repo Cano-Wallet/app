@@ -1,4 +1,4 @@
-import 'package:example/features/staking/staking_tab.controller.dart';
+import 'package:app/features/staking/staking_tab.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

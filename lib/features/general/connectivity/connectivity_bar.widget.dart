@@ -1,5 +1,5 @@
 import 'package:app_settings/app_settings.dart';
-import 'package:example/features/general/connectivity/connectivity_bar.controller.dart';
+import 'package:app/features/general/connectivity/connectivity_bar.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

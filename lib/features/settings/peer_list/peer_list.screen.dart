@@ -1,4 +1,4 @@
-import 'package:example/features/settings/peer_list/peer_list_screen.controller.dart';
+import 'package:app/features/settings/peer_list/peer_list_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

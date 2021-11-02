@@ -1,4 +1,4 @@
-import 'package:example/features/tokens/token_list/token_list_screen.controller.dart';
+import 'package:app/features/tokens/token_list/token_list_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,4 +1,4 @@
-import 'package:example/features/playground/wallet/wallet_playground.controller.dart';
+import 'package:app/features/playground/wallet/wallet_playground.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';

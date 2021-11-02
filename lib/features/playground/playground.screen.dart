@@ -1,7 +1,7 @@
-import 'package:example/core/utils/console.dart';
-import 'package:example/features/main/main.screen.dart';
-import 'package:example/features/playground/playground_screen.controller.dart';
-import 'package:example/features/playground/wallet/wallet_playground.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/features/main/main.screen.dart';
+import 'package:app/features/playground/playground_screen.controller.dart';
+import 'package:app/features/playground/wallet/wallet_playground.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

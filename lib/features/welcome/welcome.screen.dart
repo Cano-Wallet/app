@@ -1,5 +1,5 @@
-import 'package:example/core/utils/console.dart';
-import 'package:example/features/app/routes.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/features/app/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

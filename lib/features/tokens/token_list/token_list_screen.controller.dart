@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:example/core/animations/animations.dart';
-import 'package:example/core/controllers/base_list.controller.dart';
+import 'package:app/core/animations/animations.dart';
+import 'package:app/core/controllers/base_list.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';

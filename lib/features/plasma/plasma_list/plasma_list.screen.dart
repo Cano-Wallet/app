@@ -1,4 +1,4 @@
-import 'package:example/features/plasma/plasma_list/plasma_list_screen.controller.dart';
+import 'package:app/features/plasma/plasma_list/plasma_list_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

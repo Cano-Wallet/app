@@ -1,8 +1,7 @@
-import 'package:example/core/controllers/global.controller.dart';
-import 'package:example/core/controllers/persistence.controller.dart';
-import 'package:example/core/translations/constants.dart';
-import 'package:example/core/utils/globals.dart';
-import 'package:example/features/settings/settings_screen.controller.dart';
+import 'package:app/core/controllers/global.controller.dart';
+import 'package:app/core/controllers/persistence.controller.dart';
+import 'package:app/core/translations/constants.dart';
+import 'package:app/features/settings/settings_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +18,7 @@ class SettingsScreen extends GetView<SettingsScreenController> {
           leading: const Icon(Icons.list),
           trailing: const Icon(Icons.navigate_next),
           title: const Text('Addresses'),
-          subtitle: const Text(kTestAddress),
+          subtitle: Obx(() => Text(controller.address.value)),
           onTap: controller.addressList,
         ),
         const Divider(),

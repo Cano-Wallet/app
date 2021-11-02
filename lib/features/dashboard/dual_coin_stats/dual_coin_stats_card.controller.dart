@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:example/core/utils/console.dart';
+import 'package:app/core/utils/console.dart';
 import 'package:get/get.dart';
 
 class DualCoinStatsCardController extends GetxController

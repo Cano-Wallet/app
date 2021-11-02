@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:example/core/utils/console.dart';
-import 'package:example/core/utils/globals.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/globals.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 

@@ -3,7 +3,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 import 'delegation_stats_card.controller.dart';
 
-class DelegationStatsUI extends GetWidget<DelegationStatsCardController> {
+class DelegationStatsUI extends GetView<DelegationStatsCardController> {
   const DelegationStatsUI({Key? key}) : super(key: key);
 
   @override

@@ -1,4 +1,4 @@
-import 'package:example/features/tokens/tokens_tab.controller.dart';
+import 'package:app/features/tokens/tokens_tab.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

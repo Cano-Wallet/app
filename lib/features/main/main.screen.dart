@@ -1,14 +1,14 @@
-import 'package:example/core/utils/console.dart';
-import 'package:example/features/app/routes.dart';
-import 'package:example/features/dashboard/dashboard.tab.dart';
-import 'package:example/features/general/connectivity/connectivity_bar.widget.dart';
-import 'package:example/features/incentivized/incentivized.tab.dart';
-import 'package:example/features/pillars/pillars.tab.dart';
-import 'package:example/features/plasma/plasma.tab.dart';
-import 'package:example/features/sentinels/sentinels.tab.dart';
-import 'package:example/features/staking/staking.tab.dart';
-import 'package:example/features/tokens/tokens.tab.dart';
-import 'package:example/features/transfer/transfer.tab.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/features/app/routes.dart';
+import 'package:app/features/dashboard/dashboard.tab.dart';
+import 'package:app/features/general/connectivity/connectivity_bar.widget.dart';
+import 'package:app/features/incentivized/incentivized.tab.dart';
+import 'package:app/features/pillars/pillars.tab.dart';
+import 'package:app/features/plasma/plasma.tab.dart';
+import 'package:app/features/sentinels/sentinels.tab.dart';
+import 'package:app/features/staking/staking.tab.dart';
+import 'package:app/features/tokens/tokens.tab.dart';
+import 'package:app/features/transfer/transfer.tab.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

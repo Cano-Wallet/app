@@ -1,4 +1,4 @@
-import 'package:example/features/pillars/pillar_list/pillar_list_screen.controller.dart';
+import 'package:app/features/pillars/pillar_list/pillar_list_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,5 +1,5 @@
-import 'package:example/features/dashboard/delegation_stats/staking_stats/delegation_stats.card.dart';
-import 'package:example/features/dashboard/sentinels/sentinels.card.dart';
+import 'package:app/features/dashboard/delegation_stats/staking_stats/delegation_stats.card.dart';
+import 'package:app/features/dashboard/sentinels/sentinels.card.dart';
 import 'package:flutter/material.dart';
 
 import 'balance/balance.card.dart';

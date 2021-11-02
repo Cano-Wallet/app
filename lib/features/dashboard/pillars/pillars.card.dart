@@ -3,7 +3,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 import 'pillars_card.controller.dart';
 
-class PillarsUI extends GetWidget<PillarsCardController> {
+class PillarsUI extends GetView<PillarsCardController> {
   const PillarsUI({Key? key}) : super(key: key);
 
   @override

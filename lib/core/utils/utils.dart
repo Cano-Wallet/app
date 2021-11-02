@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:example/core/utils/console.dart';
+import 'package:app/core/utils/console.dart';
 import 'package:file_picker/file_picker.dart';
 
 class Utils {
@@ -27,14 +27,14 @@ class Utils {
     return File(result.files.single.path!);
   }
 
-  static Future<void> resetDirectory(final Directory dir) async {
+  static Future<bool> deleteDirectory(final Directory dir) async {
     if (await dir.exists()) {
       await dir.delete(recursive: true);
-      console.info("Deleted Dir: ${dir.path}");
-      await dir.create();
-      console.info("Created Dir: ${dir.path}");
+      console.info("deleted: ${dir.path}");
+      return true;
     } else {
       console.error('${dir.path} doesnt exist');
+      return false;
     }
   }
 }

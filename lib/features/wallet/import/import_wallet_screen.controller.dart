@@ -1,9 +1,9 @@
-import 'package:example/core/utils/console.dart';
-import 'package:example/core/utils/utils.dart';
-import 'package:example/core/zenon.manager.dart';
-import 'package:example/features/app/routes.dart';
-import 'package:example/features/wallet/passphrase_card/passphrase.card.dart';
-import 'package:example/features/wallet/passphrase_card/passphrase_card.controller.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/utils.dart';
+import 'package:app/core/zenon.manager.dart';
+import 'package:app/features/app/routes.dart';
+import 'package:app/features/wallet/passphrase_card/passphrase.card.dart';
+import 'package:app/features/wallet/passphrase_card/passphrase_card.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -36,11 +36,10 @@ class ImportWalletScreenController extends GetxController with ConsoleMixin {
 
     final keyStore = KeyStore.fromMnemonic(seed);
 
-    // temporarily save keystore in a static class
-    ZenonManager.keyStore = keyStore;
-    zenon.defaultKeyStore = keyStore;
-    // TODO: save keystore file if suppported
+    // set default KeyStore
+    ZenonManager.setKeyStore(keyStore);
 
+    // TODO: save keystore file if suppported
     Get.offNamedUntil(Routes.main, (route) => false);
   }
 
@@ -62,9 +61,9 @@ class ImportWalletScreenController extends GetxController with ConsoleMixin {
 
     console.info('keyStore: ${keyStore.mnemonic}');
 
-    // temporarily save keystore in a static class
-    ZenonManager.keyStore = keyStore;
-    zenon.defaultKeyStore = keyStore;
+    // set default KeyStore
+    ZenonManager.setKeyStore(keyStore);
+
     // TODO: save keystore file if suppported
 
     Get.offNamedUntil(Routes.main, (route) => false);

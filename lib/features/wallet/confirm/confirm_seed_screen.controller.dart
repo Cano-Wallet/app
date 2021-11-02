@@ -1,8 +1,8 @@
-import 'package:example/core/utils/console.dart';
-import 'package:example/core/zenon.manager.dart';
-import 'package:example/features/app/routes.dart';
-import 'package:example/features/wallet/passphrase_card/passphrase.card.dart';
-import 'package:example/features/wallet/passphrase_card/passphrase_card.controller.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/core/zenon.manager.dart';
+import 'package:app/features/app/routes.dart';
+import 'package:app/features/wallet/passphrase_card/passphrase.card.dart';
+import 'package:app/features/wallet/passphrase_card/passphrase_card.controller.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
@@ -47,8 +47,10 @@ class ConfirmSeedScreenController extends GetxController with ConsoleMixin {
 
     // temporarily save keystore in a static class
     final keyStore = KeyStore.fromMnemonic(verificationSeed);
-    ZenonManager.keyStore = keyStore;
-    Zenon().defaultKeyStore = keyStore;
+
+    // set default KeyStore
+    ZenonManager.setKeyStore(keyStore);
+
     // TODO: save keystore file if suppported
 
     Get.offNamedUntil(Routes.main, (route) => false);

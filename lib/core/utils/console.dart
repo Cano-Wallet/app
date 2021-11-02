@@ -24,6 +24,6 @@ class Console {
   void verbose(String message) => log(Level.verbose, message);
 
   void log(Level level, String message) {
-    logger.log(level, '$name : $message');
+    logger.log(level, '$name: $message');
   }
 }

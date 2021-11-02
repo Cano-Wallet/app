@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:example/core/utils/console.dart';
+import 'package:app/core/utils/console.dart';
 import 'package:get/get.dart';
 
 class ConnectivityController extends GetxController with ConsoleMixin {

@@ -1,6 +1,6 @@
-import 'package:example/core/utils/console.dart';
-import 'package:example/features/general/segmented_switch.widget.dart';
-import 'package:example/features/wallet/passphrase_card/passphrase_card.controller.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/features/general/segmented_switch.widget.dart';
+import 'package:app/features/wallet/passphrase_card/passphrase_card.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

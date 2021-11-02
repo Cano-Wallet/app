@@ -1,6 +1,6 @@
-import 'package:example/core/utils/console.dart';
-import 'package:example/core/zenon_http_client/zenon_http.dart';
-import 'package:example/features/playground/wallet/wallet_playground.controller.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/core/zenon_http_client/zenon_http.dart';
+import 'package:app/features/playground/wallet/wallet_playground.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';

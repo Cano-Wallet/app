@@ -1,11 +1,11 @@
-import 'package:example/core/utils/console.dart';
+import 'package:app/core/utils/console.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'create_password_screen.controller.dart';
 
-class CreateWalletPasswordScreen extends GetView<CreateWalletPasswordScreenController>
-    with ConsoleMixin {
+class CreateWalletPasswordScreen
+    extends GetView<CreateWalletPasswordScreenController> with ConsoleMixin {
   const CreateWalletPasswordScreen({Key? key}) : super(key: key);
 
   @override

@@ -1,4 +1,4 @@
-import 'package:example/features/app/routes.dart';
+import 'package:app/features/app/routes.dart';
 import 'package:get/get.dart';
 
 class PlasmaTabController extends GetxController {

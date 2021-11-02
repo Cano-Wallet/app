@@ -3,7 +3,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 import 'staking_stats_card.controller.dart';
 
-class StakingStatsUI extends GetWidget<StakingStatsCardController> {
+class StakingStatsUI extends GetView<StakingStatsCardController> {
   const StakingStatsUI({Key? key}) : super(key: key);
 
   @override

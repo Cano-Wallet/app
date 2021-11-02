@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:example/core/utils/console.dart';
-import 'package:example/core/utils/styles.dart';
-import 'package:example/features/general/busy_indicator.widget.dart';
-import 'package:example/features/general/centered_placeholder.widget.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/styles.dart';
+import 'package:app/features/general/busy_indicator.widget.dart';
+import 'package:app/features/general/centered_placeholder.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';

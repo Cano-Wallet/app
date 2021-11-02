@@ -1,10 +1,10 @@
-import 'package:example/core/controllers/persistence.controller.dart';
-import 'package:example/core/translations/data.dart';
-import 'package:example/features/app/pages.dart';
-import 'package:example/features/app/routes.dart';
-import 'package:example/features/general/smart_refresher_components.widget.dart';
-import 'package:example/features/general/unknown.screen.dart';
-import 'package:example/features/main/main_screen.binding.dart';
+import 'package:app/core/controllers/persistence.controller.dart';
+import 'package:app/core/translations/data.dart';
+import 'package:app/features/app/pages.dart';
+import 'package:app/features/app/routes.dart';
+import 'package:app/features/general/smart_refresher_components.widget.dart';
+import 'package:app/features/general/unknown.screen.dart';
+import 'package:app/features/main/main_screen.binding.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';

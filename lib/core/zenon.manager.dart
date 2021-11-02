@@ -1,21 +1,23 @@
 import 'dart:io';
 
-import 'package:example/core/utils/console.dart';
-import 'package:example/core/utils/globals.dart';
-import 'package:get/utils.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/globals.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
+
+final zenon = Zenon();
 
 class ZenonManager {
   static final console = Console(name: 'ZenonManager');
 
   static KeyStore? keyStore;
+  static KeyPair? get keyPair => keyStore?.getKeyPair(0);
+  static Future<Address?> get address async => await keyPair?.address;
 
   static void init() async {
-    await _addMobileSupportForZenonSDK();
-
-    final zenon = Zenon();
+    await initPaths();
 
     // zenon.wsClient
     //     .addOnConnectionEstablishedCallback((allResponseBroadcaster) async {
@@ -32,32 +34,55 @@ class ZenonManager {
     console.info('initialized: $initialized');
   }
 
-  // Zenon's Dart SDK currently doesn't fully support Android & iOS, so we add it
-  // This requires a modified SDK as well that changed directory specific for Android & iOS
-  static Future<void> _addMobileSupportForZenonSDK() async {
-    if (!GetPlatform.isMobile) return;
+  // set the current key store
+  static void setKeyStore(KeyStore? _keyStore) => keyStore = _keyStore;
 
-    final appDir = await getApplicationSupportDirectory();
+  // initialize our app's custom path
+  static Future<void> initPaths() async {
+    znnDefaultPaths = await defaultPaths();
 
-    // create the directories if unexisting
-    final mainDir = Directory(path.join(appDir.path, znnRootDirectory));
-    await mainDir.create();
-
-    final walletDir = Directory(path.join(mainDir.path, 'wallet'));
-    await walletDir.create();
-
-    final cacheDir = Directory(path.join(mainDir.path, 'syrius'));
-    await cacheDir.create();
-
-    znnDefaultPaths = ZnnPaths(
-      main: mainDir,
-      wallet: walletDir,
-      cache: cacheDir,
-    );
-
-    console.info('Fixed paths for mobile');
     console.info('main: ${znnDefaultPaths.main.path}');
     console.info('cache: ${znnDefaultPaths.cache.path}');
     console.info('wallet: ${znnDefaultPaths.wallet.path}');
+  }
+
+  static Future<ZnnPaths> defaultPaths() async {
+    final packageInfo = await PackageInfo.fromPlatform();
+    // we change the root directory to prevent collision with Syrius app directories
+    final rootDirectory = packageInfo.appName;
+
+    late Directory main;
+
+    if (Platform.isLinux) {
+      main = Directory(path.join(
+        Platform.environment['HOME']!,
+        '.$rootDirectory',
+      ));
+    } else if (Platform.isMacOS) {
+      main = Directory(path.join(
+        Platform.environment['HOME']!,
+        'Library',
+        rootDirectory,
+      ));
+    } else if (Platform.isWindows) {
+      main = Directory(path.join(
+        Platform.environment['AppData']!,
+        rootDirectory,
+      ));
+    } else if (Platform.isAndroid || Platform.isIOS) {
+      // add support for mobile
+      main = await getApplicationSupportDirectory();
+    } else {
+      main = Directory(path.join(
+        Platform.environment['HOME']!,
+        rootDirectory,
+      ));
+    }
+
+    return ZnnPaths(
+      main: main..createSync(),
+      wallet: Directory(path.join(main.path, 'wallet'))..createSync(),
+      cache: Directory(path.join(main.path, 'cache'))..createSync(),
+    );
   }
 }

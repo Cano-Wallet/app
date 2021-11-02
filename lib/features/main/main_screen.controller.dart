@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:example/core/utils/console.dart';
-import 'package:example/features/general/connectivity/connectivity_bar.controller.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/features/general/connectivity/connectivity_bar.controller.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 

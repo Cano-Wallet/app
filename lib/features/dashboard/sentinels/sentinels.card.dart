@@ -3,7 +3,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 import 'sentinels_card.controller.dart';
 
-class SentinelsUI extends GetWidget<SentinelsCardController> {
+class SentinelsUI extends GetView<SentinelsCardController> {
   const SentinelsUI({Key? key}) : super(key: key);
 
   @override

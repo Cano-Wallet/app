@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:bip39/bip39.dart' as bip39;
-import 'package:example/core/utils/console.dart';
-import 'package:example/core/utils/globals.dart';
-import 'package:example/core/utils/utils.dart';
-import 'package:example/core/zenon.manager.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/globals.dart';
+import 'package:app/core/utils/utils.dart';
+import 'package:app/core/zenon.manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hex/hex.dart';
@@ -35,8 +35,6 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
   final zenon = Zenon();
   final mnemonicController =
       TextEditingController(text: ZenonManager.keyStore?.mnemonic);
-
-  KeyStore? keyStore;
 
   final accountDropdownItems =
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -80,6 +78,8 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
   }
 
   void process() async {
+    KeyStore? keyStore;
+
     try {
       keyStore = KeyStore.fromMnemonic(mnemonicController.text);
     } catch (e) {
@@ -87,9 +87,9 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
     }
 
     // set as default
-    zenon.defaultKeyStore = keyStore;
+    ZenonManager.setKeyStore(keyStore);
 
-    final keyPair = keyStore!.getKeyPair(accountIndex.value);
+    final keyPair = keyStore.getKeyPair(accountIndex.value);
 
     final _address = await keyPair.address;
     addressShort.value = _address!.toShortString();
@@ -104,8 +104,8 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
     final publicKey = await keyPair.getPublicKey();
     publicKeyHex.value = HEX.encode(publicKey!);
 
-    entropy.value = keyStore!.entropy;
-    seed.value = keyStore!.seed!;
+    entropy.value = keyStore.entropy;
+    seed.value = keyStore.seed!;
   }
 
   void accountChanged(String? value) {
@@ -130,13 +130,13 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
   //
 
   void info() async {
-    console.info('defaultKeyPair: ${zenon.defaultKeyPair?.address.toString()}');
-    console.info('defaultKeyStore: ${zenon.defaultKeyStore?.mnemonic}');
-    console.info('defaultKeyStorePath: ${zenon.defaultKeyStorePath?.path}');
+    console.info('keyStore mnemonic: ${ZenonManager.keyStore?.mnemonic}');
+    console.info('keyPair address: ${await ZenonManager.keyPair?.address}');
 
     console.info(
-        'keyStoreInUse: ${zenon.keyStoreManager.keyStoreInUse?.mnemonic}');
-    console.info('walletPath: ${zenon.keyStoreManager.walletPath?.path}');
+        'keyStoreManager keyStoreInUse: ${zenon.keyStoreManager.keyStoreInUse?.mnemonic}');
+    console.info(
+        'keyStoreManager walletPath: ${zenon.keyStoreManager.walletPath?.path}');
 
     List<File>? keyStores;
 
@@ -153,7 +153,7 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
     final file = await zenon.keyStoreManager.createFromMnemonic(
       mnemonicController.text,
       kTestPassword,
-      'testName',
+      null,
     );
 
     console.info('created: ${file.path}');
@@ -161,6 +161,10 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
 
   void open() async {
     final keyStores = await zenon.keyStoreManager.listAllKeyStores();
+    console.info('keyStores: ${keyStores.length}');
+    if (keyStores.isEmpty) return;
+
+    KeyStore? keyStore;
 
     try {
       keyStore = await zenon.keyStoreManager.readKeyStore(
@@ -171,10 +175,11 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
       return console.error(e.toString());
     }
 
-    console.info('keyStore: ${keyStore!.mnemonic}');
+    // set as default
+    ZenonManager.setKeyStore(keyStore);
 
     // re-process to display
-    mnemonicController.text = keyStore!.mnemonic!;
+    mnemonicController.text = keyStore.mnemonic!;
     process();
   }
 
@@ -183,16 +188,19 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
     if (file == null) return;
     console.info('file: ${file.path}');
 
+    KeyStore? keyStore;
+
     try {
       keyStore = await zenon.keyStoreManager.readKeyStore(kTestPassword, file);
     } catch (e) {
       return console.error(e.toString());
     }
 
-    console.info('keyStore: ${keyStore!.mnemonic}');
+    // set as default
+    ZenonManager.setKeyStore(keyStore);
 
     // re-process to display
-    mnemonicController.text = keyStore!.mnemonic!;
+    mnemonicController.text = keyStore.mnemonic!;
     process();
   }
 
@@ -212,7 +220,7 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
     try {
       accountBlock = await zenon.send(
         accountBlockTemplate,
-        currentKeyPair: keyStore?.getKeyPair(accountIndex.value),
+        currentKeyPair: ZenonManager.keyStore?.getKeyPair(accountIndex.value),
         generatingPowCallback: (powStatus) {
           console.info('pow status: ${powStatus.toString()}');
         },
@@ -222,9 +230,5 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
     }
 
     console.info('accountBlock: ${accountBlock.toJson()}');
-  }
-
-  void reset() {
-    //
   }
 }

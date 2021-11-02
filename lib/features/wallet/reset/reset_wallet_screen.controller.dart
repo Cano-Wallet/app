@@ -1,7 +1,7 @@
-import 'package:example/core/utils/console.dart';
-import 'package:example/core/utils/utils.dart';
-import 'package:example/core/zenon.manager.dart';
-import 'package:example/features/app/routes.dart';
+import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/utils.dart';
+import 'package:app/core/zenon.manager.dart';
+import 'package:app/features/app/routes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
@@ -25,13 +25,20 @@ class ResetWalletScreenController extends GetxController with ConsoleMixin {
   // FUNCTIONS
 
   void reset() async {
-    // delete syrius files
-    await Utils.resetDirectory(znnDefaultPaths.cache);
-    // delete wallet files
-    await Utils.resetDirectory(znnDefaultPaths.wallet);
+    final success = await Utils.deleteDirectory(znnDefaultPaths.main);
+
+    if (!success) {
+      return console
+          .error('failed to delete directory: ${znnDefaultPaths.main.path}');
+    }
+
+    // re-init paths
+    await ZenonManager.initPaths();
+
     console.info('successfully reset!');
 
-    ZenonManager.keyStore = null;
+    // set default KeyStore
+    ZenonManager.setKeyStore(null);
 
     Get.offNamedUntil(Routes.main, (route) => false);
   }

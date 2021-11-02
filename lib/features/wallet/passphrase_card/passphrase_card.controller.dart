@@ -1,4 +1,4 @@
-import 'package:example/core/utils/console.dart';
+import 'package:app/core/utils/console.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';

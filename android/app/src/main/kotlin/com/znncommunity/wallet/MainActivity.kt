@@ -1,4 +1,4 @@
-package com.example.example
+package com.znncommunity.wallet
 
 import io.flutter.embedding.android.FlutterActivity
 
