@@ -6,15 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
-class SentinelListScreenBinding extends Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut(() => SentinelListScreenController());
-  }
-}
+class SentinelListViewController extends BaseListController {
+  final List<Widget> headers;
+  SentinelListViewController({this.headers = const []});
 
-class SentinelListScreenController extends BaseListController {
-  static SentinelListScreenController get to => Get.find();
+  static SentinelListViewController get to => Get.find();
 
   // VARIABLES
   @override
@@ -50,8 +46,19 @@ class SentinelListScreenController extends BaseListController {
   Widget itemBuilder(context, index) {
     final object = data[index] as SentinelInfo;
 
-    return ListItemAnimation(
+    final item = ListItemAnimation(
       child: ListTile(title: Text(object.owner.toString())),
+    );
+
+    if (index > 0) return item;
+
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        ...headers,
+        item,
+      ],
     );
   }
 }

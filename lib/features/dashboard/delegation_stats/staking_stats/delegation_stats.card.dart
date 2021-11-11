@@ -1,3 +1,5 @@
+import 'package:app/core/utils/styles.dart';
+import 'package:app/features/general/z_card.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -8,12 +10,24 @@ class DelegationStatsUI extends GetView<DelegationStatsCardController> {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: const Text('Delegation Stats'),
-      subtitle: Obx(() => Text(controller.result())),
-      trailing: IconButton(
-        onPressed: controller.fetch,
-        icon: const Icon(Icons.refresh),
+    return ZCard(
+      title: 'Delegation Stats',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Obx(
+            () => Text(
+              controller.name(),
+              style: const TextStyle(color: Colors.grey),
+            ),
+          ),
+          Obx(
+            () => Text(
+              '${controller.weight()} tZNN',
+              style: Styles.dashboardNumberStyle,
+            ),
+          ),
+        ],
       ),
     );
   }

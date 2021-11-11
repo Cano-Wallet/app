@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ZCard extends StatelessWidget {
+  final String? title;
   final Widget child;
-  const ZCard({Key? key, required this.child}) : super(key: key);
+
+  const ZCard({
+    Key? key,
+    required this.child,
+    this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +19,19 @@ class ZCard extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(20),
-        child: child,
+        child: title == null
+            ? child
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title!,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                  const Divider(),
+                  child,
+                ],
+              ),
       ),
     );
   }

@@ -55,8 +55,8 @@ class PeerListScreenController extends BaseListController {
 
     return ListItemAnimation(
       child: ListTile(
-        title: Text(object.publicKey),
-        subtitle: Text(object.ip),
+        title: Text(object.ip),
+        subtitle: Text(object.publicKey),
       ),
     );
   }

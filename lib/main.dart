@@ -29,5 +29,5 @@ void _setupWindowSize() async {
 
   const size = Size(950, 1400);
   await DesktopWindow.setWindowSize(size);
-  await DesktopWindow.setMinWindowSize(size);
+  // await DesktopWindow.setMinWindowSize(size);
 }

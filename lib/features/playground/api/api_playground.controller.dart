@@ -156,13 +156,18 @@ class APIPlaygroundController extends GetxController with ConsoleMixin {
     console.debug('--- STATS ---');
     final stats = zenon.stats;
 
+    final token =
+        await zenon.embedded.token.getByZts(TokenStandard.bySymbol('tZNN'));
+    console.warning('Token: ${token!.toJson()}');
+
     console.warning('Network Info');
     final networkInfo = await stats.networkInfo();
     console.info(
         'network info! IP: ${networkInfo.self.ip}, Address: ${networkInfo.self.publicKey}, Peers: ${networkInfo.numPeers} ');
 
     console.warning('OS Info');
-    console.info('os info: ${await stats.osInfo()}');
+    final osInfo = await stats.osInfo();
+    console.info('os info: $osInfo');
 
     console.warning('Process Info');
     final processInfo = await stats.processInfo();

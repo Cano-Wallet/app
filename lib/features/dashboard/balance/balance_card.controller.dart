@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:app/core/utils/console.dart';
 import 'package:app/core/utils/globals.dart';
+import 'package:app/core/utils/utils.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
@@ -12,21 +13,33 @@ class BalanceCardController extends GetxController
   // VARIABLES
 
   // PROPERTIES
-  final result = 'ZNN: 0, QSR: 0'.obs;
+  final znn = ''.obs;
+  final qsr = ''.obs;
 
   // GETTERS
 
   // INIT
+  @override
+  void onReady() {
+    fetch();
+    super.onReady();
+  }
 
   // FUNCTIONS
   Future<void> fetch() async {
-    final address = Address.parse(kTestAddress);
-    final accountInfo = await Zenon().ledger.getAccountInfoByAddress(address);
+    final accountInfo =
+        await Zenon().ledger.getAccountInfoByAddress(testAddress);
 
-    final znn = AmountUtils.addDecimals(accountInfo.znn()!, znnDecimals);
-    final qsr = AmountUtils.addDecimals(accountInfo.qsr()!, qsrDecimals);
+    znn.value = Utils.formatCurrency(AmountUtils.addDecimals(
+      accountInfo.znn()!,
+      znnDecimals,
+    ));
 
-    result.value = 'ZNN: $znn, QSR: $qsr';
+    qsr.value = Utils.formatCurrency(AmountUtils.addDecimals(
+      accountInfo.qsr()!,
+      qsrDecimals,
+    ));
+
     console.info('done');
   }
 }

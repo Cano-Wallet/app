@@ -1,6 +1,10 @@
+import 'package:app/core/utils/styles.dart';
+import 'package:app/features/general/z_card.widget.dart';
 import 'package:app/features/staking/staking_tab.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'staking_list/staking.listview.dart';
 
 class _StakingTabState extends State<StakingTab>
     with AutomaticKeepAliveClientMixin {
@@ -13,25 +17,39 @@ class _StakingTabState extends State<StakingTab>
   Widget build(BuildContext context) {
     super.build(context);
 
-    const _content = Center(
-      child: Text('Staking'),
-    );
-
-    final _bottomBar = BottomAppBar(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
+    final headers = [
+      ZCard(
+        title: 'Rewards',
+        child: Container(),
+      ),
+      ZCard(
+        title: 'Collect',
         child: Row(
-          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            TextButton.icon(
-              icon: const Icon(Icons.list),
-              label: const Text('Staking List'),
-              onPressed: controller.viewList,
+          children: [
+            Obx(
+              () => Text(
+                '${controller.qsrRewards()} tQSR',
+                style: Styles.dashboardNumberStyle,
+              ),
+            ),
+            OutlinedButton(
+              style: Styles.outlinedButtonStyle20,
+              onPressed: () {
+                //
+              },
+              child: const Text('Collect'),
             ),
           ],
         ),
       ),
+      // spacer
+      const SizedBox(height: 10),
+    ];
+
+    final _content = Padding(
+      padding: const EdgeInsets.all(15),
+      child: StakingListView(headers: headers),
     );
 
     final _floatingActionButton = FloatingActionButton.extended(
@@ -42,8 +60,6 @@ class _StakingTabState extends State<StakingTab>
     );
 
     return Scaffold(
-      bottomNavigationBar: _bottomBar,
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: _floatingActionButton,
       body: _content,
     );

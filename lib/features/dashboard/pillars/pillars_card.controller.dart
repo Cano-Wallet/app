@@ -11,16 +11,21 @@ class PillarsCardController extends GetxController
   // VARIABLES
 
   // PROPERTIES
-  final result = '0'.obs;
+  final count = ''.obs;
 
   // GETTERS
 
   // INIT
+  @override
+  void onReady() {
+    fetch();
+    super.onReady();
+  }
 
   // FUNCTIONS
   Future<void> fetch() async {
     final pillars = await Zenon().embedded.pillar.getAll();
-    result.value = '${pillars.count}';
+    count.value = pillars.count.toString();
 
     console.info('done');
   }

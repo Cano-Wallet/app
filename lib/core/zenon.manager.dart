@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:app/core/utils/console.dart';
+import 'package:app/features/main/main_screen.controller.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
@@ -31,6 +32,8 @@ class ZenonManager {
       'ws://$kTestPeerHost:$kTestPeerPort', // TODO: select the peer address from persistence
       retry: false,
     );
+
+    MainScreenController.to.ready.value = initialized;
 
     console.info('initialized: $initialized');
   }

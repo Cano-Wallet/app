@@ -110,11 +110,12 @@ class BaseListController extends GetxController with ConsoleMixin, StateMixin {
           enablePullUp: canLoadMore,
           onRefresh: reload,
           onLoading: loadMore,
-          child: ListView.builder(
+          child: ListView.separated(
             controller: scrollController,
             shrinkWrap: true,
             itemCount: data.length,
             itemBuilder: itemBuilder,
+            separatorBuilder: (context, index) => const Divider(),
           ),
         ),
       );

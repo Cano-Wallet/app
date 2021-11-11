@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:app/core/utils/console.dart';
 import 'package:app/core/utils/globals.dart';
+import 'package:app/core/utils/utils.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
@@ -12,32 +13,38 @@ class DelegationStatsCardController extends GetxController
   // VARIABLES
 
   // PROPERTIES
-  final result = '0'.obs;
+  final name = ''.obs;
+  final weight = ''.obs;
 
   // GETTERS
 
   // INIT
+  @override
+  void onReady() {
+    fetch();
+    super.onReady();
+  }
 
   // FUNCTIONS
   Future<void> fetch() async {
     final zenon = Zenon();
-    final address = Address.parse(kTestAddress);
 
     DelegationInfo? delegationInfo;
 
     try {
-      delegationInfo = await zenon.embedded.pillar.getDelegatedPillar(address);
+      delegationInfo =
+          await zenon.embedded.pillar.getDelegatedPillar(testAddress);
     } catch (e) {
       return console.error(e.toString());
     }
 
     if (delegationInfo == null) return console.error('null delegation info');
 
-    result.value = '''
-    Name: ${delegationInfo.name}
-    Status: ${delegationInfo.status}
-    Weight: ${AmountUtils.addDecimals(delegationInfo.weight, znnDecimals)} ZNN
-    Active: ${delegationInfo.isPillarActive()}''';
+    name.value = delegationInfo.name;
+    weight.value = Utils.formatCurrency(AmountUtils.addDecimals(
+      delegationInfo.weight,
+      znnDecimals,
+    ));
 
     console.info('done');
   }

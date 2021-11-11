@@ -1,6 +1,5 @@
 import 'package:app/core/utils/console.dart';
 import 'package:app/features/general/z_tab.widget.dart';
-import 'package:app/features/main/main.screen.dart';
 import 'package:app/features/playground/playground_screen.controller.dart';
 import 'package:app/features/playground/wallet/wallet_playground.dart';
 import 'package:flutter/material.dart';

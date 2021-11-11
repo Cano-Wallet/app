@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:app/core/utils/console.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:intl/intl.dart';
 
 class Utils {
   static final console = Console(name: 'Utils');
@@ -36,5 +37,15 @@ class Utils {
       console.error('${dir.path} doesnt exist');
       return false;
     }
+  }
+
+  static String formatKNumber(num number) {
+    // TODO: set locale
+    return NumberFormat.compact().format(number);
+  }
+
+  static String formatCurrency(num number) {
+    // TODO: set locale
+    return NumberFormat.currency(symbol: '', decimalDigits: 2).format(number);
   }
 }

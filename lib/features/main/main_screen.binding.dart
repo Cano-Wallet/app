@@ -21,6 +21,15 @@ class MainBinding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => MainScreenController());
 
+    // TAB CONTROLLERS
+    Get.lazyPut(() => DashboardTabController());
+    Get.lazyPut(() => TransferTabController());
+    Get.lazyPut(() => PillarsTabController());
+    Get.lazyPut(() => SentinelsTabController());
+    Get.lazyPut(() => StakingTabController());
+    Get.lazyPut(() => PlasmaTabController());
+    Get.lazyPut(() => TokensTabController());
+
     // CARD CONTROLLERS
     Get.lazyPut(() => PassphraseCardController());
     Get.lazyPut(() => BalanceCardController());
@@ -29,17 +38,5 @@ class MainBinding extends Bindings {
     Get.lazyPut(() => StakingStatsCardController());
     Get.lazyPut(() => SentinelsCardController());
     Get.lazyPut(() => DelegationStatsCardController());
-
-    // TAB CONTROLLERS
-    Get.put(DashboardTabController());
-    Get.put(TransferTabController());
-    Get.put(PillarsTabController());
-    Get.put(SentinelsTabController());
-    Get.put(StakingTabController());
-    Get.put(PlasmaTabController());
-    Get.put(TokensTabController());
-
-    // LIST CONTROLLERS
-    // Get.put(PillarListScreenController());
   }
 }

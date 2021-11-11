@@ -6,15 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
-class TokenListScreenBinding extends Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut(() => TokenListScreenController());
-  }
-}
+class PillarListViewController extends BaseListController {
+  final List<Widget> headers;
+  PillarListViewController({this.headers = const []});
 
-class TokenListScreenController extends BaseListController {
-  static TokenListScreenController get to => Get.find();
+  static PillarListViewController get to => Get.find();
 
   // VARIABLES
   @override
@@ -25,6 +21,11 @@ class TokenListScreenController extends BaseListController {
   // GETTERS
 
   // INIT
+  @override
+  void onReady() {
+    fetch();
+    super.onReady();
+  }
 
   // FUNCTIONS
 
@@ -32,10 +33,10 @@ class TokenListScreenController extends BaseListController {
   Future<void> fetch({bool loadMore = false}) async {
     preFetch(loadMore);
 
-    TokenList? object;
+    PillarInfoList? object;
 
     try {
-      object = await Zenon().embedded.token.getAll(
+      object = await Zenon().embedded.pillar.getAll(
             pageIndex: pageIndex,
             pageSize: pageSize,
           );
@@ -48,12 +49,24 @@ class TokenListScreenController extends BaseListController {
 
   @override
   Widget itemBuilder(context, index) {
-    final object = data[index] as Token;
+    final object = data[index] as PillarInfo;
 
-    return ListItemAnimation(
+    final item = ListItemAnimation(
       child: ListTile(
-        title: Text('Name: ${object.name}, ${object.symbol}'),
+        title: Text(object.name),
+        subtitle: Text(object.producerAddress.toString()),
       ),
+    );
+
+    if (index > 0) return item;
+
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        ...headers,
+        item,
+      ],
     );
   }
 }

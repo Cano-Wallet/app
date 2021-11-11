@@ -18,12 +18,13 @@ class _DashboardTabState extends State<DashboardTab>
 
     return Scaffold(
       body: ListView(
+        padding: const EdgeInsets.only(top: 10, bottom: 20),
         children: const [
           DualCoinStatsUI(),
           BalanceUI(),
           PillarsUI(),
-          StakingStatsUI(),
           SentinelsUI(),
+          StakingStatsUI(),
           DelegationStatsUI(),
         ],
       ),

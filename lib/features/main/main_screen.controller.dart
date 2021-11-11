@@ -11,6 +11,7 @@ class MainScreenController extends GetxController with ConsoleMixin {
   // VARIABLES
 
   // PROPERTIES
+  final ready = false.obs;
   final lastTabIndex = 0.obs;
   final currentTabIndex = 0.obs;
   final updateAvailable = false.obs;

@@ -1,6 +1,10 @@
+import 'package:app/core/utils/styles.dart';
+import 'package:app/features/general/z_card.widget.dart';
 import 'package:app/features/sentinels/sentinels_tab.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'sentinel_list/sentinel.listview.dart';
 
 class _SentinelsTabState extends State<SentinelsTab>
     with AutomaticKeepAliveClientMixin {
@@ -13,25 +17,51 @@ class _SentinelsTabState extends State<SentinelsTab>
   Widget build(BuildContext context) {
     super.build(context);
 
-    const _content = Center(
-      child: Text('Sentinels'),
-    );
-
-    final _bottomBar = BottomAppBar(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
+    final headers = [
+      ZCard(
+        title: 'Rewards',
+        child: Container(),
+      ),
+      ZCard(
+        title: 'Collect',
         child: Row(
-          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            TextButton.icon(
-              icon: const Icon(Icons.list),
-              label: const Text('Sentinel List'),
-              onPressed: controller.viewList,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Obx(
+                  () => Text(
+                    '${controller.znnRewards()} tZNN',
+                    style: Styles.dashboardNumberStyle,
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Obx(
+                  () => Text(
+                    '${controller.qsrRewards()} tQSR',
+                    style: Styles.dashboardNumberStyle,
+                  ),
+                ),
+              ],
+            ),
+            OutlinedButton(
+              style: Styles.outlinedButtonStyle20,
+              onPressed: () {
+                //
+              },
+              child: const Text('Collect'),
             ),
           ],
         ),
       ),
+      // spacer
+      const SizedBox(height: 10),
+    ];
+
+    final _content = Padding(
+      padding: const EdgeInsets.all(15),
+      child: SentinelListView(headers: headers),
     );
 
     final _floatingActionButton = FloatingActionButton.extended(
@@ -42,8 +72,6 @@ class _SentinelsTabState extends State<SentinelsTab>
     );
 
     return Scaffold(
-      bottomNavigationBar: _bottomBar,
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: _floatingActionButton,
       body: _content,
     );

@@ -1,3 +1,5 @@
+import 'package:app/core/utils/styles.dart';
+import 'package:app/features/general/z_card.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
@@ -8,12 +10,13 @@ class PillarsUI extends GetView<PillarsCardController> {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: const Text('Pillars'),
-      subtitle: Obx(() => Text(controller.result())),
-      trailing: IconButton(
-        onPressed: controller.fetch,
-        icon: const Icon(Icons.refresh),
+    return ZCard(
+      title: 'Active Pillars',
+      child: Obx(
+        () => Text(
+          controller.count.toString(),
+          style: Styles.dashboardNumberStyle,
+        ),
       ),
     );
   }

@@ -4,22 +4,12 @@ import 'package:app/features/main/main.screen.dart';
 import 'package:app/features/main/main_screen.binding.dart';
 import 'package:app/features/notifications/notifications.screen.dart';
 import 'package:app/features/notifications/notifications_screen.controller.dart';
-import 'package:app/features/pillars/pillar_list/pillar_list_screen.controller.dart';
-import 'package:app/features/pillars/pillar_list/pillars_list.screen.dart';
-import 'package:app/features/plasma/plasma_list/plasma_list.screen.dart';
-import 'package:app/features/plasma/plasma_list/plasma_list_screen.controller.dart';
 import 'package:app/features/playground/playground.screen.dart';
 import 'package:app/features/playground/playground_screen.controller.dart';
-import 'package:app/features/sentinels/sentinel_list/sentinel_list.screen.dart';
-import 'package:app/features/sentinels/sentinel_list/sentinel_list_screen.controller.dart';
 import 'package:app/features/settings/peer_list/peer_list.screen.dart';
 import 'package:app/features/settings/peer_list/peer_list_screen.controller.dart';
 import 'package:app/features/settings/settings.screen.dart';
 import 'package:app/features/settings/settings_screen.controller.dart';
-import 'package:app/features/staking/staking_list/staking_list.screen.dart';
-import 'package:app/features/staking/staking_list/staking_list_screen.controller.dart';
-import 'package:app/features/tokens/token_list/token_list.screen.dart';
-import 'package:app/features/tokens/token_list/token_list_screen.controller.dart';
 import 'package:app/features/wallet/confirm/confirm_seed.screen.dart';
 import 'package:app/features/wallet/confirm/confirm_seed_screen.controller.dart';
 import 'package:app/features/wallet/create/create_wallet.screen.dart';
@@ -46,26 +36,6 @@ class AppPages {
     ),
 
     // LISTS
-    GetPage(
-      name: Routes.sentinelList,
-      page: () => const SentinelListScreen(),
-      binding: SentinelListScreenBinding(),
-    ),
-    GetPage(
-      name: Routes.stakingList,
-      page: () => const StakingListScreen(),
-      binding: StakingListScreenBinding(),
-    ),
-    GetPage(
-      name: Routes.plasmaList,
-      page: () => const PlasmaListScreen(),
-      binding: PlasmaListScreenBinding(),
-    ),
-    GetPage(
-      name: Routes.tokenList,
-      page: () => const TokenListScreen(),
-      binding: TokenListScreenBinding(),
-    ),
     GetPage(
       name: Routes.peerList,
       page: () => const PeerListScreen(),

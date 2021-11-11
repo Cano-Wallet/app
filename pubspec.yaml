@@ -33,6 +33,8 @@ dependencies:
   flutter_linkify: 5.0.2
   url_launcher: 6.0.12
   package_info_plus: ^1.3.0
+  line_icons: ^2.0.1
+  intl: 0.17.0 # number formatting
 
 dev_dependencies:
   flutter_test:

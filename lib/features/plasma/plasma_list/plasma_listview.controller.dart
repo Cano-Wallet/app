@@ -3,19 +3,16 @@ import 'dart:async';
 import 'package:app/core/animations/animations.dart';
 import 'package:app/core/controllers/base_list.controller.dart';
 import 'package:app/core/utils/globals.dart';
+import 'package:app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
-class PlasmaListScreenBinding extends Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut(() => PlasmaListScreenController());
-  }
-}
+class PlasmaListViewController extends BaseListController {
+  final List<Widget> headers;
+  PlasmaListViewController({this.headers = const []});
 
-class PlasmaListScreenController extends BaseListController {
-  static PlasmaListScreenController get to => Get.find();
+  static PlasmaListViewController get to => Get.find();
 
   // VARIABLES
   @override
@@ -37,7 +34,7 @@ class PlasmaListScreenController extends BaseListController {
 
     try {
       object = await Zenon().embedded.plasma.getEntriesByAddress(
-            Address.parse(kTestAddress),
+            testAddress,
             pageIndex: pageIndex,
             pageSize: pageSize,
           );
@@ -53,11 +50,27 @@ class PlasmaListScreenController extends BaseListController {
     final object = data[index] as FusionEntry;
     final qsr = AmountUtils.addDecimals(object.qsrAmount, qsrDecimals);
 
-    return ListItemAnimation(
+    final item = ListItemAnimation(
       child: ListTile(
         title: Text('tQSR $qsr'),
         subtitle: Text(object.beneficiary.toString()),
+        trailing: OutlinedButton(
+          style: Styles.outlinedButtonStyle20Red,
+          child: const Text('Cancel', style: TextStyle(fontSize: 12)),
+          onPressed: () {},
+        ),
       ),
+    );
+
+    if (index > 0) return item;
+
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        ...headers,
+        item,
+      ],
     );
   }
 }

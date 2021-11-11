@@ -11,16 +11,21 @@ class SentinelsCardController extends GetxController
   // VARIABLES
 
   // PROPERTIES
-  final result = '0'.obs;
+  final count = ''.obs;
 
   // GETTERS
 
   // INIT
+  @override
+  void onReady() {
+    fetch();
+    super.onReady();
+  }
 
   // FUNCTIONS
   Future<void> fetch() async {
     final sentinels = await Zenon().embedded.sentinel.getAllActive();
-    result.value = '${sentinels.count}';
+    count.value = sentinels.count.toString();
     console.info('done');
   }
 }

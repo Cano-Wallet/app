@@ -63,7 +63,7 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
       ),
     ];
 
-    return DefaultTabController(
+    final _content = DefaultTabController(
       length: _tabs.length,
       child: Builder(builder: (context) {
         controller.lastTabIndex.value = DefaultTabController.of(context)!.index;
@@ -107,5 +107,20 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
         );
       }),
     );
+
+    final _splash = Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const <Widget>[
+            Text('Initializing...'),
+          ],
+        ),
+      ),
+    );
+
+    return Obx(() => controller.ready() ? _content : _splash);
   }
 }

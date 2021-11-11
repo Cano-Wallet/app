@@ -1,6 +1,9 @@
+import 'package:app/features/general/z_card.widget.dart';
 import 'package:app/features/tokens/tokens_tab.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'token_list/token.listview.dart';
 
 class _TokensTabState extends State<TokensTab>
     with AutomaticKeepAliveClientMixin {
@@ -13,25 +16,18 @@ class _TokensTabState extends State<TokensTab>
   Widget build(BuildContext context) {
     super.build(context);
 
-    const _content = Center(
-      child: Text('Tokens'),
-    );
-
-    final _bottomBar = BottomAppBar(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            TextButton.icon(
-              icon: const Icon(Icons.list),
-              label: const Text('Tokens List'),
-              onPressed: controller.viewList,
-            ),
-          ],
-        ),
+    final headers = [
+      ZCard(
+        title: 'Balance',
+        child: Container(),
       ),
+      // spacer
+      const SizedBox(height: 10),
+    ];
+
+    final _content = Padding(
+      padding: const EdgeInsets.all(15),
+      child: TokenListView(headers: headers),
     );
 
     final _floatingActionButton = FloatingActionButton.extended(
@@ -42,8 +38,6 @@ class _TokensTabState extends State<TokensTab>
     );
 
     return Scaffold(
-      bottomNavigationBar: _bottomBar,
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: _floatingActionButton,
       body: _content,
     );
