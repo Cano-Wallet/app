@@ -51,7 +51,7 @@ class SentinelListScreenController extends BaseListController {
     final object = data[index] as SentinelInfo;
 
     return ListItemAnimation(
-      child: ListTile(title: Text(object.stakeAddress.toString())),
+      child: ListTile(title: Text(object.owner.toString())),
     );
   }
 }

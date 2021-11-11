@@ -47,11 +47,6 @@ class AppPages {
 
     // LISTS
     GetPage(
-      name: Routes.pillarList,
-      page: () => const PillarListScreen(),
-      binding: PillarListScreenBinding(),
-    ),
-    GetPage(
       name: Routes.sentinelList,
       page: () => const SentinelListScreen(),
       binding: SentinelListScreenBinding(),

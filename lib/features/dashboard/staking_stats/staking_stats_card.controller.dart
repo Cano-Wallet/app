@@ -30,7 +30,7 @@ class StakingStatsCardController extends GetxController
         await zenon.embedded.stake.getFrontierRewardByPage(address);
 
     result.value = '''
-    Entries: ${entries.count}
+    Entries: ${entries.count}, ${AmountUtils.addDecimals(entries.totalAmount, znnDecimals)} tZNN
     Frontier Rewards! ZNN: ${frontierRewards.count}
     Uncollected Rewards! ZNN: ${AmountUtils.addDecimals(uncollectedRewards.znnAmount, znnDecimals)}, QSR: ${AmountUtils.addDecimals(uncollectedRewards.qsrAmount, qsrDecimals)}''';
     console.info('done');

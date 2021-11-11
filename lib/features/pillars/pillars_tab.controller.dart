@@ -1,4 +1,3 @@
-import 'package:app/features/app/routes.dart';
 import 'package:get/get.dart';
 
 class PillarsTabController extends GetxController {
@@ -13,10 +12,6 @@ class PillarsTabController extends GetxController {
   // INIT
 
   // FUNCTIONS
-
-  void viewList() {
-    Get.toNamed(Routes.pillarList);
-  }
 
   void spawn() {
     //

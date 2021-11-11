@@ -38,5 +38,8 @@ class MainBinding extends Bindings {
     Get.put(StakingTabController());
     Get.put(PlasmaTabController());
     Get.put(TokensTabController());
+
+    // LIST CONTROLLERS
+    // Get.put(PillarListScreenController());
   }
 }

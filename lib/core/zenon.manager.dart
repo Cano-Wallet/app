@@ -1,11 +1,12 @@
 import 'dart:io';
 
 import 'package:app/core/utils/console.dart';
-import 'package:app/core/utils/globals.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
+
+import 'utils/globals.dart';
 
 final zenon = Zenon();
 

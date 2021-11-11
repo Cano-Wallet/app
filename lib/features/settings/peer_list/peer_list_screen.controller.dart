@@ -40,7 +40,7 @@ class PeerListScreenController extends BaseListController {
       return onException(loadMore, e);
     }
 
-    data.assignAll(object.peers!);
+    data.assignAll(object.peers);
 
     // empty / success state
     change(
@@ -51,12 +51,12 @@ class PeerListScreenController extends BaseListController {
 
   @override
   Widget itemBuilder(context, index) {
-    final object = data[index] as PeerInfo;
+    final object = data[index] as Peer;
 
     return ListItemAnimation(
       child: ListTile(
-        title: Text(object.name!),
-        subtitle: Text(object.address!),
+        title: Text(object.publicKey),
+        subtitle: Text(object.ip),
       ),
     );
   }

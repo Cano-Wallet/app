@@ -6,14 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
-class PillarListScreenBinding extends Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut(() => PillarListScreenController());
-  }
-}
-
 class PillarListScreenController extends BaseListController {
+  final List<Widget> listHeaders;
+  PillarListScreenController({this.listHeaders = const []});
+
   static PillarListScreenController get to => Get.find();
 
   // VARIABLES
@@ -25,6 +21,11 @@ class PillarListScreenController extends BaseListController {
   // GETTERS
 
   // INIT
+  @override
+  void onReady() {
+    fetch();
+    super.onReady();
+  }
 
   // FUNCTIONS
 
@@ -50,10 +51,23 @@ class PillarListScreenController extends BaseListController {
   Widget itemBuilder(context, index) {
     final object = data[index] as PillarInfo;
 
-    return ListItemAnimation(
-        child: ListTile(
-      title: Text(object.name),
-      subtitle: Text(object.producerAddress.toString()),
-    ));
+    final item = ListItemAnimation(
+      child: ListTile(
+        title: Text(object.name),
+        subtitle: Text(object.producerAddress.toString()),
+      ),
+    );
+
+    if (index > 0) return item;
+
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SizedBox(height: 5),
+        ...listHeaders,
+        item,
+      ],
+    );
   }
 }

@@ -2,6 +2,7 @@ import 'package:app/core/utils/console.dart';
 import 'package:app/features/app/routes.dart';
 import 'package:app/features/dashboard/dashboard.tab.dart';
 import 'package:app/features/general/connectivity/connectivity_bar.widget.dart';
+import 'package:app/features/general/z_tab.widget.dart';
 import 'package:app/features/incentivized/incentivized.tab.dart';
 import 'package:app/features/pillars/pillars.tab.dart';
 import 'package:app/features/plasma/plasma.tab.dart';
@@ -20,42 +21,42 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
   @override
   Widget build(BuildContext context) {
     const _tabs = [
-      MyTab(
+      ZTab(
         title: 'Dashboard',
         tab: Tab(icon: Icon(Icons.dashboard)),
         child: DashboardTab(),
       ),
-      MyTab(
+      ZTab(
         title: 'Transfer',
         tab: Tab(icon: Icon(Icons.send)),
         child: TransferTab(),
       ),
-      MyTab(
+      ZTab(
         title: 'Pillars',
         tab: Tab(icon: Icon(Icons.apartment)),
         child: PillarsTab(),
       ),
-      MyTab(
+      ZTab(
         title: 'Sentinels',
         tab: Tab(icon: Icon(Icons.circle)),
         child: SentinelsTab(),
       ),
-      MyTab(
+      ZTab(
         title: 'Staking',
         tab: Tab(icon: Icon(Icons.clean_hands)),
         child: StakingTab(),
       ),
-      MyTab(
+      ZTab(
         title: 'Plasma',
         tab: Tab(icon: Icon(Icons.ac_unit)),
         child: PlasmaTab(),
       ),
-      MyTab(
+      ZTab(
         title: 'Tokens',
         tab: Tab(icon: Icon(Icons.adjust)),
         child: TokensTab(),
       ),
-      MyTab(
+      ZTab(
         title: 'Incentivized',
         tab: Tab(icon: Icon(Icons.attach_money)),
         child: IncentivizedTab(),
@@ -107,16 +108,4 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
       }),
     );
   }
-}
-
-class MyTab {
-  final String title;
-  final Tab tab;
-  final Widget child;
-
-  const MyTab({
-    required this.title,
-    required this.tab,
-    required this.child,
-  });
 }

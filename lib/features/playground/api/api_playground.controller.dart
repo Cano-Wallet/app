@@ -40,7 +40,7 @@ class APIPlaygroundController extends GetxController with ConsoleMixin {
         Address.parse(WalletPlaygroundController.to.addressLong.value);
 
     await zenon.subscribe.toAccountEvents(address);
-    await zenon.subscribe.toAllAccountEvents(address);
+    await zenon.subscribe.toAllAccountEvents();
     await zenon.subscribe.toUnreceivedAccountBlocks(address);
   }
 
@@ -159,7 +159,7 @@ class APIPlaygroundController extends GetxController with ConsoleMixin {
     console.warning('Network Info');
     final networkInfo = await stats.networkInfo();
     console.info(
-        'network info! id: ${networkInfo.id}, networkId: ${networkInfo.networkId}, name: ${networkInfo.name}, ');
+        'network info! IP: ${networkInfo.self.ip}, Address: ${networkInfo.self.publicKey}, Peers: ${networkInfo.numPeers} ');
 
     console.warning('OS Info');
     console.info('os info: ${await stats.osInfo()}');
@@ -167,16 +167,7 @@ class APIPlaygroundController extends GetxController with ConsoleMixin {
     console.warning('Process Info');
     final processInfo = await stats.processInfo();
     console.info(
-        'process info! pillar: ${processInfo.pillar}, sentinelName: ${processInfo.sentinelName}');
-
-    console.warning('Runtime Info');
-    final runtimeInfo = await stats.runtimeInfo();
-    console.info(
-        'runtime info! timestamp: ${runtimeInfo.frontierMomentum.timestamp}');
-
-    console.warning('Sync Info');
-    final syncInfo = await stats.syncInfo();
-    console.info('sync info: ${syncInfo.toJson()}');
+        'process info! commit: ${processInfo.commit}, version: ${processInfo.version}');
 
     // get current address
     final address =

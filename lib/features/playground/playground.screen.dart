@@ -1,4 +1,5 @@
 import 'package:app/core/utils/console.dart';
+import 'package:app/features/general/z_tab.widget.dart';
 import 'package:app/features/main/main.screen.dart';
 import 'package:app/features/playground/playground_screen.controller.dart';
 import 'package:app/features/playground/wallet/wallet_playground.dart';
@@ -15,17 +16,17 @@ class PlaygroundScreen extends GetView<PlaygroundScreenController>
   @override
   Widget build(BuildContext context) {
     final _tabs = [
-      const MyTab(
+      const ZTab(
         title: 'Wallet',
         tab: Tab(text: 'Wallet'),
         child: WalletPlayground(),
       ),
-      const MyTab(
+      const ZTab(
         title: 'API',
         tab: Tab(text: 'API'),
         child: APIPlayground(),
       ),
-      const MyTab(
+      const ZTab(
         title: 'Others',
         tab: Tab(text: 'Others'),
         child: OthersPlayground(),

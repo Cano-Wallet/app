@@ -102,7 +102,7 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
     privateKeyHex.value = HEX.encode(privateKey!);
 
     final publicKey = await keyPair.getPublicKey();
-    publicKeyHex.value = HEX.encode(publicKey!);
+    publicKeyHex.value = HEX.encode(publicKey);
 
     entropy.value = keyStore.entropy;
     seed.value = keyStore.seed!;
@@ -215,7 +215,7 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
       amount,
     );
 
-    AccountBlock? accountBlock;
+    AccountBlockTemplate accountBlock;
 
     try {
       accountBlock = await zenon.send(
