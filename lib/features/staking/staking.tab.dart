@@ -1,4 +1,5 @@
 import 'package:app/core/utils/styles.dart';
+import 'package:app/features/app/routes.dart';
 import 'package:app/features/general/z_card.widget.dart';
 import 'package:app/features/staking/staking_tab.controller.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +53,7 @@ class _StakingTabState extends State<StakingTab>
 
     final _floatingActionButton = FloatingActionButton(
       heroTag: null,
-      onPressed: controller.stake,
+      onPressed: () => Get.toNamed(Routes.stake),
       child: const Icon(LineIcons.paperHand),
     );
 

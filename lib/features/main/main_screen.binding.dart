@@ -6,10 +6,8 @@ import 'package:app/features/dashboard/pillars/pillars_card.controller.dart';
 import 'package:app/features/dashboard/sentinels/sentinels_card.controller.dart';
 import 'package:app/features/dashboard/staking_stats/staking_stats_card.controller.dart';
 import 'package:app/features/pillars/pillars_tab.controller.dart';
-import 'package:app/features/plasma/plasma_screen.controller.dart';
 import 'package:app/features/sentinels/sentinels_tab.controller.dart';
 import 'package:app/features/staking/staking_tab.controller.dart';
-import 'package:app/features/tokens/tokens_screen.controller.dart';
 import 'package:app/features/transfer/transfer_tab.controller.dart';
 import 'package:app/features/wallet/passphrase_card/passphrase_card.controller.dart';
 import 'package:get/get.dart';
@@ -27,8 +25,6 @@ class MainBinding extends Bindings {
     Get.lazyPut(() => PillarsTabController());
     Get.lazyPut(() => SentinelsTabController());
     Get.lazyPut(() => StakingTabController());
-    Get.lazyPut(() => PlasmaScreenController());
-    Get.lazyPut(() => TokensScreenController());
 
     // CARD CONTROLLERS
     Get.lazyPut(() => BalanceCardController());

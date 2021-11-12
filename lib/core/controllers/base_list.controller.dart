@@ -80,7 +80,8 @@ class BaseListController extends GetxController with ConsoleMixin, StateMixin {
     initialLoad = false;
 
     console.warning(
-        'max: $maxPageIndex, index: $pageIndex, count: ${object.count}');
+      'max: $maxPageIndex, index: $pageIndex, count: ${object.count}',
+    );
   }
 
   void onException(bool loadMore, Object e) {
@@ -112,6 +113,7 @@ class BaseListController extends GetxController with ConsoleMixin, StateMixin {
           enablePullDown: true,
           enablePullUp: canLoadMore,
           onRefresh: reload,
+          // TODO: add load more support for Desktop
           onLoading: loadMore,
           child: ListView.separated(
             controller: scrollController,

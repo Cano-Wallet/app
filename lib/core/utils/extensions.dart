@@ -21,3 +21,17 @@ extension PeerExtension on Peer {
     return data;
   }
 }
+
+extension OsInfoExtension on OsInfo {
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['os'] = os;
+    data['platformip'] = platform;
+    data['kernelVersion'] = kernelVersion;
+    data['memoryTotal'] = memoryTotal;
+    data['memoryFree'] = memoryFree;
+    data['numCPU'] = numCPU;
+    data['numGoroutine'] = numGoroutine;
+    return data;
+  }
+}

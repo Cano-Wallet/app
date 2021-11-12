@@ -8,6 +8,7 @@ import 'package:app/features/general/selector.sheet.dart';
 import 'package:app/features/json_viewer/json_viewer.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 class PeerListScreenBinding extends Bindings {
@@ -71,12 +72,12 @@ class PeerListScreenController extends BaseListController {
       items: [
         SelectorItem(
           title: 'Copy',
-          leading: const Icon(Icons.content_copy),
+          leading: const Icon(LineIcons.copy),
           onSelected: () => Utils.copyToClipboard(object.ip.toString()),
         ),
         SelectorItem(
           title: 'Details',
-          leading: const Icon(Icons.details),
+          leading: const Icon(LineIcons.laptopCode),
           onSelected: () {
             Get.to(() => JSONViewerScreen(data: object.toJson()));
           },

@@ -1,3 +1,4 @@
+import 'package:app/features/general/titled_divider.widget.dart';
 import 'package:flutter/material.dart';
 
 class ZCard extends StatelessWidget {
@@ -24,11 +25,7 @@ class ZCard extends StatelessWidget {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title!,
-                    style: const TextStyle(color: Colors.grey),
-                  ),
-                  const Divider(),
+                  TitledDivider(title: title!),
                   child,
                 ],
               ),

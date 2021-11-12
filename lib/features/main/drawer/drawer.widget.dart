@@ -63,6 +63,14 @@ class ZDrawer extends StatelessWidget {
               Get.toNamed(Routes.settings);
             },
           ),
+          ListTile(
+            title: const Text('About'),
+            leading: const Icon(LineIcons.infoCircle),
+            onTap: () {
+              Get.back(); // close drawer 1st
+              Get.toNamed(Routes.about);
+            },
+          ),
         ],
       ),
     );

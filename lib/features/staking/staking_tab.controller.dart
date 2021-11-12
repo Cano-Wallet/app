@@ -34,8 +34,4 @@ class StakingTabController extends GetxController with ConsoleMixin {
 
     console.info('done');
   }
-
-  void stake() {
-    //
-  }
 }

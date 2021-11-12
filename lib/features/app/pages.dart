@@ -8,16 +8,24 @@ import 'package:app/features/main/main.screen.dart';
 import 'package:app/features/main/main_screen.binding.dart';
 import 'package:app/features/notifications/notifications.screen.dart';
 import 'package:app/features/notifications/notifications_screen.controller.dart';
+import 'package:app/features/pillars/spawn/spawn.screen.dart';
+import 'package:app/features/pillars/spawn/spawn_screen.controller.dart';
 import 'package:app/features/plasma/plasma.screen.dart';
 import 'package:app/features/plasma/plasma_screen.controller.dart';
 import 'package:app/features/playground/playground.screen.dart';
 import 'package:app/features/playground/playground_screen.controller.dart';
+import 'package:app/features/sentinels/spawn/spawn.screen.dart';
+import 'package:app/features/sentinels/spawn/spawn_screen.controller.dart';
 import 'package:app/features/settings/peer_list/peer_list.screen.dart';
 import 'package:app/features/settings/peer_list/peer_list_screen.controller.dart';
 import 'package:app/features/settings/settings.screen.dart';
 import 'package:app/features/settings/settings_screen.controller.dart';
+import 'package:app/features/staking/stake/stake.screen.dart';
+import 'package:app/features/staking/stake/stake_screen.controller.dart';
 import 'package:app/features/tokens/tokens.screen.dart';
 import 'package:app/features/tokens/tokens_screen.controller.dart';
+import 'package:app/features/transfer/send/send.screen.dart';
+import 'package:app/features/transfer/send/send_screen.controller.dart';
 import 'package:app/features/wallet/confirm/confirm_seed.screen.dart';
 import 'package:app/features/wallet/confirm/confirm_seed_screen.controller.dart';
 import 'package:app/features/wallet/create/create_wallet.screen.dart';
@@ -92,6 +100,26 @@ class AppPages {
       name: Routes.accelerator,
       page: () => const AcceleratorScreen(),
       binding: AcceleratorScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.send,
+      page: () => const SendScreen(),
+      binding: SendScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.stake,
+      page: () => const StakeScreen(),
+      binding: StakeScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.spawnPillar,
+      page: () => const SpawnPillarScreen(),
+      binding: SpawnPillarScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.spawnSentinel,
+      page: () => const SpawnSentinelScreen(),
+      binding: SpawnSentinelScreenBinding(),
     ),
 
     GetPage(

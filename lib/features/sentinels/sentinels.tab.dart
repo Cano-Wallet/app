@@ -1,4 +1,5 @@
 import 'package:app/core/utils/styles.dart';
+import 'package:app/features/app/routes.dart';
 import 'package:app/features/general/z_card.widget.dart';
 import 'package:app/features/sentinels/sentinels_tab.controller.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,7 @@ class _SentinelsTabState extends State<SentinelsTab>
 
     final _floatingActionButton = FloatingActionButton(
       heroTag: null,
-      onPressed: controller.spawn,
+      onPressed: () => Get.toNamed(Routes.spawnSentinel),
       child: const Icon(LineIcons.plus),
     );
 

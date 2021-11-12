@@ -108,14 +108,14 @@ class TokenListViewController extends BaseListController {
         ),
         SelectorItem(
           title: 'Copy',
-          leading: const Icon(Icons.content_copy),
+          leading: const Icon(LineIcons.copy),
           onSelected: () => Utils.copyToClipboard(
             object.owner.toString(),
           ),
         ),
         SelectorItem(
           title: 'Details',
-          leading: const Icon(Icons.details),
+          leading: const Icon(LineIcons.laptopCode),
           onSelected: () {
             Get.to(() => JSONViewerScreen(data: object.toJson()));
           },

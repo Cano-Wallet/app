@@ -8,6 +8,7 @@ import 'package:app/features/general/selector.sheet.dart';
 import 'package:app/features/json_viewer/json_viewer.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 class TransactionsListViewController extends BaseListController {
@@ -52,7 +53,11 @@ class TransactionsListViewController extends BaseListController {
     final object = data[index] as AccountBlock;
 
     AccountBlock block = object;
-    Widget? icon;
+
+    Widget icon = const Icon(
+      Icons.arrow_downward,
+      color: Colors.green,
+    );
 
     // SENT
     if (object.blockType == BlockTypeEnum.userSend.index) {
@@ -64,11 +69,6 @@ class TransactionsListViewController extends BaseListController {
     // RECEIVED
     else if (object.blockType == BlockTypeEnum.userReceive.index) {
       block = object.pairedAccountBlock!;
-
-      icon = const Icon(
-        Icons.arrow_downward,
-        color: Colors.green,
-      );
     }
 
     final sender = block.address;
@@ -76,7 +76,7 @@ class TransactionsListViewController extends BaseListController {
 
     final tokens = Utils.formatCurrency(AmountUtils.addDecimals(
       block.amount,
-      block.token!.decimals,
+      block.token?.decimals ?? 0,
     ));
 
     final date = DateTime.fromMillisecondsSinceEpoch(
@@ -87,7 +87,7 @@ class TransactionsListViewController extends BaseListController {
         onTap: () => onTap(object),
         leading: icon,
         trailing: Text(Utils.timeAgo(date)),
-        title: Text('$tokens ${block.token?.symbol}'),
+        title: Text('$tokens ${block.token?.symbol ?? ''}'),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -115,14 +115,14 @@ class TransactionsListViewController extends BaseListController {
       items: [
         SelectorItem(
           title: 'Copy',
-          leading: const Icon(Icons.content_copy),
+          leading: const Icon(LineIcons.copy),
           onSelected: () {
             // show what to copy
           },
         ),
         SelectorItem(
           title: 'Details',
-          leading: const Icon(Icons.details),
+          leading: const Icon(LineIcons.laptopCode),
           onSelected: () {
             Get.to(() => JSONViewerScreen(data: object.toJson()));
           },

@@ -42,8 +42,4 @@ class SentinelsTabController extends GetxController with ConsoleMixin {
 
     console.info('done');
   }
-
-  void spawn() {
-    //
-  }
 }

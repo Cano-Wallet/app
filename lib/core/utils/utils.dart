@@ -1,10 +1,13 @@
 import 'dart:io';
 
 import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/ui_utils.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class Utils {
@@ -59,8 +62,13 @@ class Utils {
 
   static void copyToClipboard(text) async {
     await Clipboard.setData(ClipboardData(text: text));
-
-    // TODO: show snackbar
+    // TODO: localize
+    UIUtils.showSnackBar(
+      title: 'Copied',
+      message: 'Successfully copied to clipboard',
+      icon: const Icon(LineIcons.copy),
+      seconds: 4,
+    );
   }
 
   static String timeAgo(DateTime dateTime, {bool short = true}) {

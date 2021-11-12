@@ -15,6 +15,10 @@ abstract class Routes {
   static const tokens = '/tokens';
   static const incentivized = '/incentivized';
   static const accelerator = '/accelerator';
+  static const send = '/send';
+  static const stake = '/stake';
+  static const spawnPillar = '/spawn_pillar';
+  static const spawnSentinel = '/spawn_sentinel';
 
   static const welcome = '/welcome';
   static const notifications = '/notifications';

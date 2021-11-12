@@ -74,46 +74,6 @@ class SettingsScreen extends GetView<SettingsScreenController> {
             // Get.updateLocale(locale);
           },
         ),
-        const Divider(),
-        ListTile(
-          leading: const Icon(LineIcons.info),
-          trailing: const Icon(LineIcons.angleRight),
-          title: const Text('About'),
-          onTap: controller.onAboutTapped,
-          onLongPress: () {
-            //
-          },
-        ),
-        const Divider(),
-        ListTile(
-          leading: const Icon(LineIcons.download),
-          trailing: const Icon(LineIcons.angleRight),
-          title: const Text('Update'),
-          onTap: controller.onAboutTapped,
-          onLongPress: () {
-            //
-          },
-        ),
-        const Divider(),
-        ListTile(
-          leading: const Icon(LineIcons.donate),
-          trailing: const Icon(LineIcons.angleRight),
-          title: const Text('Donation'),
-          onTap: controller.onAboutTapped,
-          onLongPress: () {
-            //
-          },
-        ),
-        const Divider(),
-        ListTile(
-          leading: const Icon(LineIcons.peopleCarry),
-          trailing: const Icon(LineIcons.angleRight),
-          title: const Text('Community'),
-          onTap: controller.onAboutTapped,
-          onLongPress: () {
-            //
-          },
-        ),
       ],
     );
 

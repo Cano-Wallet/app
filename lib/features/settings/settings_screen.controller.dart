@@ -62,6 +62,4 @@ class SettingsScreenController extends GetxController with ConsoleMixin {
   void onSwitchAppLock(bool enabled) {
     //
   }
-
-  void onAboutTapped() => Get.toNamed(Routes.about);
 }

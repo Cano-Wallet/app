@@ -9,6 +9,7 @@ import 'package:app/features/general/selector.sheet.dart';
 import 'package:app/features/json_viewer/json_viewer.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 class PlasmaListViewController extends BaseListController {
@@ -87,21 +88,21 @@ class PlasmaListViewController extends BaseListController {
       items: [
         SelectorItem(
           title: 'Cancel',
-          leading: const Icon(Icons.cancel),
+          leading: const Icon(LineIcons.times),
           onSelected: () {
             //
           },
         ),
         SelectorItem(
           title: 'Copy',
-          leading: const Icon(Icons.content_copy),
+          leading: const Icon(LineIcons.copy),
           onSelected: () => Utils.copyToClipboard(
             object.beneficiary.toString(),
           ),
         ),
         SelectorItem(
           title: 'Details',
-          leading: const Icon(Icons.details),
+          leading: const Icon(LineIcons.laptopCode),
           onSelected: () {
             Get.to(() => JSONViewerScreen(data: object.toJson()));
           },
