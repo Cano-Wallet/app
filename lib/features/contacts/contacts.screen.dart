@@ -25,11 +25,13 @@ class ContactsScreen extends GetView<ContactsScreenController>
     }
 
     final _content = controller.obx(
-      (_) => ListView.separated(
-        shrinkWrap: true,
-        itemCount: controller.data.length,
-        itemBuilder: itemBuilder,
-        separatorBuilder: (context, index) => const Divider(),
+      (_) => Obx(
+        () => ListView.separated(
+          shrinkWrap: true,
+          itemCount: controller.data.length,
+          itemBuilder: itemBuilder,
+          separatorBuilder: (context, index) => const Divider(),
+        ),
       ),
       onEmpty: const CenteredPlaceholder(
         iconData: Icons.list_alt_outlined,

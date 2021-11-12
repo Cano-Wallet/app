@@ -19,30 +19,11 @@ class ZenonManager {
   static KeyPair? get keyPair => keyStore?.getKeyPair(0);
   static Future<Address?> get address async => await keyPair?.address;
 
-  static void init() async {
-    await initPaths();
-
-    // zenon.wsClient
-    //     .addOnConnectionEstablishedCallback((allResponseBroadcaster) async {
-    //   await allResponseBroadcaster.forEach((e) {
-    //     console.warning('broadcaster: $e');
-    //   });
-    // });
-
-    initClient();
-  }
-
-  static void initClient() async {
-    MainScreenController.to.changeStatus(RxStatus.loading());
-
+  static Future<bool> initClient() async {
     // TODO: select the peer address from persistence
-    final initialized = await zenon.wsClient.initialize(
+    return await zenon.wsClient.initialize(
       'ws://$kTestPeerHost:$kTestPeerPort',
       retry: false,
-    );
-
-    MainScreenController.to.changeStatus(
-      initialized ? RxStatus.success() : RxStatus.error('Failed to initialize'),
     );
   }
 

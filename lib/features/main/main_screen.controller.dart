@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:app/core/managers/zenon.manager.dart';
 import 'package:app/core/utils/console.dart';
 import 'package:app/features/general/connectivity/connectivity_bar.controller.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,18 @@ class MainScreenController extends GetxController
 
   // INIT
   @override
-  void onInit() {
+  void onInit() async {
+    change(null, status: RxStatus.loading());
+
+    final initialized = await ZenonManager.initClient();
+
+    change(
+      null,
+      status: initialized
+          ? RxStatus.success()
+          : RxStatus.error('Failed to initialize'),
+    );
+
     _initAppLifeCycleEvents();
     super.onInit();
   }
@@ -56,9 +68,5 @@ class MainScreenController extends GetxController
     //   // else
     //   //   ad.initIds(screen: 'stories');
     // }
-  }
-
-  void changeStatus(RxStatus status) {
-    change(null, status: status);
   }
 }

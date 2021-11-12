@@ -9,12 +9,12 @@ import 'core/managers/hive.manager.dart';
 import 'core/managers/zenon.manager.dart';
 import 'features/app/app.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // init Zenon Paths
+  await ZenonManager.initPaths();
   // init Hive
   HiveManager.init();
-  // init Zenon SDK
-  ZenonManager.init();
   // setup window size for desktop
   _setupWindowSize();
 
