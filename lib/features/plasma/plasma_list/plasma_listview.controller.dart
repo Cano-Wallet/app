@@ -64,7 +64,7 @@ class PlasmaListViewController extends BaseListController {
         subtitle: Text(object.beneficiary.toString()),
         trailing: OutlinedButton(
           style: Styles.outlinedButtonStyle20Red,
-          child: const Text('Cancel', style: TextStyle(fontSize: 12)),
+          child: const Text('Cancel'),
           onPressed: () {},
         ),
       ),

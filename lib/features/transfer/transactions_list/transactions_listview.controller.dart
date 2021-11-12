@@ -67,7 +67,7 @@ class TransactionsListViewController extends BaseListController {
 
       icon = const Icon(
         Icons.arrow_downward,
-        color: Colors.greenAccent,
+        color: Colors.green,
       );
     }
 
@@ -85,16 +85,16 @@ class TransactionsListViewController extends BaseListController {
     final item = ListItemAnimation(
       child: ListTile(
         onTap: () => onTap(object),
+        leading: icon,
+        trailing: Text(Utils.timeAgo(date)),
         title: Text('$tokens ${block.token?.symbol}'),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('↗ ${sender.toShortString()}'),
-            Text('↙ ${recipient.toShortString()}'),
-            Text(Utils.timeAgo(date, short: false)),
+            Text('→  ${sender.toShortString()}'),
+            Text('←  ${recipient.toShortString()}'),
           ],
         ),
-        trailing: icon,
       ),
     );
 

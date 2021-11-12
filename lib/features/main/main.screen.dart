@@ -12,6 +12,7 @@ import 'package:app/features/tokens/tokens.tab.dart';
 import 'package:app/features/transfer/transfer.tab.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import 'main_screen.controller.dart';
 
@@ -23,42 +24,42 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
     const _tabs = [
       ZTab(
         title: 'Dashboard',
-        tab: Tab(icon: Icon(Icons.dashboard)),
+        tab: Tab(icon: Icon(LineIcons.alternateTachometer)),
         child: DashboardTab(),
       ),
       ZTab(
         title: 'Transfer',
-        tab: Tab(icon: Icon(Icons.send)),
+        tab: Tab(icon: Icon(LineIcons.paperPlane)),
         child: TransferTab(),
       ),
       ZTab(
         title: 'Pillars',
-        tab: Tab(icon: Icon(Icons.apartment)),
+        tab: Tab(icon: Icon(LineIcons.hotel)),
         child: PillarsTab(),
       ),
       ZTab(
         title: 'Sentinels',
-        tab: Tab(icon: Icon(Icons.circle)),
+        tab: Tab(icon: Icon(LineIcons.vihara)),
         child: SentinelsTab(),
       ),
       ZTab(
         title: 'Staking',
-        tab: Tab(icon: Icon(Icons.clean_hands)),
+        tab: Tab(icon: Icon(LineIcons.donate)),
         child: StakingTab(),
       ),
       ZTab(
         title: 'Plasma',
-        tab: Tab(icon: Icon(Icons.ac_unit)),
+        tab: Tab(icon: Icon(LineIcons.chargingStation)),
         child: PlasmaTab(),
       ),
       ZTab(
         title: 'Tokens',
-        tab: Tab(icon: Icon(Icons.adjust)),
+        tab: Tab(icon: Icon(LineIcons.coins)),
         child: TokensTab(),
       ),
       ZTab(
         title: 'Incentivized',
-        tab: Tab(icon: Icon(Icons.attach_money)),
+        tab: Tab(icon: Icon(LineIcons.award)),
         child: IncentivizedTab(),
       ),
     ];
@@ -82,19 +83,21 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
             bottomNavigationBar: const ConnectivityBar(),
             appBar: AppBar(
               centerTitle: false,
-              title: Text(_tabs[controller.currentTabIndex()].title),
-              bottom: _tabBar,
-              leading: IconButton(
-                icon: const Icon(Icons.play_arrow),
-                onPressed: () => Get.toNamed(Routes.playground),
+              title: Text(
+                _tabs[controller.currentTabIndex()].title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
               ),
+              bottom: _tabBar,
               actions: [
                 IconButton(
-                  icon: const Icon(Icons.notifications),
+                  icon: const Icon(LineIcons.bell),
                   onPressed: () => Get.toNamed(Routes.notifications),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.settings),
+                  icon: const Icon(LineIcons.cog),
                   onPressed: () => Get.toNamed(Routes.settings),
                 ),
               ],
@@ -108,16 +111,10 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
       }),
     );
 
-    final _splash = Scaffold(
+    const _splash = Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const <Widget>[
-            Text('Initializing...'),
-          ],
-        ),
+        child: CircularProgressIndicator(),
       ),
     );
 

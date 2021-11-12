@@ -2,6 +2,7 @@ import 'package:app/features/general/z_card.widget.dart';
 import 'package:app/features/plasma/plasma_tab.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import 'plasma_list/plasma.listview.dart';
 
@@ -30,11 +31,10 @@ class _PlasmaTabState extends State<PlasmaTab>
       child: PlasmaListView(headers: headers),
     );
 
-    final _floatingActionButton = FloatingActionButton.extended(
+    final _floatingActionButton = FloatingActionButton(
       heroTag: null,
       onPressed: controller.fuse,
-      icon: const Icon(Icons.add),
-      label: const Text('Fuse'),
+      child: const Icon(LineIcons.chargingStation),
     );
 
     return Scaffold(

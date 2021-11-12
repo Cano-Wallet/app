@@ -47,7 +47,7 @@ class PlaygroundScreen extends GetView<PlaygroundScreenController>
           appBar: AppBar(
             bottom: _tabBar,
             title: const Text(
-              "Zenon Playground",
+              "SDK Playground",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),

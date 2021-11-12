@@ -32,9 +32,12 @@ class App extends StatelessWidget {
       defaultTransition: Transition.native,
       transitionDuration: 200.milliseconds,
       // THEMING
-      theme: FlexColorScheme.light(scheme: FlexScheme.jungle).toTheme, // light
-      darkTheme:
-          FlexColorScheme.dark(scheme: FlexScheme.jungle).toTheme, // dark
+      theme: FlexColorScheme.light(
+        scheme: FlexScheme.jungle,
+      ).toTheme, // light
+      darkTheme: FlexColorScheme.dark(
+        scheme: FlexScheme.jungle,
+      ).toTheme, // dark
       themeMode: ThemeMode.system,
       // FONT SCALE
       builder: (context, child) {

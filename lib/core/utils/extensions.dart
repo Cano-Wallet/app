@@ -12,3 +12,12 @@ extension StakeEntryExtension on StakeEntry {
     return data;
   }
 }
+
+extension PeerExtension on Peer {
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['publicKey'] = publicKey;
+    data['ip'] = ip;
+    return data;
+  }
+}

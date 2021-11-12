@@ -1,5 +1,6 @@
 import 'package:app/features/general/z_card.widget.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 
 import 'transactions_list/transactions.listview.dart';
 
@@ -28,13 +29,12 @@ class _TransferTabState extends State<TransferTab>
       ),
     );
 
-    final _floatingActionButton = FloatingActionButton.extended(
+    final _floatingActionButton = FloatingActionButton(
       heroTag: null,
+      child: const Icon(LineIcons.paperPlane),
       onPressed: () {
         //
       },
-      icon: const Icon(Icons.send),
-      label: const Text('Send'),
     );
 
     return Scaffold(

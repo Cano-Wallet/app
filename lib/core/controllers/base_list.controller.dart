@@ -78,6 +78,9 @@ class BaseListController extends GetxController with ConsoleMixin, StateMixin {
     maxPageIndex = object.count ~/ pageSize;
     // we've finished loaded the initial data
     initialLoad = false;
+
+    console.warning(
+        'max: $maxPageIndex, index: $pageIndex, count: ${object.count}');
   }
 
   void onException(bool loadMore, Object e) {

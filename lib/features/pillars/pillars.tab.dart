@@ -3,6 +3,7 @@ import 'package:app/features/general/z_card.widget.dart';
 import 'package:app/features/pillars/pillars_tab.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import 'pillar_list/pillar.listview.dart';
 
@@ -49,11 +50,10 @@ class _PillarsTabState extends State<PillarsTab>
       child: PillarListView(headers: headers),
     );
 
-    final _floatingActionButton = FloatingActionButton.extended(
+    final _floatingActionButton = FloatingActionButton(
       heroTag: null,
       onPressed: controller.spawn,
-      icon: const Icon(Icons.add),
-      label: const Text('Spawn'),
+      child: const Icon(LineIcons.plus),
     );
 
     return Scaffold(

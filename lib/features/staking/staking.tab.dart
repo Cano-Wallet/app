@@ -3,6 +3,7 @@ import 'package:app/features/general/z_card.widget.dart';
 import 'package:app/features/staking/staking_tab.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import 'staking_list/staking.listview.dart';
 
@@ -49,11 +50,10 @@ class _StakingTabState extends State<StakingTab>
       child: StakingListView(headers: headers),
     );
 
-    final _floatingActionButton = FloatingActionButton.extended(
+    final _floatingActionButton = FloatingActionButton(
       heroTag: null,
       onPressed: controller.stake,
-      icon: const Icon(Icons.add),
-      label: const Text('Stake'),
+      child: const Icon(LineIcons.paperHand),
     );
 
     return Scaffold(

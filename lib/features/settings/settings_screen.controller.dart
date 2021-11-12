@@ -1,6 +1,7 @@
 import 'package:app/core/controllers/persistence.controller.dart';
 import 'package:app/core/utils/console.dart';
 import 'package:app/features/app/routes.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
@@ -52,6 +53,8 @@ class SettingsScreenController extends GetxController with ConsoleMixin {
 
     // global.darkMode.value = isDark;
     // global.updateTheme();
+
+    Get.changeThemeMode(isDark ? ThemeMode.dark : ThemeMode.light);
 
     Get.back();
   }

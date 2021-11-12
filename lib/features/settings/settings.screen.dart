@@ -1,9 +1,11 @@
 import 'package:app/core/controllers/global.controller.dart';
 import 'package:app/core/controllers/persistence.controller.dart';
 import 'package:app/core/translations/constants.dart';
+import 'package:app/features/app/routes.dart';
 import 'package:app/features/settings/settings_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 class SettingsScreen extends GetView<SettingsScreenController> {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -15,16 +17,23 @@ class SettingsScreen extends GetView<SettingsScreenController> {
       children: [
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.list),
-          trailing: const Icon(Icons.navigate_next),
+          leading: const Icon(LineIcons.play),
+          trailing: const Icon(LineIcons.angleRight),
+          title: const Text('Playground'),
+          onTap: () => Get.toNamed(Routes.playground),
+        ),
+        const Divider(),
+        ListTile(
+          leading: const Icon(LineIcons.addressBook),
+          trailing: const Icon(LineIcons.angleRight),
           title: const Text('Addresses'),
           subtitle: Obx(() => Text(controller.address.value)),
           onTap: controller.addressList,
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.list),
-          trailing: const Icon(Icons.navigate_next),
+          leading: const Icon(LineIcons.list),
+          trailing: const Icon(LineIcons.angleRight),
           title: const Text('Peers'),
           onTap: controller.peerList,
         ),
@@ -32,7 +41,7 @@ class SettingsScreen extends GetView<SettingsScreenController> {
         ObxValue(
           (RxBool data) => SwitchListTile(
             title: const Text('Dark Mode'),
-            secondary: const Icon(Icons.ac_unit),
+            secondary: const Icon(LineIcons.adjust),
             value: data.value,
             onChanged: controller.onSwitchTheme,
           ),
@@ -40,8 +49,8 @@ class SettingsScreen extends GetView<SettingsScreenController> {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.font_download_outlined),
-          trailing: const Icon(Icons.navigate_next),
+          leading: const Icon(LineIcons.font),
+          trailing: const Icon(LineIcons.angleRight),
           title: const Text('Font Settings'),
           subtitle: const Text('Font Face & Scale Settings'),
           onTap: () {
@@ -54,15 +63,15 @@ class SettingsScreen extends GetView<SettingsScreenController> {
           builder: (final PersistenceController _) => SwitchListTile(
             title: const Text('App Security Lock'),
             subtitle: const Text('Set a PIN / Biometrics Lock'),
-            secondary: const Icon(Icons.lock),
+            secondary: const Icon(LineIcons.lock),
             value: _.appLock.val,
             onChanged: controller.onSwitchAppLock,
           ),
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.translate),
-          trailing: const Icon(Icons.navigate_next),
+          leading: const Icon(LineIcons.language),
+          trailing: const Icon(LineIcons.angleRight),
           title: Text(
               '${Tr.language.trans()}: ${Tr.languageString.trans()} - ${Tr.localeString.trans()}'),
           onTap: () async {
@@ -75,8 +84,8 @@ class SettingsScreen extends GetView<SettingsScreenController> {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.info),
-          trailing: const Icon(Icons.navigate_next),
+          leading: const Icon(LineIcons.info),
+          trailing: const Icon(LineIcons.angleRight),
           title: const Text('About'),
           onTap: controller.onAboutTapped,
           onLongPress: () {
@@ -85,8 +94,8 @@ class SettingsScreen extends GetView<SettingsScreenController> {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.info),
-          trailing: const Icon(Icons.navigate_next),
+          leading: const Icon(LineIcons.download),
+          trailing: const Icon(LineIcons.angleRight),
           title: const Text('Update'),
           onTap: controller.onAboutTapped,
           onLongPress: () {
@@ -95,8 +104,8 @@ class SettingsScreen extends GetView<SettingsScreenController> {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.info),
-          trailing: const Icon(Icons.navigate_next),
+          leading: const Icon(LineIcons.donate),
+          trailing: const Icon(LineIcons.angleRight),
           title: const Text('Donation'),
           onTap: controller.onAboutTapped,
           onLongPress: () {
@@ -105,8 +114,8 @@ class SettingsScreen extends GetView<SettingsScreenController> {
         ),
         const Divider(),
         ListTile(
-          leading: const Icon(Icons.info),
-          trailing: const Icon(Icons.navigate_next),
+          leading: const Icon(LineIcons.peopleCarry),
+          trailing: const Icon(LineIcons.angleRight),
           title: const Text('Community'),
           onTap: controller.onAboutTapped,
           onLongPress: () {
