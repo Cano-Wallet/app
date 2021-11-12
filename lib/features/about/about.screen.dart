@@ -1,6 +1,9 @@
+import 'package:app/core/utils/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icon.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 import 'about_screen.controller.dart';
@@ -18,6 +21,7 @@ class AboutScreen extends GetView<AboutScreenController> {
           title: Text('ZNN Dart SDK version'),
           subtitle: Text(znnSdkVersion),
         ),
+        const Divider(),
         ExpansionTile(
           leading: const Icon(LineIcons.wiredNetwork),
           title: const Text(
@@ -63,6 +67,7 @@ class AboutScreen extends GetView<AboutScreenController> {
             ),
           ],
         ),
+        const Divider(),
         ExpansionTile(
           leading: Icon(
             GetPlatform.isDesktop ? LineIcons.laptop : LineIcons.mobilePhone,
@@ -97,15 +102,6 @@ class AboutScreen extends GetView<AboutScreenController> {
           ],
         ),
         const Divider(),
-        ListTile(
-          leading: const Icon(LineIcons.download),
-          title: const Text('Check for updates'),
-          subtitle: Obx(() => Text(controller.appVersion)),
-          onTap: () {
-            // TODO: check for updates
-          },
-        ),
-        const Divider(),
         ExpansionTile(
           leading: const Icon(LineIcons.donate),
           title: const Text(
@@ -117,13 +113,15 @@ class AboutScreen extends GetView<AboutScreenController> {
               leading: const Icon(LineIcons.peopleCarry),
               trailing: const Icon(LineIcons.copy),
               title: const Text('Community Fund Address'),
+              subtitle: Text(communityFundAddress.toString()),
               onTap: controller.copyCommunityFundAddress,
             ),
             const Divider(),
             ListTile(
-              leading: const Icon(LineIcons.code),
+              leading: const Icon(LineIcons.laptopCode),
               trailing: const Icon(LineIcons.copy),
               title: const Text('Developer Fund Address'),
+              subtitle: Text(developerFundAddress.toString()),
               onTap: controller.copyDeveloperFundAddress,
             ),
           ],
@@ -144,6 +142,35 @@ class AboutScreen extends GetView<AboutScreenController> {
             )
           ],
         ),
+        const Divider(),
+        ListTile(
+          leading: const Icon(LineIcons.download),
+          title: const Text('Check for updates'),
+          subtitle: Obx(() => Text(controller.appVersion)),
+          onTap: () {
+            // TODO: check for updates
+          },
+        ),
+        const Divider(),
+        const SizedBox(height: 30),
+        const Text(
+          'Developed by: $kDeveloperName',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.grey),
+        ),
+        const SizedBox(height: 10),
+        TextButton.icon(
+          icon: const Icon(LineIcons.twitter),
+          label: const Text('Follow $kDeveloperTwitterHandle'),
+          onPressed: () => launch(kDeveloperTwitterUrl),
+        ),
+        const SizedBox(height: 10),
+        TextButton.icon(
+          icon: const Icon(LineIcons.github),
+          label: const Text('Open Source'),
+          onPressed: () => launch(kOpenSourceUrl),
+        ),
+        const SizedBox(height: 50),
       ],
     );
 

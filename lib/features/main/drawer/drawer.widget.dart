@@ -1,5 +1,6 @@
 import 'package:app/core/utils/globals.dart';
 import 'package:app/features/app/routes.dart';
+import 'package:app/features/general/dicebear_avatar.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -9,12 +10,35 @@ class ZDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _header = DrawerHeader(
+      child: Center(
+        child: InkWell(
+          onTap: () => Get.toNamed(Routes.addresses),
+          child: Column(
+            children: [
+              DiceBearAvatar(
+                seed: testAddress.toString(),
+                size: 70,
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(testAddress.toShortString()),
+                  const SizedBox(width: 5),
+                  const Icon(LineIcons.caretDown, size: 15),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
     return Drawer(
       child: ListView(
         children: [
-          DrawerHeader(
-            child: Text(testAddress.toString()),
-          ),
+          _header,
           ListTile(
             title: const Text('Plasma'),
             leading: const Icon(LineIcons.chargingStation),

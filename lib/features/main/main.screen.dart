@@ -1,6 +1,6 @@
 import 'package:app/core/utils/console.dart';
 import 'package:app/core/utils/styles.dart';
-import 'package:app/core/zenon.manager.dart';
+import 'package:app/core/managers/zenon.manager.dart';
 import 'package:app/features/app/routes.dart';
 import 'package:app/features/dashboard/dashboard.tab.dart';
 import 'package:app/features/general/busy_indicator.widget.dart';

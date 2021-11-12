@@ -1,6 +1,6 @@
 import 'package:app/core/utils/console.dart';
 import 'package:app/core/utils/utils.dart';
-import 'package:app/core/zenon.manager.dart';
+import 'package:app/core/managers/zenon.manager.dart';
 import 'package:app/features/app/routes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -39,6 +39,9 @@ class ResetWalletScreenController extends GetxController with ConsoleMixin {
 
     // set default KeyStore
     ZenonManager.setKeyStore(null);
+
+    // TODO: reset GetStorage
+    // TODO: reset Hive
 
     Get.offNamedUntil(Routes.main, (route) => false);
   }

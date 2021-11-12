@@ -38,12 +38,17 @@ dependencies:
   intl: 0.17.0 # number formatting
   flutter_json_viewer: ^1.0.1 #json viewer
   timeago: 3.1.0
+  hive: 2.0.4
+  hive_flutter: 1.1.0
+  flutter_svg: 0.23.0+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^1.0.0
+  hive_generator: 1.1.1
+  build_runner: ^2.1.5
 
 flutter:
   uses-material-design: true

@@ -1,5 +1,6 @@
 import 'package:app/core/utils/console.dart';
 import 'package:get/get.dart';
+import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 class AcceleratorScreenBinding extends Bindings {
   @override
@@ -21,4 +22,13 @@ class AcceleratorScreenController extends GetxController
   // INIT
 
   // FUNCTIONS
+
+  void fetch() async {
+    final zenon = Zenon();
+    zenon.embedded.accelerator.getAll();
+  }
+
+  void create() {
+    //
+  }
 }

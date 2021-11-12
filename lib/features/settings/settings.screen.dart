@@ -1,6 +1,8 @@
 import 'package:app/core/controllers/global.controller.dart';
 import 'package:app/core/controllers/persistence.controller.dart';
+import 'package:app/core/managers/hive.manager.dart';
 import 'package:app/core/translations/constants.dart';
+import 'package:app/features/app/routes.dart';
 import 'package:app/features/settings/settings_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,14 +22,22 @@ class SettingsScreen extends GetView<SettingsScreenController> {
           trailing: const Icon(LineIcons.angleRight),
           title: const Text('Addresses'),
           subtitle: Obx(() => Text(controller.address.value)),
-          onTap: controller.addressList,
+          onTap: () => Get.toNamed(Routes.addresses),
+        ),
+        const Divider(),
+        ListTile(
+          leading: const Icon(LineIcons.addressBook),
+          trailing: const Icon(LineIcons.angleRight),
+          title: const Text('Contacts'),
+          subtitle: Text(HiveManager.contacts!.length.toString()),
+          onTap: () => Get.toNamed(Routes.contacts),
         ),
         const Divider(),
         ListTile(
           leading: const Icon(LineIcons.list),
           trailing: const Icon(LineIcons.angleRight),
           title: const Text('Peers'),
-          onTap: controller.peerList,
+          onTap: () => Get.toNamed(Routes.peers),
         ),
         const Divider(),
         ObxValue(

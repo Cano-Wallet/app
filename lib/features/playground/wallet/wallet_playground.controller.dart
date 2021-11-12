@@ -4,7 +4,7 @@ import 'package:bip39/bip39.dart' as bip39;
 import 'package:app/core/utils/console.dart';
 import 'package:app/core/utils/globals.dart';
 import 'package:app/core/utils/utils.dart';
-import 'package:app/core/zenon.manager.dart';
+import 'package:app/core/managers/zenon.manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hex/hex.dart';
@@ -60,10 +60,10 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
   // INIT
 
   @override
-  void onInit() async {
+  void onReady() async {
     // subscribeToBroadcasts();
     process(); // process the initial parameters on app start
-    super.onInit();
+    super.onReady();
   }
 
   // FUNCTIONS

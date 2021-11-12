@@ -2,12 +2,18 @@ import 'package:app/features/about/about.screen.dart';
 import 'package:app/features/about/about_screen.controller.dart';
 import 'package:app/features/accelerator/accelerator.screen.dart';
 import 'package:app/features/accelerator/accelerator_screen.controller.dart';
+import 'package:app/features/addresses/addresses.screen.dart';
+import 'package:app/features/addresses/addresses_screen.controller.dart';
+import 'package:app/features/contacts/contacts.screen.dart';
+import 'package:app/features/contacts/contacts_screen.controller.dart';
 import 'package:app/features/incentivized/incentivized.screen.dart';
 import 'package:app/features/incentivized/incentivized_screen.controller.dart';
 import 'package:app/features/main/main.screen.dart';
 import 'package:app/features/main/main_screen.binding.dart';
 import 'package:app/features/notifications/notifications.screen.dart';
 import 'package:app/features/notifications/notifications_screen.controller.dart';
+import 'package:app/features/peers/peers.screen.dart';
+import 'package:app/features/peers/peers_screen.controller.dart';
 import 'package:app/features/pillars/spawn/spawn.screen.dart';
 import 'package:app/features/pillars/spawn/spawn_screen.controller.dart';
 import 'package:app/features/plasma/plasma.screen.dart';
@@ -16,8 +22,6 @@ import 'package:app/features/playground/playground.screen.dart';
 import 'package:app/features/playground/playground_screen.controller.dart';
 import 'package:app/features/sentinels/spawn/spawn.screen.dart';
 import 'package:app/features/sentinels/spawn/spawn_screen.controller.dart';
-import 'package:app/features/settings/peer_list/peer_list.screen.dart';
-import 'package:app/features/settings/peer_list/peer_list_screen.controller.dart';
 import 'package:app/features/settings/settings.screen.dart';
 import 'package:app/features/settings/settings_screen.controller.dart';
 import 'package:app/features/staking/stake/stake.screen.dart';
@@ -53,9 +57,19 @@ class AppPages {
 
     // LISTS
     GetPage(
-      name: Routes.peerList,
-      page: () => const PeerListScreen(),
-      binding: PeerListScreenBinding(),
+      name: Routes.peers,
+      page: () => const PeersScreen(),
+      binding: PeersScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.addresses,
+      page: () => const AddressesScreen(),
+      binding: AddressesScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.contacts,
+      page: () => const ContactsScreen(),
+      binding: ContactsScreenBinding(),
     ),
 
     // WALLET SCREENS

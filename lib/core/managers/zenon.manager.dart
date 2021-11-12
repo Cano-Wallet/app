@@ -8,7 +8,7 @@ import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
-import 'utils/globals.dart';
+import '../utils/globals.dart';
 
 final zenon = Zenon();
 
@@ -35,8 +35,9 @@ class ZenonManager {
   static void initClient() async {
     MainScreenController.to.changeStatus(RxStatus.loading());
 
+    // TODO: select the peer address from persistence
     final initialized = await zenon.wsClient.initialize(
-      'ws://$kTestPeerHost:$kTestPeerPort', // TODO: select the peer address from persistence
+      'ws://$kTestPeerHost:$kTestPeerPort',
       retry: false,
     );
 

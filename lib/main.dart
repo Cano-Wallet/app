@@ -5,11 +5,14 @@ import 'package:get/get.dart';
 
 import 'core/controllers/global.controller.dart';
 import 'core/controllers/persistence.controller.dart';
-import 'core/zenon.manager.dart';
+import 'core/managers/hive.manager.dart';
+import 'core/managers/zenon.manager.dart';
 import 'features/app/app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  // init Hive
+  HiveManager.init();
   // init Zenon SDK
   ZenonManager.init();
   // setup window size for desktop

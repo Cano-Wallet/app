@@ -1,9 +1,6 @@
 abstract class Routes {
   static const main = '/';
 
-  // LISTS
-  static const peerList = '/peer_list';
-
   // WALLET SCREENS
   static const createWallet = '/create_wallet';
   static const importWallet = '/import_wallet';
@@ -20,6 +17,9 @@ abstract class Routes {
   static const spawnPillar = '/spawn_pillar';
   static const spawnSentinel = '/spawn_sentinel';
 
+  static const peers = '/peers';
+  static const addresses = '/addresses';
+  static const contacts = '/contacts';
   static const welcome = '/welcome';
   static const notifications = '/notifications';
   static const settings = '/settings';
