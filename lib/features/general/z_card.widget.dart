@@ -18,7 +18,7 @@ class ZCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(15),
         child: title == null
             ? child
             : Column(

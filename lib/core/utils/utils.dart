@@ -2,7 +2,10 @@ import 'dart:io';
 
 import 'package:app/core/utils/console.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class Utils {
   static final console = Console(name: 'Utils');
@@ -44,8 +47,25 @@ class Utils {
     return NumberFormat.compact().format(number);
   }
 
+  static String formatNumber(num number) {
+    // TODO: set locale
+    return NumberFormat.currency(symbol: '', decimalDigits: 0).format(number);
+  }
+
   static String formatCurrency(num number) {
     // TODO: set locale
     return NumberFormat.currency(symbol: '', decimalDigits: 2).format(number);
+  }
+
+  static void copyToClipboard(text) async {
+    await Clipboard.setData(ClipboardData(text: text));
+
+    // TODO: show snackbar
+  }
+
+  static String timeAgo(DateTime dateTime, {bool short = true}) {
+    final _locale =
+        (Get.locale?.languageCode ?? 'en_US') + (short ? "_short" : "");
+    return timeago.format(dateTime, locale: _locale).replaceFirst("~", "");
   }
 }

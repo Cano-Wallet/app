@@ -124,8 +124,8 @@ class BaseListController extends GetxController with ConsoleMixin, StateMixin {
         (_) => listView(),
         onLoading: const BusyIndicator(),
         onEmpty: CenteredPlaceholder(
-          iconData: Icons.access_alarm,
-          message: 'No results',
+          iconData: Icons.list_alt_outlined,
+          message: 'empty',
           child: OutlinedButton(
             child: const Text('Refresh'),
             onPressed: reload,

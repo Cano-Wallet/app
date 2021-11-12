@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:app/core/animations/animations.dart';
 import 'package:app/core/controllers/base_list.controller.dart';
+import 'package:app/core/utils/utils.dart';
+import 'package:app/features/general/selector.sheet.dart';
+import 'package:app/features/json_viewer/json_viewer.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
@@ -55,6 +58,7 @@ class PillarListViewController extends BaseListController {
       child: ListTile(
         title: Text(object.name),
         subtitle: Text(object.producerAddress.toString()),
+        onTap: () => onTap(object),
       ),
     );
 
@@ -68,5 +72,33 @@ class PillarListViewController extends BaseListController {
         item,
       ],
     );
+  }
+
+  void onTap(PillarInfo object) {
+    SelectorSheet(
+      items: [
+        SelectorItem(
+          title: 'Delegate',
+          leading: const Icon(Icons.connect_without_contact),
+          onSelected: () {
+            //
+          },
+        ),
+        SelectorItem(
+          title: 'Copy',
+          leading: const Icon(Icons.content_copy),
+          onSelected: () => Utils.copyToClipboard(
+            object.producerAddress.toString(),
+          ),
+        ),
+        SelectorItem(
+          title: 'Details',
+          leading: const Icon(Icons.details),
+          onSelected: () {
+            Get.to(() => JSONViewerScreen(data: object.toJson()));
+          },
+        ),
+      ],
+    ).show();
   }
 }

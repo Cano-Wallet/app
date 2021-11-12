@@ -35,6 +35,8 @@ dependencies:
   package_info_plus: ^1.3.0
   line_icons: ^2.0.1
   intl: 0.17.0 # number formatting
+  flutter_json_viewer: ^1.0.1 #json viewer
+  timeago: 3.1.0
 
 dev_dependencies:
   flutter_test:

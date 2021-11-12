@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:app/core/animations/animations.dart';
 import 'package:app/core/controllers/base_list.controller.dart';
 import 'package:app/core/utils/utils.dart';
+import 'package:app/features/general/selector.sheet.dart';
+import 'package:app/features/json_viewer/json_viewer.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -50,12 +52,13 @@ class TokenListViewController extends BaseListController {
 
     final item = ListItemAnimation(
       child: ListTile(
+        onTap: () => onTap(object),
         title: Text(object.symbol),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(object.owner.toShortString()),
-            Text(Utils.formatKNumber(object.totalSupply)),
+            Text(Utils.formatNumber(object.totalSupply)),
+            Text(object.owner.toString()),
             const SizedBox(height: 5),
             Row(
               children: [
@@ -91,5 +94,33 @@ class TokenListViewController extends BaseListController {
         item,
       ],
     );
+  }
+
+  void onTap(Token object) {
+    SelectorSheet(
+      items: [
+        SelectorItem(
+          title: 'Add to favourites',
+          leading: const Icon(Icons.star),
+          onSelected: () {
+            //
+          },
+        ),
+        SelectorItem(
+          title: 'Copy',
+          leading: const Icon(Icons.content_copy),
+          onSelected: () => Utils.copyToClipboard(
+            object.owner.toString(),
+          ),
+        ),
+        SelectorItem(
+          title: 'Details',
+          leading: const Icon(Icons.details),
+          onSelected: () {
+            Get.to(() => JSONViewerScreen(data: object.toJson()));
+          },
+        ),
+      ],
+    ).show();
   }
 }

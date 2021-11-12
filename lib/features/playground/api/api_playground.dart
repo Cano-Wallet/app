@@ -11,7 +11,7 @@ class APIPlayground extends StatelessWidget {
     final controller = Get.put(APIPlaygroundController());
 
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(15),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

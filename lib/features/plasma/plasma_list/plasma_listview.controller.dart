@@ -4,6 +4,9 @@ import 'package:app/core/animations/animations.dart';
 import 'package:app/core/controllers/base_list.controller.dart';
 import 'package:app/core/utils/globals.dart';
 import 'package:app/core/utils/styles.dart';
+import 'package:app/core/utils/utils.dart';
+import 'package:app/features/general/selector.sheet.dart';
+import 'package:app/features/json_viewer/json_viewer.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
@@ -48,11 +51,16 @@ class PlasmaListViewController extends BaseListController {
   @override
   Widget itemBuilder(context, index) {
     final object = data[index] as FusionEntry;
-    final qsr = AmountUtils.addDecimals(object.qsrAmount, qsrDecimals);
+
+    final qsr = Utils.formatCurrency(AmountUtils.addDecimals(
+      object.qsrAmount,
+      qsrDecimals,
+    ));
 
     final item = ListItemAnimation(
       child: ListTile(
-        title: Text('tQSR $qsr'),
+        onTap: () => onTap(object),
+        title: Text('$qsr tQSR'),
         subtitle: Text(object.beneficiary.toString()),
         trailing: OutlinedButton(
           style: Styles.outlinedButtonStyle20Red,
@@ -72,5 +80,33 @@ class PlasmaListViewController extends BaseListController {
         item,
       ],
     );
+  }
+
+  void onTap(FusionEntry object) {
+    SelectorSheet(
+      items: [
+        SelectorItem(
+          title: 'Cancel',
+          leading: const Icon(Icons.cancel),
+          onSelected: () {
+            //
+          },
+        ),
+        SelectorItem(
+          title: 'Copy',
+          leading: const Icon(Icons.content_copy),
+          onSelected: () => Utils.copyToClipboard(
+            object.beneficiary.toString(),
+          ),
+        ),
+        SelectorItem(
+          title: 'Details',
+          leading: const Icon(Icons.details),
+          onSelected: () {
+            Get.to(() => JSONViewerScreen(data: object.toJson()));
+          },
+        ),
+      ],
+    ).show();
   }
 }

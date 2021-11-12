@@ -14,7 +14,7 @@ class _TransferTabState extends State<TransferTab>
 
     final headers = [
       ZCard(
-        title: 'Rewards',
+        title: '...',
         child: Container(),
       ),
       // spacer
@@ -23,7 +23,9 @@ class _TransferTabState extends State<TransferTab>
 
     final _content = Padding(
       padding: const EdgeInsets.all(15),
-      child: TransactionsListView(headers: headers),
+      child: TransactionsListView(
+        headers: headers,
+      ),
     );
 
     final _floatingActionButton = FloatingActionButton.extended(

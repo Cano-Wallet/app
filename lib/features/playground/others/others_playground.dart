@@ -12,7 +12,7 @@ class OthersPlayground extends StatelessWidget {
     // final controller = Get.put(OthersPlaygroundController());
 
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(15),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -18,10 +18,7 @@ class _SentinelsTabState extends State<SentinelsTab>
     super.build(context);
 
     final headers = [
-      ZCard(
-        title: 'Rewards',
-        child: Container(),
-      ),
+      // TODO: add charts
       ZCard(
         title: 'Collect',
         child: Row(

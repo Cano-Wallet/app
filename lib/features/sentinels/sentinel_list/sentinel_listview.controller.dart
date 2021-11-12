@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:app/core/animations/animations.dart';
 import 'package:app/core/controllers/base_list.controller.dart';
+import 'package:app/core/utils/utils.dart';
+import 'package:app/features/general/selector.sheet.dart';
+import 'package:app/features/json_viewer/json_viewer.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
@@ -47,7 +50,10 @@ class SentinelListViewController extends BaseListController {
     final object = data[index] as SentinelInfo;
 
     final item = ListItemAnimation(
-      child: ListTile(title: Text(object.owner.toString())),
+      child: ListTile(
+        title: Text(object.owner.toString()),
+        onTap: () => onTap(object),
+      ),
     );
 
     if (index > 0) return item;
@@ -60,5 +66,26 @@ class SentinelListViewController extends BaseListController {
         item,
       ],
     );
+  }
+
+  void onTap(SentinelInfo object) {
+    SelectorSheet(
+      items: [
+        SelectorItem(
+          title: 'Copy',
+          leading: const Icon(Icons.content_copy),
+          onSelected: () => Utils.copyToClipboard(
+            object.owner.toString(),
+          ),
+        ),
+        SelectorItem(
+          title: 'Details',
+          leading: const Icon(Icons.details),
+          onSelected: () {
+            Get.to(() => JSONViewerScreen(data: object.toJson()));
+          },
+        ),
+      ],
+    ).show();
   }
 }

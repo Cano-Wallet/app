@@ -13,8 +13,10 @@ class TransactionsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller =
-        Get.put(TransactionsListViewController(headers: headers));
+    final controller = Get.put(TransactionsListViewController(
+      headers: headers,
+    ));
+
     return controller.content();
   }
 }

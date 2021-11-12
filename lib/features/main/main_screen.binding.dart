@@ -31,12 +31,14 @@ class MainBinding extends Bindings {
     Get.lazyPut(() => TokensTabController());
 
     // CARD CONTROLLERS
-    Get.lazyPut(() => PassphraseCardController());
     Get.lazyPut(() => BalanceCardController());
     Get.lazyPut(() => DualCoinStatsCardController());
     Get.lazyPut(() => PillarsCardController());
     Get.lazyPut(() => StakingStatsCardController());
     Get.lazyPut(() => SentinelsCardController());
     Get.lazyPut(() => DelegationStatsCardController());
+
+    // GET WIDGETS
+    Get.create(() => PassphraseCardController());
   }
 }
