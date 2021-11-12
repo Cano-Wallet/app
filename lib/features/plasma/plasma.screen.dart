@@ -1,22 +1,16 @@
 import 'package:app/features/general/z_card.widget.dart';
-import 'package:app/features/plasma/plasma_tab.controller.dart';
+import 'package:app/features/plasma/plasma_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import 'plasma_list/plasma.listview.dart';
 
-class _PlasmaTabState extends State<PlasmaTab>
-    with AutomaticKeepAliveClientMixin {
-  @override
-  bool get wantKeepAlive => true;
-
-  final PlasmaTabController controller = Get.find();
+class PlasmaScreen extends GetView<PlasmaScreenController> {
+  const PlasmaScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
-
     final headers = [
       ZCard(
         title: 'Plasma Stats',
@@ -38,15 +32,11 @@ class _PlasmaTabState extends State<PlasmaTab>
     );
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Plasma'),
+      ),
       floatingActionButton: _floatingActionButton,
       body: _content,
     );
   }
-}
-
-class PlasmaTab extends StatefulWidget {
-  const PlasmaTab({Key? key}) : super(key: key);
-
-  @override
-  _PlasmaTabState createState() => _PlasmaTabState();
 }

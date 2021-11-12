@@ -1,15 +1,23 @@
 import 'package:app/features/about/about.screen.dart';
 import 'package:app/features/about/about_screen.controller.dart';
+import 'package:app/features/accelerator/accelerator.screen.dart';
+import 'package:app/features/accelerator/accelerator_screen.controller.dart';
+import 'package:app/features/incentivized/incentivized.screen.dart';
+import 'package:app/features/incentivized/incentivized_screen.controller.dart';
 import 'package:app/features/main/main.screen.dart';
 import 'package:app/features/main/main_screen.binding.dart';
 import 'package:app/features/notifications/notifications.screen.dart';
 import 'package:app/features/notifications/notifications_screen.controller.dart';
+import 'package:app/features/plasma/plasma.screen.dart';
+import 'package:app/features/plasma/plasma_screen.controller.dart';
 import 'package:app/features/playground/playground.screen.dart';
 import 'package:app/features/playground/playground_screen.controller.dart';
 import 'package:app/features/settings/peer_list/peer_list.screen.dart';
 import 'package:app/features/settings/peer_list/peer_list_screen.controller.dart';
 import 'package:app/features/settings/settings.screen.dart';
 import 'package:app/features/settings/settings_screen.controller.dart';
+import 'package:app/features/tokens/tokens.screen.dart';
+import 'package:app/features/tokens/tokens_screen.controller.dart';
 import 'package:app/features/wallet/confirm/confirm_seed.screen.dart';
 import 'package:app/features/wallet/confirm/confirm_seed_screen.controller.dart';
 import 'package:app/features/wallet/create/create_wallet.screen.dart';
@@ -65,6 +73,27 @@ class AppPages {
     ),
 
     // SCREENS
+    GetPage(
+      name: Routes.plasma,
+      page: () => const PlasmaScreen(),
+      binding: PlasmaScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.tokens,
+      page: () => const TokensScreen(),
+      binding: TokensScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.incentivized,
+      page: () => const IncentivizedScreen(),
+      binding: IncentivizedScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.accelerator,
+      page: () => const AcceleratorScreen(),
+      binding: AcceleratorScreenBinding(),
+    ),
+
     GetPage(
       name: Routes.welcome,
       page: () => const WelcomeScreen(),

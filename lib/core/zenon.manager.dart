@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:app/core/utils/console.dart';
 import 'package:app/features/main/main_screen.controller.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
@@ -28,14 +29,20 @@ class ZenonManager {
     //   });
     // });
 
+    initClient();
+  }
+
+  static void initClient() async {
+    MainScreenController.to.changeStatus(RxStatus.loading());
+
     final initialized = await zenon.wsClient.initialize(
       'ws://$kTestPeerHost:$kTestPeerPort', // TODO: select the peer address from persistence
       retry: false,
     );
 
-    MainScreenController.to.ready.value = initialized;
-
-    console.info('initialized: $initialized');
+    MainScreenController.to.changeStatus(
+      initialized ? RxStatus.success() : RxStatus.error('Failed to initialize'),
+    );
   }
 
   // set the current key store

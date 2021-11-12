@@ -1,7 +1,6 @@
 import 'package:app/core/controllers/global.controller.dart';
 import 'package:app/core/controllers/persistence.controller.dart';
 import 'package:app/core/translations/constants.dart';
-import 'package:app/features/app/routes.dart';
 import 'package:app/features/settings/settings_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,13 +14,6 @@ class SettingsScreen extends GetView<SettingsScreenController> {
     final _content = ListView(
       shrinkWrap: true,
       children: [
-        const Divider(),
-        ListTile(
-          leading: const Icon(LineIcons.play),
-          trailing: const Icon(LineIcons.angleRight),
-          title: const Text('Playground'),
-          onTap: () => Get.toNamed(Routes.playground),
-        ),
         const Divider(),
         ListTile(
           leading: const Icon(LineIcons.addressBook),

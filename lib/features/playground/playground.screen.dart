@@ -16,17 +16,14 @@ class PlaygroundScreen extends GetView<PlaygroundScreenController>
   Widget build(BuildContext context) {
     final _tabs = [
       const ZTab(
-        title: 'Wallet',
         tab: Tab(text: 'Wallet'),
         child: WalletPlayground(),
       ),
       const ZTab(
-        title: 'API',
         tab: Tab(text: 'API'),
         child: APIPlayground(),
       ),
       const ZTab(
-        title: 'Others',
         tab: Tab(text: 'Others'),
         child: OthersPlayground(),
       ),

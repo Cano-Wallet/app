@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/utils.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
@@ -29,11 +30,11 @@ class DualCoinStatsCardController extends GetxController
 
     final znnToken =
         await zenon.embedded.token.getByZts(TokenStandard.bySymbol('tZNN'));
-    znn.value = znnToken!.totalSupply.toString();
+    znn.value = Utils.formatNumber(znnToken!.totalSupply);
 
     final qsrToken =
         await zenon.embedded.token.getByZts(TokenStandard.bySymbol('tQSR'));
-    qsr.value = qsrToken!.totalSupply.toString();
+    qsr.value = Utils.formatNumber(qsrToken!.totalSupply);
 
     console.info('done');
   }

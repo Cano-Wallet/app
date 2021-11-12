@@ -1,14 +1,16 @@
 import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/styles.dart';
+import 'package:app/core/zenon.manager.dart';
 import 'package:app/features/app/routes.dart';
 import 'package:app/features/dashboard/dashboard.tab.dart';
+import 'package:app/features/general/busy_indicator.widget.dart';
+import 'package:app/features/general/centered_placeholder.widget.dart';
 import 'package:app/features/general/connectivity/connectivity_bar.widget.dart';
 import 'package:app/features/general/z_tab.widget.dart';
-import 'package:app/features/incentivized/incentivized.tab.dart';
+import 'package:app/features/main/drawer/drawer.widget.dart';
 import 'package:app/features/pillars/pillars.tab.dart';
-import 'package:app/features/plasma/plasma.tab.dart';
 import 'package:app/features/sentinels/sentinels.tab.dart';
 import 'package:app/features/staking/staking.tab.dart';
-import 'package:app/features/tokens/tokens.tab.dart';
 import 'package:app/features/transfer/transfer.tab.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,101 +25,109 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
   Widget build(BuildContext context) {
     const _tabs = [
       ZTab(
-        title: 'Dashboard',
-        tab: Tab(icon: Icon(LineIcons.alternateTachometer)),
         child: DashboardTab(),
+        tab: Tab(
+          text: 'Dashboard',
+          icon: Icon(LineIcons.alternateTachometer),
+        ),
       ),
       ZTab(
-        title: 'Transfer',
-        tab: Tab(icon: Icon(LineIcons.paperPlane)),
         child: TransferTab(),
+        tab: Tab(
+          text: 'Transfer',
+          icon: Icon(LineIcons.paperPlane),
+        ),
       ),
       ZTab(
-        title: 'Pillars',
-        tab: Tab(icon: Icon(LineIcons.hotel)),
         child: PillarsTab(),
+        tab: Tab(
+          text: 'Pillars',
+          icon: Icon(LineIcons.hotel),
+        ),
       ),
       ZTab(
-        title: 'Sentinels',
-        tab: Tab(icon: Icon(LineIcons.vihara)),
         child: SentinelsTab(),
+        tab: Tab(
+          text: 'Sentinels',
+          icon: Icon(LineIcons.vihara),
+        ),
       ),
       ZTab(
-        title: 'Staking',
-        tab: Tab(icon: Icon(LineIcons.donate)),
         child: StakingTab(),
-      ),
-      ZTab(
-        title: 'Plasma',
-        tab: Tab(icon: Icon(LineIcons.chargingStation)),
-        child: PlasmaTab(),
-      ),
-      ZTab(
-        title: 'Tokens',
-        tab: Tab(icon: Icon(LineIcons.coins)),
-        child: TokensTab(),
-      ),
-      ZTab(
-        title: 'Incentivized',
-        tab: Tab(icon: Icon(LineIcons.award)),
-        child: IncentivizedTab(),
+        tab: Tab(
+          text: 'Staking',
+          icon: Icon(LineIcons.donate),
+        ),
       ),
     ];
+
+    final _actions = [
+      IconButton(
+        icon: const Icon(LineIcons.bell),
+        onPressed: () => Get.toNamed(Routes.notifications),
+      ),
+    ];
+
+    final _appBar = AppBar(
+      centerTitle: false,
+      bottom: const PreferredSize(
+        preferredSize: Size.fromHeight(10),
+        child: ConnectivityBar(),
+      ),
+      actions: _actions,
+      title: Obx(
+        () => Text(
+          _tabs[controller.currentTabIndex()].tab.text!,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
+        ),
+      ),
+    );
 
     final _content = DefaultTabController(
       length: _tabs.length,
       child: Builder(builder: (context) {
         controller.lastTabIndex.value = DefaultTabController.of(context)!.index;
 
-        final tabChildren = _tabs.map((e) => e.child).toList();
-
         final _tabBar = TabBar(
-          tabs: _tabs.map((e) => e.tab).toList(),
+          tabs: _tabs.take(5).map((e) => e.tab).toList(),
           isScrollable: false,
-          indicatorWeight: 3.0,
+          labelStyle: const TextStyle(fontSize: 12),
           onTap: controller.onTabTapped,
         );
 
-        return Obx(
-          () => Scaffold(
-            bottomNavigationBar: const ConnectivityBar(),
-            appBar: AppBar(
-              centerTitle: false,
-              title: Text(
-                _tabs[controller.currentTabIndex()].title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                ),
-              ),
-              bottom: _tabBar,
-              actions: [
-                IconButton(
-                  icon: const Icon(LineIcons.bell),
-                  onPressed: () => Get.toNamed(Routes.notifications),
-                ),
-                IconButton(
-                  icon: const Icon(LineIcons.cog),
-                  onPressed: () => Get.toNamed(Routes.settings),
-                ),
-              ],
-            ),
-            body: TabBarView(
-              children: tabChildren,
-              physics: const BouncingScrollPhysics(),
-            ),
+        return Scaffold(
+          appBar: _appBar,
+          bottomNavigationBar: _tabBar,
+          drawer: const ZDrawer(),
+          body: TabBarView(
+            children: _tabs.map((e) => e.child).toList(),
+            physics: const BouncingScrollPhysics(),
           ),
         );
       }),
     );
 
-    const _splash = Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
+    Widget _error(String? message) {
+      return Material(
+        child: CenteredPlaceholder(
+          iconData: Icons.error,
+          message: message!,
+          child: OutlinedButton(
+            child: const Text('Try again'),
+            style: Styles.outlinedButtonStyle20,
+            onPressed: () => ZenonManager.initClient(),
+          ),
+        ),
+      );
+    }
 
-    return Obx(() => controller.ready() ? _content : _splash);
+    return controller.obx(
+      (_) => _content,
+      onLoading: const Material(child: BusyIndicator()),
+      onError: _error,
+    );
   }
 }

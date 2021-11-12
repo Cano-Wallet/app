@@ -1,16 +1,14 @@
+import 'package:app/core/utils/console.dart';
 import 'package:app/features/app/routes.dart';
+import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-// import 'others_playground.controller.dart';
-
-class OthersPlayground extends StatelessWidget {
+class OthersPlayground extends StatelessWidget with ConsoleMixin {
   const OthersPlayground({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(OthersPlaygroundController());
-
     return Padding(
       padding: const EdgeInsets.all(15),
       child: SingleChildScrollView(
@@ -30,6 +28,14 @@ class OthersPlayground extends StatelessWidget {
             ElevatedButton(
               child: const Text('Reset Wallet'),
               onPressed: () => Get.toNamed(Routes.resetWallet),
+            ),
+            const Divider(),
+            ElevatedButton(
+              child: const Text('Window Size'),
+              onPressed: () async {
+                final size = await DesktopWindow.getWindowSize();
+                console.info('${size.height}');
+              },
             ),
             const Divider(),
           ],

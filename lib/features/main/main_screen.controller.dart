@@ -2,10 +2,12 @@ import 'dart:ui';
 
 import 'package:app/core/utils/console.dart';
 import 'package:app/features/general/connectivity/connectivity_bar.controller.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class MainScreenController extends GetxController with ConsoleMixin {
+class MainScreenController extends GetxController
+    with ConsoleMixin, StateMixin {
   static MainScreenController get to => Get.find();
 
   // VARIABLES
@@ -54,5 +56,9 @@ class MainScreenController extends GetxController with ConsoleMixin {
     //   // else
     //   //   ad.initIds(screen: 'stories');
     // }
+  }
+
+  void changeStatus(RxStatus status) {
+    change(null, status: status);
   }
 }

@@ -1,22 +1,16 @@
 import 'package:app/features/general/z_card.widget.dart';
-import 'package:app/features/tokens/tokens_tab.controller.dart';
+import 'package:app/features/tokens/tokens_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 
 import 'token_list/token.listview.dart';
 
-class _TokensTabState extends State<TokensTab>
-    with AutomaticKeepAliveClientMixin {
-  @override
-  bool get wantKeepAlive => true;
-
-  final TokensTabController controller = Get.find();
+class TokensScreen extends GetView<TokensScreenController> {
+  const TokensScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
-
     final headers = [
       ZCard(
         title: 'Balance',
@@ -38,15 +32,11 @@ class _TokensTabState extends State<TokensTab>
     );
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Tokens'),
+      ),
       floatingActionButton: _floatingActionButton,
       body: _content,
     );
   }
-}
-
-class TokensTab extends StatefulWidget {
-  const TokensTab({Key? key}) : super(key: key);
-
-  @override
-  _TokensTabState createState() => _TokensTabState();
 }
