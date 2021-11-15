@@ -42,8 +42,8 @@ class UnlockWalletScreenController extends GetxController with ConsoleMixin {
     } catch (e) {
       UIUtils.showSnackBar(
         title: 'Incorrect password',
-        message: '3 attempts left', // TODO: work on max attempts
-        icon: const Icon(LineIcons.info),
+        message: '<num> attempts left', // TODO: work on max attempts
+        icon: const Icon(LineIcons.exclamationTriangle, color: Colors.red),
         seconds: 4,
       );
 

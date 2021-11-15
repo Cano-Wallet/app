@@ -39,51 +39,51 @@ class SettingsScreen extends GetView<SettingsScreenController> {
           title: const Text('Peers'),
           onTap: () => Get.toNamed(Routes.peers),
         ),
-        const Divider(),
-        ObxValue(
-          (RxBool data) => SwitchListTile(
-            title: const Text('Dark Mode'),
-            secondary: const Icon(LineIcons.adjust),
-            value: data.value,
-            onChanged: controller.onSwitchTheme,
-          ),
-          GlobalController.to.darkMode,
-        ),
-        const Divider(),
-        ListTile(
-          leading: const Icon(LineIcons.font),
-          trailing: const Icon(LineIcons.angleRight),
-          title: const Text('Font Settings'),
-          subtitle: const Text('Font Face & Scale Settings'),
-          onTap: () {
-            //
-          },
-        ),
-        const Divider(),
-        GetBuilder(
-          init: PersistenceController(),
-          builder: (final PersistenceController _) => SwitchListTile(
-            title: const Text('App Security Lock'),
-            subtitle: const Text('Set a PIN / Biometrics Lock'),
-            secondary: const Icon(LineIcons.lock),
-            value: _.appLock.val,
-            onChanged: controller.onSwitchAppLock,
-          ),
-        ),
-        const Divider(),
-        ListTile(
-          leading: const Icon(LineIcons.language),
-          trailing: const Icon(LineIcons.angleRight),
-          title: Text(
-              '${Tr.language.trans()}: ${Tr.languageString.trans()} - ${Tr.localeString.trans()}'),
-          onTap: () async {
-            // final locale = await UIUtils.supportedLocales();
-            // if (locale == null) return;
-            // PersistenceController.to.localeCode.val = locale.toString();
-            // PersistenceController.to.update();
-            // Get.updateLocale(locale);
-          },
-        ),
+        // const Divider(),
+        // ObxValue(
+        //   (RxBool data) => SwitchListTile(
+        //     title: const Text('Dark Mode'),
+        //     secondary: const Icon(LineIcons.adjust),
+        //     value: data.value,
+        //     onChanged: controller.onSwitchTheme,
+        //   ),
+        //   GlobalController.to.darkMode,
+        // ),
+        // const Divider(),
+        // ListTile(
+        //   leading: const Icon(LineIcons.font),
+        //   trailing: const Icon(LineIcons.angleRight),
+        //   title: const Text('Font Settings'),
+        //   subtitle: const Text('Font Face & Scale Settings'),
+        //   onTap: () {
+        //     //
+        //   },
+        // ),
+        // const Divider(),
+        // GetBuilder(
+        //   init: PersistenceController(),
+        //   builder: (final PersistenceController _) => SwitchListTile(
+        //     title: const Text('App Security Lock'),
+        //     subtitle: const Text('Set a PIN / Biometrics Lock'),
+        //     secondary: const Icon(LineIcons.lock),
+        //     value: _.appLock.val,
+        //     onChanged: controller.onSwitchAppLock,
+        //   ),
+        // ),
+        // const Divider(),
+        // ListTile(
+        //   leading: const Icon(LineIcons.language),
+        //   trailing: const Icon(LineIcons.angleRight),
+        //   title: Text(
+        //       '${Tr.language.trans()}: ${Tr.languageString.trans()} - ${Tr.localeString.trans()}'),
+        //   onTap: () async {
+        //     // final locale = await UIUtils.supportedLocales();
+        //     // if (locale == null) return;
+        //     // PersistenceController.to.localeCode.val = locale.toString();
+        //     // PersistenceController.to.update();
+        //     // Get.updateLocale(locale);
+        //   },
+        // ),
         const Divider(),
         ListTile(
           leading: const Icon(LineIcons.syncIcon),

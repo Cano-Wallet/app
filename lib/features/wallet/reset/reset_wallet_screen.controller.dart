@@ -1,6 +1,7 @@
 import 'package:app/core/controllers/persistence.controller.dart';
 import 'package:app/core/managers/hive.manager.dart';
 import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/globals.dart';
 import 'package:app/core/utils/utils.dart';
 import 'package:app/core/managers/zenon.manager.dart';
 import 'package:app/features/app/routes.dart';
@@ -44,6 +45,9 @@ class ResetWalletScreenController extends GetxController with ConsoleMixin {
     // Erase data
     PersistenceController.to.box.erase();
     HiveManager.reset();
+
+    // temporary
+    viewingAddress = null;
 
     console.info('successfully reset!');
 

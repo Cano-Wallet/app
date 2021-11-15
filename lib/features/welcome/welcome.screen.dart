@@ -38,7 +38,9 @@ class WelcomeScreen extends StatelessWidget with ConsoleMixin {
             const Divider(),
             ElevatedButton(
               child: const Text('Viewing Mode'),
-              onPressed: () => Get.toNamed(Routes.viewingAddress),
+              onPressed: GetPlatform.isMobile
+                  ? () => Get.toNamed(Routes.viewingAddress)
+                  : null,
             ),
             const Divider(),
           ],
