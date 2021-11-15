@@ -61,11 +61,9 @@ class ImportWalletScreenController extends GetxController with ConsoleMixin {
 
     console.info('keyStore: ${keyStore.mnemonic}');
 
-    // set default KeyStore
-    ZenonManager.setKeyStore(keyStore);
-
-    // TODO: save keystore file if suppported
-
-    Get.offNamedUntil(Routes.main, (route) => false);
+    Get.toNamed(
+      Routes.createPassword,
+      parameters: {'mnemonic': keyStore.mnemonic!},
+    );
   }
 }

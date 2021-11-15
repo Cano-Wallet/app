@@ -28,7 +28,7 @@ class SentinelsTabController extends GetxController with ConsoleMixin {
   void fetch() async {
     final zenon = Zenon();
     final _rewards =
-        await zenon.embedded.sentinel.getUncollectedReward(testAddress);
+        await zenon.embedded.sentinel.getUncollectedReward(viewingAddress!);
 
     znnRewards.value = Utils.formatCurrency(AmountUtils.addDecimals(
       _rewards.znnAmount,

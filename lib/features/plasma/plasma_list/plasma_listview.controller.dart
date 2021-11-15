@@ -38,7 +38,7 @@ class PlasmaListViewController extends BaseListController {
 
     try {
       object = await Zenon().embedded.plasma.getEntriesByAddress(
-            testAddress,
+            viewingAddress!,
             pageIndex: pageIndex,
             pageSize: pageSize,
           );

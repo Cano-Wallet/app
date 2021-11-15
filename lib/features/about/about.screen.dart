@@ -1,7 +1,6 @@
 import 'package:app/core/utils/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_icons/line_icon.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';

@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:app/core/managers/zenon.manager.dart';
 import 'package:app/core/utils/console.dart';
+import 'package:app/core/utils/globals.dart';
+import 'package:app/features/app/routes.dart';
 import 'package:app/features/general/connectivity/connectivity_bar.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,6 +29,13 @@ class MainScreenController extends GetxController
     change(null, status: RxStatus.loading());
 
     final initialized = await ZenonManager.initClient();
+
+    // show welcome screen if not authenticated
+    final authenticated = await ZenonManager.authenticated();
+
+    if (!authenticated) {
+      await Get.toNamed(Routes.welcome);
+    }
 
     change(
       null,

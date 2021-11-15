@@ -31,13 +31,19 @@ class OthersPlayground extends StatelessWidget with ConsoleMixin {
             ),
             const Divider(),
             ElevatedButton(
-              child: const Text('Window Size'),
+              child: const Text('Print Window Size'),
               onPressed: () async {
                 final size = await DesktopWindow.getWindowSize();
                 console.info('${size.height}');
               },
             ),
             const Divider(),
+            ElevatedButton(
+              child: const Text('Test'),
+              onPressed: () async {
+                //
+              },
+            ),
           ],
         ),
       ),

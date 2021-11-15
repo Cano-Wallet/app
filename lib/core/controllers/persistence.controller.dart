@@ -10,6 +10,9 @@ class PersistenceController extends GetxController with ConsoleMixin {
   // BOX
   final box = GetStorage();
 
+  // TEMPORARY
+  final viewingAddress = ''.val('viewing address');
+
   // GENERAL
   final lastBuildNumber = 0.val('last build number');
   final currentId = ''.val('current id');

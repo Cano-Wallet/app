@@ -33,7 +33,7 @@ class DelegationStatsCardController extends GetxController
 
     try {
       delegationInfo =
-          await zenon.embedded.pillar.getDelegatedPillar(testAddress);
+          await zenon.embedded.pillar.getDelegatedPillar(viewingAddress!);
     } catch (e) {
       return console.error(e.toString());
     }

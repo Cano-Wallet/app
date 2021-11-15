@@ -2,6 +2,7 @@ import 'package:app/features/general/connectivity/connectivity_bar.controller.da
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'core/controllers/global.controller.dart';
 import 'core/controllers/persistence.controller.dart';
@@ -15,6 +16,8 @@ void main() async {
   await ZenonManager.initPaths();
   // init Hive
   HiveManager.init();
+  // init GetStorage
+  await GetStorage.init();
   // setup window size for desktop
   _setupWindowSize();
 

@@ -5,7 +5,9 @@ abstract class Routes {
   static const createWallet = '/create_wallet';
   static const importWallet = '/import_wallet';
   static const confirmSeed = '/confirm_seed';
+  static const unlockWallet = '/unlock_wallet';
   static const resetWallet = '/rese_wallet';
+  static const createPassword = '/create_password';
 
   // SCREENS
   static const plasma = '/plasma';
@@ -24,6 +26,8 @@ abstract class Routes {
   static const notifications = '/notifications';
   static const settings = '/settings';
   static const about = '/about';
+
+  static const viewingAddress = '/viewing_address';
   static const unknown = '/unknown';
 
   // PLAYGROUND

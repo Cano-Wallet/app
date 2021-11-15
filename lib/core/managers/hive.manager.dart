@@ -41,4 +41,12 @@ class HiveManager {
     notifications = await Hive.openBox('notifications');
     favouriteTokens = await Hive.openBox('favouriteTokens');
   }
+
+  static void reset() {
+    nodes?.clear();
+    addresses?.clear();
+    contacts?.clear();
+    notifications?.clear();
+    favouriteTokens?.clear();
+  }
 }

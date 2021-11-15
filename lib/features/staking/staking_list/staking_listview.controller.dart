@@ -39,7 +39,7 @@ class StakingListViewController extends BaseListController {
 
     try {
       object = await Zenon().embedded.stake.getEntriesByAddress(
-            testAddress,
+            viewingAddress!,
             pageIndex: pageIndex,
             pageSize: pageSize,
           );

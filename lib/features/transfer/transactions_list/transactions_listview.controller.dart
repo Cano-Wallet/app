@@ -37,7 +37,7 @@ class TransactionsListViewController extends BaseListController {
 
     try {
       object = await Zenon().ledger.getBlocksByPage(
-            testAddress,
+            viewingAddress!,
             pageIndex: pageIndex,
             pageSize: pageSize,
           );

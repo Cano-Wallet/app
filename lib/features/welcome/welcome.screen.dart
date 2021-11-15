@@ -19,21 +19,26 @@ class WelcomeScreen extends StatelessWidget with ConsoleMixin {
             const Divider(),
             ElevatedButton(
               child: const Text('Create'),
-              onPressed: () async {
-                Get.toNamed(Routes.createWallet);
-              },
+              onPressed: GetPlatform.isDesktop
+                  ? () => Get.toNamed(Routes.createWallet)
+                  : null,
             ),
             const Divider(),
             ElevatedButton(
               child: const Text('Import'),
-              onPressed: () {
-                Get.toNamed(Routes.importWallet);
-              },
+              onPressed: GetPlatform.isDesktop
+                  ? () => Get.toNamed(Routes.importWallet)
+                  : null,
             ),
             const Divider(),
             const ElevatedButton(
               child: Text('Hardware'),
               onPressed: null,
+            ),
+            const Divider(),
+            ElevatedButton(
+              child: const Text('Viewing Mode'),
+              onPressed: () => Get.toNamed(Routes.viewingAddress),
             ),
             const Divider(),
           ],

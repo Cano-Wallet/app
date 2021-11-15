@@ -30,14 +30,19 @@ import 'package:app/features/tokens/tokens.screen.dart';
 import 'package:app/features/tokens/tokens_screen.controller.dart';
 import 'package:app/features/transfer/send/send.screen.dart';
 import 'package:app/features/transfer/send/send_screen.controller.dart';
+import 'package:app/features/viewing_address/viewing_address.screen.dart';
 import 'package:app/features/wallet/confirm/confirm_seed.screen.dart';
 import 'package:app/features/wallet/confirm/confirm_seed_screen.controller.dart';
 import 'package:app/features/wallet/create/create_wallet.screen.dart';
 import 'package:app/features/wallet/create/create_wallet_screen.controller.dart';
+import 'package:app/features/wallet/create_password/create_password.screen.dart';
+import 'package:app/features/wallet/create_password/create_password_screen.controller.dart';
 import 'package:app/features/wallet/import/import_wallet.screen.dart';
 import 'package:app/features/wallet/import/import_wallet_screen.controller.dart';
 import 'package:app/features/wallet/reset/reset_wallet.screen.dart';
 import 'package:app/features/wallet/reset/reset_wallet_screen.controller.dart';
+import 'package:app/features/wallet/unlock/unlock_wallet.screen.dart';
+import 'package:app/features/wallet/unlock/unlock_wallet_screen.controller.dart';
 import 'package:app/features/welcome/welcome.screen.dart';
 import 'package:get/get.dart';
 
@@ -89,9 +94,19 @@ class AppPages {
       binding: ConfirmSeedScreenBinding(),
     ),
     GetPage(
+      name: Routes.unlockWallet,
+      page: () => const UnlockWalletScreen(),
+      binding: UnlockWalletScreenBinding(),
+    ),
+    GetPage(
       name: Routes.resetWallet,
       page: () => const ResetWalletScreen(),
       binding: ResetWalletScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.createPassword,
+      page: () => const CreateWalletPasswordScreen(),
+      binding: CreateWalletPasswordScreenBinding(),
     ),
 
     // SCREENS
@@ -161,6 +176,12 @@ class AppPages {
       name: Routes.playground,
       page: () => const PlaygroundScreen(),
       binding: PlaygroundScreenBinding(),
+    ),
+
+    // OTHERS
+    GetPage(
+      name: Routes.viewingAddress,
+      page: () => const ViewingAddressScreen(),
     ),
   ];
 }

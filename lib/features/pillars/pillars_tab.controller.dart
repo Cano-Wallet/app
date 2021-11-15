@@ -25,7 +25,7 @@ class PillarsTabController extends GetxController with ConsoleMixin {
   void fetch() async {
     final zenon = Zenon();
     final _rewards =
-        await zenon.embedded.pillar.getUncollectedReward(testAddress);
+        await zenon.embedded.pillar.getUncollectedReward(viewingAddress!);
 
     znnRewards.value = Utils.formatCurrency(AmountUtils.addDecimals(
       _rewards.znnAmount,

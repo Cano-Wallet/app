@@ -84,6 +84,13 @@ class SettingsScreen extends GetView<SettingsScreenController> {
             // Get.updateLocale(locale);
           },
         ),
+        const Divider(),
+        ListTile(
+          leading: const Icon(LineIcons.syncIcon),
+          trailing: const Icon(LineIcons.angleRight),
+          title: const Text('Reset Wallet'),
+          onTap: () => Get.toNamed(Routes.resetWallet),
+        ),
       ],
     );
 

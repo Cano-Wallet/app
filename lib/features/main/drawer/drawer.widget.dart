@@ -17,14 +17,14 @@ class ZDrawer extends StatelessWidget {
           child: Column(
             children: [
               DiceBearAvatar(
-                seed: testAddress.toString(),
+                seed: viewingAddress.toString(),
                 size: 70,
               ),
               const SizedBox(height: 10),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(testAddress.toShortString()),
+                  Text(viewingAddress!.toShortString()),
                   const SizedBox(width: 5),
                   const Icon(LineIcons.caretDown, size: 15),
                 ],

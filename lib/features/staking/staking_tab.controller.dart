@@ -25,7 +25,7 @@ class StakingTabController extends GetxController with ConsoleMixin {
   void fetch() async {
     final zenon = Zenon();
     final _rewards =
-        await zenon.embedded.stake.getUncollectedReward(testAddress);
+        await zenon.embedded.stake.getUncollectedReward(viewingAddress!);
 
     qsrRewards.value = Utils.formatCurrency(AmountUtils.addDecimals(
       _rewards.qsrAmount,

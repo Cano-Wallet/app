@@ -1,3 +1,5 @@
+import 'package:app/core/controllers/persistence.controller.dart';
+import 'package:app/core/managers/hive.manager.dart';
 import 'package:app/core/utils/console.dart';
 import 'package:app/core/utils/utils.dart';
 import 'package:app/core/managers/zenon.manager.dart';
@@ -25,6 +27,7 @@ class ResetWalletScreenController extends GetxController with ConsoleMixin {
   // FUNCTIONS
 
   void reset() async {
+    // delete directories
     final success = await Utils.deleteDirectory(znnDefaultPaths.main);
 
     if (!success) {
@@ -32,16 +35,17 @@ class ResetWalletScreenController extends GetxController with ConsoleMixin {
           .error('failed to delete directory: ${znnDefaultPaths.main.path}');
     }
 
-    // re-init paths
+    // re-init directories
     await ZenonManager.initPaths();
 
-    console.info('successfully reset!');
-
-    // set default KeyStore
+    // unset default KeyStore
     ZenonManager.setKeyStore(null);
 
-    // TODO: reset GetStorage
-    // TODO: reset Hive
+    // Erase data
+    PersistenceController.to.box.erase();
+    HiveManager.reset();
+
+    console.info('successfully reset!');
 
     Get.offNamedUntil(Routes.main, (route) => false);
   }

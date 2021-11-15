@@ -1,8 +1,10 @@
+import 'package:app/core/managers/zenon.manager.dart';
 import 'package:app/core/utils/console.dart';
 import 'package:app/features/app/routes.dart';
-import 'package:app/features/wallet/passphrase_card/passphrase.card.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 class CreateWalletPasswordScreenBinding extends Bindings {
   @override
@@ -14,7 +16,8 @@ class CreateWalletPasswordScreenBinding extends Bindings {
 class CreateWalletPasswordScreenController extends GetxController
     with ConsoleMixin {
   // VARIABLES
-  final passphraseCard = const PassphraseCard();
+  final passwordController = TextEditingController();
+  final passwordConfirmController = TextEditingController();
 
   // PROPERTIES
 
@@ -24,15 +27,20 @@ class CreateWalletPasswordScreenController extends GetxController
 
   // FUNCTIONS
 
-  void continuePressed() {
-    final seed = passphraseCard.obtainSeed();
-
-    if (seed == null) {
-      return console.info('invalid seed');
+  void continuePressed() async {
+    // TODO: improve validation
+    if (passwordController.text != passwordConfirmController.text) {
+      return console.error('Passwords do not match');
     }
 
-    console.info('seed: $seed');
-
-    Get.toNamed(Routes.confirmSeed, parameters: {'seed': seed});
+    final keyStore = KeyStore.fromMnemonic(Get.parameters['mnemonic']!);
+    // save keystore
+    await Zenon()
+        .keyStoreManager
+        .saveKeyStore(keyStore, passwordController.text);
+    // set as default KeyStore
+    ZenonManager.setKeyStore(keyStore);
+    // back to main screen
+    Get.offNamedUntil(Routes.main, (route) => false);
   }
 }

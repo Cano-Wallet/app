@@ -28,9 +28,9 @@ class StakingStatsCardController extends GetxController
   // FUNCTIONS
   Future<void> fetch() async {
     final zenon = Zenon();
-    final address = testAddress;
 
-    final entries = await zenon.embedded.stake.getEntriesByAddress(address);
+    final entries =
+        await zenon.embedded.stake.getEntriesByAddress(viewingAddress!);
     entriesCount.value = entries.count.toString();
 
     entriesTotalAmount.value = Utils.formatCurrency(AmountUtils.addDecimals(

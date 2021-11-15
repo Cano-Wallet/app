@@ -28,7 +28,7 @@ class BalanceCardController extends GetxController
   // FUNCTIONS
   Future<void> fetch() async {
     final accountInfo =
-        await Zenon().ledger.getAccountInfoByAddress(testAddress);
+        await Zenon().ledger.getAccountInfoByAddress(viewingAddress!);
 
     znn.value = Utils.formatCurrency(AmountUtils.addDecimals(
       accountInfo.znn()!,

@@ -8,8 +8,11 @@ const kDeveloperTwitterUrl = 'https://twitter.com/nemoryoliver';
 const kOpenSourceUrl = 'https://github.com/nemoryoliver/znn_playground';
 
 // TEST
-final testAddress = Address.parse('z1qpjzv9humm37lk0wkq5l4m2vcpmxuwgtxn5fs2');
+// final viewingAddress = Address.parse('z1qpjzv9humm37lk0wkq5l4m2vcpmxuwgtxn5fs2');
 
+Address? viewingAddress;
+
+const kTestAddress = 'z1qpjzv9humm37lk0wkq5l4m2vcpmxuwgtxn5fs2';
 const kTestMnemonic =
     'inner benefit antique boring oxygen number material skate ivory maple spike stick noise follow guide cause clown speak fortune carpet shy lunch auto indoor';
 const kTestPassword = '1#TestPassword#1';
