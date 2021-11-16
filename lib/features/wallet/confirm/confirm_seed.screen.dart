@@ -1,5 +1,5 @@
 import 'package:cano/core/utils/console.dart';
-import 'package:cano/core/utils/globals.dart';
+import 'package:cano/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -20,7 +20,7 @@ class ConfirmSeedScreen extends GetView<ConfirmSeedScreenController>
         padding: const EdgeInsets.all(15),
         child: Center(
           child: Container(
-            constraints: kMaxContainerConstraints,
+            constraints: Styles.containerConstraints,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

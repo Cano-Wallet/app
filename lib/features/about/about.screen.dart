@@ -29,13 +29,54 @@ class AboutScreen extends GetView<AboutScreenController> {
           ),
         ),
         const SizedBox(height: 10),
-        // TODO: localize
         const Text(
-          kProjectDescription,
+          kAppDescription,
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.grey),
         ),
         const SizedBox(height: 30),
+        const Divider(),
+        ExpansionTile(
+          leading: Image.asset(
+            Images.logo,
+            height: 25,
+            color: Colors.grey,
+          ),
+          title: const Text(
+            'Cano',
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
+          ),
+          children: [
+            ListTile(
+              leading: const Icon(LineIcons.github),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Cano GitHub'),
+              subtitle: const Text(kAppGithubUrl),
+              onTap: () => launch(kAppGithubUrl),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.twitter),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Cano Twitter'),
+              subtitle: const Text('@cano_wallet'),
+              onTap: () => launch(kAppTwitterUrl),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.instagram),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Cano Instagram'),
+              subtitle: const Text('@cano_wallet'),
+              onTap: () => launch(kAppInstagramUrl),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.facebook),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Cano Facebook'),
+              subtitle: const Text('@cano.wallet'),
+              onTap: () => launch(kAppFacebookUrl),
+            ),
+          ],
+        ),
         const Divider(),
         ExpansionTile(
           leading: const Icon(LineIcons.wiredNetwork),
@@ -215,17 +256,7 @@ class AboutScreen extends GetView<AboutScreenController> {
           trailing: const Icon(LineIcons.alternateExternalLink),
           title: const Text('Check for updates'),
           subtitle: Obx(() => Text(controller.appVersion)),
-          onTap: () {
-            // TODO: check for updates
-          },
-        ),
-        const Divider(),
-        ListTile(
-          leading: const Icon(LineIcons.github),
-          trailing: const Icon(LineIcons.alternateExternalLink),
-          title: const Text('Open Source Code'),
-          subtitle: const Text(kProjectGithubUrl),
-          onTap: () => launch(kProjectGithubUrl),
+          onTap: () {}, // TODO: check for updates
         ),
         const Divider(),
         const SizedBox(height: 20),

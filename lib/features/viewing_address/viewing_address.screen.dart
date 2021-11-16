@@ -40,7 +40,7 @@ class ViewingAddressScreen extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: Center(
           child: Container(
-            constraints: kMaxContainerConstraints,
+            constraints: Styles.containerConstraints,
             child: Form(
               key: formKey,
               child: Column(

@@ -1,5 +1,6 @@
 import 'package:cano/core/utils/console.dart';
 import 'package:cano/core/utils/globals.dart';
+import 'package:cano/core/utils/styles.dart';
 import 'package:cano/features/app/routes.dart';
 import 'package:cano/features/welcome/welcome_screen.controller.dart';
 import 'package:cano/resources/resources.dart';
@@ -30,7 +31,7 @@ class WelcomeScreen extends GetView<WelcomeScreenController> with ConsoleMixin {
             ),
             Center(
               child: Container(
-                constraints: kMaxContainerConstraints,
+                constraints: Styles.containerConstraints,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -42,7 +43,7 @@ class WelcomeScreen extends GetView<WelcomeScreenController> with ConsoleMixin {
                     ),
                     const SizedBox(height: 10),
                     const Text(
-                      kProjectDescription,
+                      kAppDescription,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.grey),
                     ),

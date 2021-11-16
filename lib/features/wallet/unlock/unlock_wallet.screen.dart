@@ -1,5 +1,4 @@
 import 'package:cano/core/utils/console.dart';
-import 'package:cano/core/utils/globals.dart';
 import 'package:cano/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +17,7 @@ class UnlockWalletScreen extends GetView<UnlockWalletScreenController>
         padding: const EdgeInsets.all(15),
         child: Center(
           child: Container(
-            constraints: kMaxContainerConstraints,
+            constraints: Styles.containerConstraints,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
