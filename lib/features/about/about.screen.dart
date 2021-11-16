@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:cano/core/utils/globals.dart';
+import 'package:cano/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -18,23 +19,23 @@ class AboutScreen extends GetView<AboutScreenController> {
       shrinkWrap: true,
       children: [
         const SizedBox(height: 20),
-        const FlutterLogo(size: 50),
+        Image.asset(Images.logo, height: 50),
         const SizedBox(height: 15),
         Obx(
           () => Text(
             '${controller.packageInfo.value?.appName}',
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 17),
           ),
         ),
         const SizedBox(height: 10),
         // TODO: localize
         const Text(
-          'A 3rd party wallet for Zenon Network',
+          kProjectDescription,
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.grey),
         ),
-        const SizedBox(height: 50),
+        const SizedBox(height: 30),
         const Divider(),
         ExpansionTile(
           leading: const Icon(LineIcons.wiredNetwork),

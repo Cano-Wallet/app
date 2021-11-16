@@ -1,4 +1,5 @@
 import 'package:cano/core/utils/console.dart';
+import 'package:cano/core/utils/ui_utils.dart';
 import 'package:cano/core/utils/utils.dart';
 import 'package:cano/core/managers/zenon.manager.dart';
 import 'package:cano/features/app/routes.dart';
@@ -7,6 +8,7 @@ import 'package:cano/features/wallet/passphrase_card/passphrase_card.controller.
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 class ImportWalletScreenBinding extends Bindings {
@@ -29,6 +31,13 @@ class ImportWalletScreenController extends GetxController with ConsoleMixin {
     final seed = passphraseCard.obtainSeed();
 
     if (seed == null) {
+      UIUtils.showSnackBar(
+        title: 'Invalid Seed',
+        message: 'Please make sure your seed is valid',
+        icon: const Icon(LineIcons.exclamationTriangle, color: Colors.red),
+        seconds: 4,
+      );
+
       return console.info('invalid seed');
     }
 
@@ -36,11 +45,10 @@ class ImportWalletScreenController extends GetxController with ConsoleMixin {
 
     final keyStore = KeyStore.fromMnemonic(seed);
 
-    // set default KeyStore
-    ZenonManager.setKeyStore(keyStore);
-
-    // TODO: save keystore file if suppported
-    Get.offNamedUntil(Routes.main, (route) => false);
+    Get.toNamed(
+      Routes.createPassword,
+      parameters: {'mnemonic': keyStore.mnemonic!},
+    );
   }
 
   void importKeyStoreFile() async {
@@ -48,22 +56,9 @@ class ImportWalletScreenController extends GetxController with ConsoleMixin {
     if (file == null) return;
     console.info('file: ${file.path}');
 
-    KeyStore? keyStore;
-
-    try {
-      keyStore = await zenon.keyStoreManager.readKeyStore(
-        passwordController.text,
-        file,
-      );
-    } catch (e) {
-      return console.error(e.toString());
-    }
-
-    console.info('keyStore: ${keyStore.mnemonic}');
-
     Get.toNamed(
-      Routes.createPassword,
-      parameters: {'mnemonic': keyStore.mnemonic!},
+      Routes.unlockVault,
+      parameters: {'file': file.path},
     );
   }
 }

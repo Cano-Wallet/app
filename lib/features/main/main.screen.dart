@@ -1,6 +1,5 @@
 import 'package:cano/core/utils/console.dart';
 import 'package:cano/core/utils/styles.dart';
-import 'package:cano/core/managers/zenon.manager.dart';
 import 'package:cano/features/app/routes.dart';
 import 'package:cano/features/dashboard/dashboard.tab.dart';
 import 'package:cano/features/general/busy_indicator.widget.dart';
@@ -113,12 +112,13 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
     Widget _error(String? message) {
       return Material(
         child: CenteredPlaceholder(
-          iconData: Icons.error,
+          iconData: LineIcons.exclamationTriangle,
           message: message!,
-          child: OutlinedButton(
-            child: const Text('Try again'),
+          child: TextButton.icon(
+            label: const Text('Try again'),
+            icon: const Icon(LineIcons.syncIcon),
             style: Styles.outlinedButtonStyle20,
-            onPressed: () => ZenonManager.initClient(),
+            onPressed: controller.init,
           ),
         ),
       );

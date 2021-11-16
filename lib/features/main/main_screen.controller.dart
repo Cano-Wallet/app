@@ -24,7 +24,16 @@ class MainScreenController extends GetxController
 
   // INIT
   @override
-  void onInit() async {
+  void onInit() {
+    init();
+
+    _initAppLifeCycleEvents();
+    super.onInit();
+  }
+
+  // FUNCTIONS
+
+  void init() async {
     change(null, status: RxStatus.loading());
 
     final initialized = await ZenonManager.initClient();
@@ -42,12 +51,7 @@ class MainScreenController extends GetxController
           ? RxStatus.success()
           : RxStatus.error('Failed to initialize'),
     );
-
-    _initAppLifeCycleEvents();
-    super.onInit();
   }
-
-  // FUNCTIONS
 
   void _initAppLifeCycleEvents() {
     SystemChannels.lifecycle.setMessageHandler((msg) {

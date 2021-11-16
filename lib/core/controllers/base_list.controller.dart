@@ -6,6 +6,7 @@ import 'package:cano/features/general/busy_indicator.widget.dart';
 import 'package:cano/features/general/centered_placeholder.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
@@ -131,17 +132,19 @@ class BaseListController extends GetxController with ConsoleMixin, StateMixin {
         onEmpty: CenteredPlaceholder(
           iconData: Icons.list_alt_outlined,
           message: 'empty',
-          child: OutlinedButton(
-            child: const Text('Refresh'),
-            onPressed: reload,
+          child: TextButton.icon(
+            label: const Text('Refresh'),
+            icon: const Icon(LineIcons.syncIcon),
             style: Styles.outlinedButtonStyle20,
+            onPressed: reload,
           ),
         ),
         onError: (error) => CenteredPlaceholder(
           iconData: Icons.error,
           message: error!,
-          child: OutlinedButton(
-            child: const Text('Try again'),
+          child: TextButton.icon(
+            label: const Text('Try again'),
+            icon: const Icon(LineIcons.syncIcon),
             style: Styles.outlinedButtonStyle20,
             onPressed: reload,
           ),

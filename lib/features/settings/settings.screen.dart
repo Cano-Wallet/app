@@ -12,9 +12,9 @@ class SettingsScreen extends GetView<SettingsScreenController> {
   @override
   Widget build(BuildContext context) {
     final _content = ListView(
+      padding: const EdgeInsets.all(20),
       shrinkWrap: true,
       children: [
-        const Divider(),
         ListTile(
           leading: const Icon(LineIcons.addressBook),
           trailing: const Icon(LineIcons.angleRight),

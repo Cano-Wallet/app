@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cano/core/controllers/persistence.controller.dart';
 import 'package:cano/core/utils/console.dart';
+import 'package:cano/core/utils/utils.dart';
 import 'package:cano/features/app/routes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
@@ -11,6 +12,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 import '../utils/globals.dart';
+import 'hive.manager.dart';
 
 class ZenonManager {
   static final zenon = Zenon();
@@ -115,5 +117,30 @@ class ZenonManager {
       console.error(e.toString());
       return [];
     }
+  }
+
+  static void reset() async {
+    // delete directories
+    final success = await Utils.deleteDirectory(znnDefaultPaths.main);
+
+    if (!success) {
+      return console
+          .error('failed to delete directory: ${znnDefaultPaths.main.path}');
+    }
+
+    // re-init directories
+    await ZenonManager.initPaths();
+
+    // unset default KeyStore
+    ZenonManager.setKeyStore(null);
+
+    // Erase data
+    PersistenceController.to.box.erase();
+    HiveManager.reset();
+
+    // temporary
+    viewingAddress = null;
+    console.info('successfully reset!');
+    Get.offNamedUntil(Routes.main, (route) => false);
   }
 }

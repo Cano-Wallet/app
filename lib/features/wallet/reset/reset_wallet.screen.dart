@@ -1,7 +1,9 @@
+import 'package:cano/core/managers/zenon.manager.dart';
 import 'package:cano/features/general/centered_placeholder.widget.dart';
 import 'package:cano/features/wallet/reset/reset_wallet_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 class ResetWalletScreen extends GetView<ResetWalletScreenController> {
   const ResetWalletScreen({Key? key}) : super(key: key);
@@ -15,21 +17,23 @@ class ResetWalletScreen extends GetView<ResetWalletScreenController> {
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: CenteredPlaceholder(
-          iconData: Icons.warning,
+          iconData: LineIcons.exclamationTriangle,
           message:
               'All your wallet data will be erased permanently. Make sure you have a backup of your seed and passphrase before you proceed with erasing the wallet',
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ElevatedButton(
+              TextButton.icon(
                 onPressed: Get.back,
-                child: const Text('Cancel'),
+                label: const Text('Cancel'),
+                icon: const Icon(LineIcons.times),
               ),
               const SizedBox(width: 20),
-              ElevatedButton(
-                onPressed: controller.reset,
-                child: const Text('Reset'),
-              )
+              TextButton.icon(
+                onPressed: ZenonManager.reset,
+                label: const Text('Reset'),
+                icon: const Icon(LineIcons.syncIcon),
+              ),
             ],
           ),
         ),

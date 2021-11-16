@@ -1,3 +1,4 @@
+import 'package:cano/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,19 +24,19 @@ class APIPlayground extends StatelessWidget {
             const Divider(),
             TextField(
               controller: controller.rpcUrlController,
-              decoration: const InputDecoration(
+              decoration: Styles.inputDecoration.copyWith(
                 labelText: 'JSON-RPC URL',
               ),
             ),
             TextField(
               controller: controller.methodController,
-              decoration: const InputDecoration(
+              decoration: Styles.inputDecoration.copyWith(
                 labelText: 'Method',
               ),
             ),
             TextField(
               controller: controller.parametersController,
-              decoration: const InputDecoration(
+              decoration: Styles.inputDecoration.copyWith(
                 labelText: 'Parameters',
                 hintText:
                     'Supports multiple types in array: String, int, double',

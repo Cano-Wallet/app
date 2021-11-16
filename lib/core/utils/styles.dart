@@ -16,4 +16,15 @@ class Styles {
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
+
+  static final inputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10.0),
+  );
+
+  static final inputDecoration = InputDecoration(
+    enabledBorder: inputBorder,
+    errorBorder: inputBorder,
+    focusedBorder: inputBorder,
+    focusedErrorBorder: inputBorder,
+  );
 }

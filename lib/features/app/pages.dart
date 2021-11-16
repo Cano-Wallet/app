@@ -39,11 +39,14 @@ import 'package:cano/features/wallet/create_password/create_password.screen.dart
 import 'package:cano/features/wallet/create_password/create_password_screen.controller.dart';
 import 'package:cano/features/wallet/import/import_wallet.screen.dart';
 import 'package:cano/features/wallet/import/import_wallet_screen.controller.dart';
+import 'package:cano/features/wallet/import/unlock_vault/unlock_vault.screen.dart';
+import 'package:cano/features/wallet/import/unlock_vault/unlock_vault_screen.controller.dart';
 import 'package:cano/features/wallet/reset/reset_wallet.screen.dart';
 import 'package:cano/features/wallet/reset/reset_wallet_screen.controller.dart';
 import 'package:cano/features/wallet/unlock/unlock_wallet.screen.dart';
 import 'package:cano/features/wallet/unlock/unlock_wallet_screen.controller.dart';
 import 'package:cano/features/welcome/welcome.screen.dart';
+import 'package:cano/features/welcome/welcome_screen.controller.dart';
 import 'package:get/get.dart';
 
 import 'routes.dart';
@@ -87,6 +90,11 @@ class AppPages {
       name: Routes.importWallet,
       page: () => const ImportWalletScreen(),
       binding: ImportWalletScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.unlockVault,
+      page: () => const UnlockVaultScreen(),
+      binding: UnlockVaultScreenBinding(),
     ),
     GetPage(
       name: Routes.confirmSeed,
@@ -154,6 +162,7 @@ class AppPages {
     GetPage(
       name: Routes.welcome,
       page: () => const WelcomeScreen(),
+      binding: WelcomeScreenBinding(),
     ),
     GetPage(
       name: Routes.notifications,

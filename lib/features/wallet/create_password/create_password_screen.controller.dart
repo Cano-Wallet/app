@@ -30,7 +30,7 @@ class CreateWalletPasswordScreenController extends GetxController
 
   // FUNCTIONS
 
-  void continuePressed() async {
+  void confirm() async {
     // TODO: improve validation
     if (passwordController.text != passwordConfirmController.text) {
       UIUtils.showSnackBar(

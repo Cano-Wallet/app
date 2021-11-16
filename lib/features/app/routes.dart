@@ -4,6 +4,7 @@ abstract class Routes {
   // WALLET SCREENS
   static const createWallet = '/create_wallet';
   static const importWallet = '/import_wallet';
+  static const unlockVault = '/unlock_vault';
   static const confirmSeed = '/confirm_seed';
   static const unlockWallet = '/unlock_wallet';
   static const resetWallet = '/rese_wallet';

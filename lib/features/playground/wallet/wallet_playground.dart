@@ -1,3 +1,4 @@
+import 'package:cano/core/utils/styles.dart';
 import 'package:cano/features/playground/wallet/wallet_playground.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,9 +33,10 @@ class WalletPlayground extends StatelessWidget {
               controller: controller.mnemonicController,
               minLines: 3,
               maxLines: 3,
-              onChanged: (text) => controller.process(),
-              decoration: const InputDecoration(
-                labelText: 'Mnemonic Seed Phrase',
+              onChanged: (text) => controller.process,
+              onSubmitted: (text) => controller.process,
+              decoration: Styles.inputDecoration.copyWith(
+                hintText: 'Mnemonic Seed Phrase',
               ),
             ),
             const SizedBox(height: 10),

@@ -1,6 +1,7 @@
 import 'package:cano/core/utils/console.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 
 import 'import_wallet_screen.controller.dart';
 
@@ -17,35 +18,30 @@ class ImportWalletScreen extends GetView<ImportWalletScreenController>
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Import using your seed phrase'),
-              const SizedBox(height: 10),
-              controller.passphraseCard,
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: controller.importSeed,
-                child: const Text('Continue'),
-              ),
-              const Divider(),
-              TextFormField(
-                controller: controller.passwordController,
-                obscureText: true,
-                enableSuggestions: false,
-                autocorrect: false,
-                decoration: const InputDecoration(
-                  hintText: 'KeyStore Password',
+          child: Container(
+            constraints: const BoxConstraints(maxWidth: 500),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Import your Seed',
+                  style: TextStyle(fontSize: 20),
                 ),
-                // autovalidateMode: AutovalidateMode.onUserInteraction,
-                // validator: (text) => controller.validateSeed(text!), // TODO: validate a strong password
-              ),
-              const SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: controller.importKeyStoreFile,
-                child: const Text('Import KeyStore File'),
-              ),
-            ],
+                controller.passphraseCard,
+                const SizedBox(height: 10),
+                TextButton.icon(
+                  onPressed: controller.importSeed,
+                  label: const Text('Continue'),
+                  icon: const Icon(LineIcons.arrowRight),
+                ),
+                const Divider(height: 20),
+                TextButton.icon(
+                  onPressed: controller.importKeyStoreFile,
+                  label: const Text('Import Keystore File'),
+                  icon: const Icon(LineIcons.download),
+                ),
+              ],
+            ),
           ),
         ),
       ),

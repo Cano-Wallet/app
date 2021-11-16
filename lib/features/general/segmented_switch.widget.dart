@@ -21,14 +21,12 @@ class SegmentedSwitch extends StatelessWidget {
       child: TabBar(
         tabs: tabs,
         indicatorSize: TabBarIndicatorSize.tab,
-        labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-        // labelColor: GlobalController.to.segmentedSwitchTextColor,
+        labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
         unselectedLabelColor: Colors.grey,
         isScrollable: true,
         onTap: onChanged,
         indicator: const BubbleTabIndicator(
-          indicatorHeight: 25.0,
-          // indicatorColor: GlobalController.to.getThemeColor,
+          indicatorHeight: 30.0,
           tabBarIndicatorSize: TabBarIndicatorSize.tab,
         ),
       ),

@@ -1,13 +1,16 @@
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
-// VALUES
+// PROJECT
+const kProjectDescription =
+    'A 3rd party & cross-platform wallet\nfor Zenon Network';
+const kProjectGithubUrl = 'https://github.com/Cano-Wallet/app';
 
+// DEVELOPER
 const kDeveloperName = 'Oliver Martinez';
 const kDeveloperTwitterHandle = '@nemoryoliver';
 const kDeveloperTwitterUrl = 'https://twitter.com/nemoryoliver';
 
-const kProjectGithubUrl = 'https://github.com/nemoryoliver/znn_playground';
-
+// ZENON
 const kZenonSDKUrl = 'https://pub.dev/packages/znn_sdk_dart';
 const kZenonTwitterUrl = 'https://twitter.com/zenon_network';
 const kZenonMediumUrl = 'http://medium.com/@zenon.network';
@@ -19,6 +22,7 @@ const kZenonDiscordUrl = 'https://discord.com/invite/XDDjECy';
 const kZenonYouTubeUrl =
     'https://www.youtube.com/channel/UCDb8ZtqBt6l5l4HugCnJwhQ';
 
+// TEST
 const kTestAddress = 'z1qpjzv9humm37lk0wkq5l4m2vcpmxuwgtxn5fs2';
 const kTestMnemonic =
     'inner benefit antique boring oxygen number material skate ivory maple spike stick noise follow guide cause clown speak fortune carpet shy lunch auto indoor';

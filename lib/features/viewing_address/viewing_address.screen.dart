@@ -1,8 +1,10 @@
 import 'package:cano/core/controllers/persistence.controller.dart';
 import 'package:cano/core/utils/globals.dart';
+import 'package:cano/core/utils/styles.dart';
 import 'package:cano/features/app/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_icons/line_icons.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 // TODO: scrap this when mobile support is out
@@ -20,6 +22,17 @@ class ViewingAddressScreen extends StatelessWidget {
       } else {
         return null;
       }
+    }
+
+    void submit() {
+      if (!formKey.currentState!.validate()) return;
+
+      // save viewing address to persistence
+      PersistenceController.to.viewingAddress.val = addressController.text;
+      // set global viewing address
+      viewingAddress = Address.parse(addressController.text);
+      // go to main screen
+      Get.offNamedUntil(Routes.main, (route) => false);
     }
 
     return Scaffold(
@@ -43,34 +56,25 @@ class ViewingAddressScreen extends StatelessWidget {
                     maxLines: 2,
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontWeight: FontWeight.w700),
-                    decoration: const InputDecoration(
-                      hintText: 'Your Wallet Address',
-                    ),
                     textInputAction: TextInputAction.next,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (text) => validateAddress(text!),
+                    onFieldSubmitted: (text) => submit,
+                    decoration: Styles.inputDecoration.copyWith(
+                      hintText: 'Your Wallet Address',
+                    ),
                   ),
-                  ElevatedButton(
-                    child: const Text('Continue'),
-                    onPressed: () {
-                      if (!formKey.currentState!.validate()) return;
-
-                      // save viewing address to persistence
-                      PersistenceController.to.viewingAddress.val =
-                          addressController.text;
-                      // set global viewing address
-                      viewingAddress = Address.parse(addressController.text);
-                      // go to main screen
-                      Get.offNamedUntil(Routes.main, (route) => false);
-                    },
+                  TextButton.icon(
+                    label: const Text('Continue'),
+                    icon: const Icon(LineIcons.arrowRight),
+                    onPressed: submit,
                   ),
                   const Divider(),
                   const Text('or'),
-                  ElevatedButton(
-                    child: const Text('Use Provided Test Address'),
-                    onPressed: () {
-                      addressController.text = kTestAddress;
-                    },
+                  TextButton.icon(
+                    label: const Text('Use Provided Test Address'),
+                    icon: const Icon(LineIcons.arrowRight),
+                    onPressed: () => addressController.text = kTestAddress,
                   ),
                 ],
               ),

@@ -15,7 +15,8 @@ class CenteredPlaceholder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 500),
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
           child: Column(
@@ -29,7 +30,7 @@ class CenteredPlaceholder extends StatelessWidget {
                 style: const TextStyle(fontSize: 16, color: Colors.grey),
               ),
               if (child != null) ...[
-                const SizedBox(height: 10),
+                const SizedBox(height: 25),
                 child!,
               ]
             ],

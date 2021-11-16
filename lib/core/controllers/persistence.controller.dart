@@ -14,9 +14,10 @@ class PersistenceController extends GetxController with ConsoleMixin {
   final viewingAddress = ''.val('viewing address');
 
   // ZENON
-  final nodeAddress = 'peers.znn.space'.val('node address');
+  final nodeAddress = 'peers.znn.space:35998'.val('node address');
 
   // GENERAL
+  final maxUnlockAttempts = 5.val('max unlock attempts');
   final lastBuildNumber = 0.val('last build number');
   final currentId = ''.val('current id');
   final localeCode = 'en'.val('locale code');

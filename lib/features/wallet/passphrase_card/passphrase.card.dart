@@ -1,4 +1,5 @@
 import 'package:cano/core/utils/console.dart';
+import 'package:cano/core/utils/styles.dart';
 import 'package:cano/features/general/segmented_switch.widget.dart';
 import 'package:cano/features/wallet/passphrase_card/passphrase_card.controller.dart';
 import 'package:flutter/material.dart';
@@ -33,12 +34,16 @@ class PassphraseCard extends GetWidget<PassphraseCardController>
             onChanged: controller.strengthIndexChanged,
           ),
         ],
+        const SizedBox(height: 20),
         TextFormField(
           controller: controller.seedController,
           minLines: 5,
           maxLines: 5,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           validator: (text) => controller.validateSeed(text!),
+          decoration: Styles.inputDecoration.copyWith(
+            hintText: 'Mnemonic Seed Phrase',
+          ),
         ),
       ],
     );
