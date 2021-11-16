@@ -1,4 +1,4 @@
-import 'package:app/core/utils/console.dart';
+import 'package:cano/core/utils/console.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

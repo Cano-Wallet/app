@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:app/core/controllers/persistence.controller.dart';
-import 'package:app/core/utils/console.dart';
-import 'package:app/features/app/routes.dart';
+import 'package:cano/core/controllers/persistence.controller.dart';
+import 'package:cano/core/utils/console.dart';
+import 'package:cano/features/app/routes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:package_info_plus/package_info_plus.dart';

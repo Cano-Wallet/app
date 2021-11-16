@@ -1,6 +1,6 @@
-import 'package:app/core/utils/globals.dart';
-import 'package:app/features/app/routes.dart';
-import 'package:app/features/general/dicebear_avatar.widget.dart';
+import 'package:cano/core/utils/globals.dart';
+import 'package:cano/features/app/routes.dart';
+import 'package:cano/features/general/dicebear_avatar.widget.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

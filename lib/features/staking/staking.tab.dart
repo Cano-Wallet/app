@@ -1,7 +1,7 @@
-import 'package:app/core/utils/styles.dart';
-import 'package:app/features/app/routes.dart';
-import 'package:app/features/general/z_card.widget.dart';
-import 'package:app/features/staking/staking_tab.controller.dart';
+import 'package:cano/core/utils/styles.dart';
+import 'package:cano/features/app/routes.dart';
+import 'package:cano/features/general/z_card.widget.dart';
+import 'package:cano/features/staking/staking_tab.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';

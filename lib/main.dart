@@ -1,4 +1,4 @@
-import 'package:app/features/general/connectivity/connectivity_bar.controller.dart';
+import 'package:cano/features/general/connectivity/connectivity_bar.controller.dart';
 import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

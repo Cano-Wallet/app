@@ -1,4 +1,4 @@
-import 'package:app/features/pillars/pillar_list/pillar_listview.controller.dart';
+import 'package:cano/features/pillars/pillar_list/pillar_listview.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -1,5 +1,5 @@
-name: app
-description: A 3rd party wallet for Zenon Network
+name: cano
+description: A 3rd party wallet for https://zenon.network
 publish_to: "none"
 version: 0.1.1+1
 

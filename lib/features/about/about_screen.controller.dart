@@ -1,6 +1,6 @@
-import 'package:app/core/utils/console.dart';
-import 'package:app/core/utils/globals.dart';
-import 'package:app/core/utils/utils.dart';
+import 'package:cano/core/utils/console.dart';
+import 'package:cano/core/utils/globals.dart';
+import 'package:cano/core/utils/utils.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';

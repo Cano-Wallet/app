@@ -1,5 +1,5 @@
-import 'package:app/core/utils/console.dart';
-import 'package:app/features/app/routes.dart';
+import 'package:cano/core/utils/console.dart';
+import 'package:cano/features/app/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

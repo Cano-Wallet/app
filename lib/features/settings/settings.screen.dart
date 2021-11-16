@@ -1,6 +1,6 @@
-import 'package:app/core/managers/hive.manager.dart';
-import 'package:app/features/app/routes.dart';
-import 'package:app/features/settings/settings_screen.controller.dart';
+import 'package:cano/core/managers/hive.manager.dart';
+import 'package:cano/features/app/routes.dart';
+import 'package:cano/features/settings/settings_screen.controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

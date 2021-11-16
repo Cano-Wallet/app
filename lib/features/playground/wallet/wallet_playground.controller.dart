@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:bip39/bip39.dart' as bip39;
-import 'package:app/core/utils/console.dart';
-import 'package:app/core/utils/globals.dart';
-import 'package:app/core/utils/utils.dart';
-import 'package:app/core/managers/zenon.manager.dart';
+import 'package:cano/core/utils/console.dart';
+import 'package:cano/core/utils/globals.dart';
+import 'package:cano/core/utils/utils.dart';
+import 'package:cano/core/managers/zenon.manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hex/hex.dart';

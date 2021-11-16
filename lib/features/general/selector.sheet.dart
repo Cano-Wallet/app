@@ -1,5 +1,5 @@
-import 'package:app/core/animations/animations.dart';
-import 'package:app/core/utils/console.dart';
+import 'package:cano/core/animations/animations.dart';
+import 'package:cano/core/utils/console.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supercharged/supercharged.dart';

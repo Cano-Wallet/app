@@ -1,7 +1,7 @@
-import 'package:app/core/utils/console.dart';
-import 'package:app/features/app/routes.dart';
-import 'package:app/features/wallet/passphrase_card/passphrase.card.dart';
-import 'package:app/features/wallet/passphrase_card/passphrase_card.controller.dart';
+import 'package:cano/core/utils/console.dart';
+import 'package:cano/features/app/routes.dart';
+import 'package:cano/features/wallet/passphrase_card/passphrase.card.dart';
+import 'package:cano/features/wallet/passphrase_card/passphrase_card.controller.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 

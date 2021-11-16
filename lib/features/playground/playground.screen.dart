@@ -1,7 +1,7 @@
-import 'package:app/core/utils/console.dart';
-import 'package:app/features/general/z_tab.widget.dart';
-import 'package:app/features/playground/playground_screen.controller.dart';
-import 'package:app/features/playground/wallet/wallet_playground.dart';
+import 'package:cano/core/utils/console.dart';
+import 'package:cano/features/general/z_tab.widget.dart';
+import 'package:cano/features/playground/playground_screen.controller.dart';
+import 'package:cano/features/playground/wallet/wallet_playground.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

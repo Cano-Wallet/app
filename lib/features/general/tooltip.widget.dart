@@ -1,4 +1,4 @@
-// import 'package:app/core/controllers/persistence.controller.dart';
+// import 'package:cano/core/controllers/persistence.controller.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 // import 'package:supercharged_dart/supercharged_dart.dart';

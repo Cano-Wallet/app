@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:app/core/animations/animations.dart';
-import 'package:app/core/controllers/base_list.controller.dart';
-import 'package:app/core/utils/extensions.dart';
-import 'package:app/core/utils/globals.dart';
-import 'package:app/core/utils/utils.dart';
-import 'package:app/features/general/selector.sheet.dart';
-import 'package:app/features/json_viewer/json_viewer.screen.dart';
+import 'package:cano/core/animations/animations.dart';
+import 'package:cano/core/controllers/base_list.controller.dart';
+import 'package:cano/core/utils/extensions.dart';
+import 'package:cano/core/utils/globals.dart';
+import 'package:cano/core/utils/utils.dart';
+import 'package:cano/features/general/selector.sheet.dart';
+import 'package:cano/features/json_viewer/json_viewer.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';

@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:app/core/utils/console.dart';
-import 'package:app/core/utils/ui_utils.dart';
+import 'package:cano/core/utils/console.dart';
+import 'package:cano/core/utils/ui_utils.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

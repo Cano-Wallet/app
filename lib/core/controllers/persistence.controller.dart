@@ -1,4 +1,4 @@
-import 'package:app/core/utils/console.dart';
+import 'package:cano/core/utils/console.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

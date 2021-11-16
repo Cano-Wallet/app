@@ -1,10 +1,10 @@
-import 'package:app/core/controllers/persistence.controller.dart';
-import 'package:app/core/managers/hive.manager.dart';
-import 'package:app/core/utils/console.dart';
-import 'package:app/core/utils/globals.dart';
-import 'package:app/core/utils/utils.dart';
-import 'package:app/core/managers/zenon.manager.dart';
-import 'package:app/features/app/routes.dart';
+import 'package:cano/core/controllers/persistence.controller.dart';
+import 'package:cano/core/managers/hive.manager.dart';
+import 'package:cano/core/utils/console.dart';
+import 'package:cano/core/utils/globals.dart';
+import 'package:cano/core/utils/utils.dart';
+import 'package:cano/core/managers/zenon.manager.dart';
+import 'package:cano/features/app/routes.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';

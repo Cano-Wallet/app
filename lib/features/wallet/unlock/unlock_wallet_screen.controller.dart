@@ -1,8 +1,8 @@
-import 'package:app/core/managers/zenon.manager.dart';
-import 'package:app/core/utils/console.dart';
-import 'package:app/core/utils/globals.dart';
-import 'package:app/core/utils/ui_utils.dart';
-import 'package:app/features/app/routes.dart';
+import 'package:cano/core/managers/zenon.manager.dart';
+import 'package:cano/core/utils/console.dart';
+import 'package:cano/core/utils/globals.dart';
+import 'package:cano/core/utils/ui_utils.dart';
+import 'package:cano/features/app/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';

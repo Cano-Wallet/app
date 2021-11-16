@@ -1,4 +1,4 @@
-import 'package:app/features/general/titled_divider.widget.dart';
+import 'package:cano/features/general/titled_divider.widget.dart';
 import 'package:flutter/material.dart';
 
 class ZCard extends StatelessWidget {

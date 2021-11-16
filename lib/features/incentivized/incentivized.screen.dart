@@ -1,4 +1,4 @@
-import 'package:app/features/incentivized/incentivized_screen.controller.dart';
+import 'package:cano/features/incentivized/incentivized_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 

@@ -1,5 +1,5 @@
-import 'package:app/core/managers/hive.manager.dart';
-import 'package:app/core/models/hive/address.hive.dart';
+import 'package:cano/core/managers/hive.manager.dart';
+import 'package:cano/core/models/hive/address.hive.dart';
 import 'package:get/get.dart';
 
 class AddressesScreenBinding extends Bindings {

@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:app/core/managers/hive.manager.dart';
-import 'package:app/core/models/hive/address.hive.dart';
-import 'package:app/core/utils/console.dart';
+import 'package:cano/core/managers/hive.manager.dart';
+import 'package:cano/core/models/hive/address.hive.dart';
+import 'package:cano/core/utils/console.dart';
 import 'package:get/get.dart';
 
 class ContactsScreenBinding extends Bindings {

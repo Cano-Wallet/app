@@ -1,5 +1,5 @@
-import 'package:app/features/general/centered_placeholder.widget.dart';
-import 'package:app/features/wallet/reset/reset_wallet_screen.controller.dart';
+import 'package:cano/features/general/centered_placeholder.widget.dart';
+import 'package:cano/features/wallet/reset/reset_wallet_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

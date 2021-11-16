@@ -1,5 +1,5 @@
-import 'package:app/core/controllers/persistence.controller.dart';
-import 'package:app/core/utils/console.dart';
+import 'package:cano/core/controllers/persistence.controller.dart';
+import 'package:cano/core/utils/console.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';

@@ -1,4 +1,4 @@
-import 'package:app/features/sentinels/sentinel_list/sentinel_listview.controller.dart';
+import 'package:cano/features/sentinels/sentinel_list/sentinel_listview.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

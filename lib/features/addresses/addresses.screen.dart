@@ -1,7 +1,7 @@
-import 'package:app/core/animations/animations.dart';
-import 'package:app/core/managers/hive.manager.dart';
-import 'package:app/core/utils/console.dart';
-import 'package:app/features/general/centered_placeholder.widget.dart';
+import 'package:cano/core/animations/animations.dart';
+import 'package:cano/core/managers/hive.manager.dart';
+import 'package:cano/core/utils/console.dart';
+import 'package:cano/features/general/centered_placeholder.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';

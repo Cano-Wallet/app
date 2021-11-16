@@ -1,8 +1,8 @@
-import 'package:app/core/models/hive/address.hive.dart';
-import 'package:app/core/models/hive/node.hive.dart';
-import 'package:app/core/models/hive/notification.hive.dart';
-import 'package:app/core/models/hive/token.hive.dart';
-import 'package:app/core/utils/console.dart';
+import 'package:cano/core/models/hive/address.hive.dart';
+import 'package:cano/core/models/hive/node.hive.dart';
+import 'package:cano/core/models/hive/notification.hive.dart';
+import 'package:cano/core/models/hive/token.hive.dart';
+import 'package:cano/core/utils/console.dart';
 import 'package:hive/hive.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
