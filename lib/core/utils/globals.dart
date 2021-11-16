@@ -5,9 +5,19 @@ import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 const kDeveloperName = 'Oliver Martinez';
 const kDeveloperTwitterHandle = '@nemoryoliver';
 const kDeveloperTwitterUrl = 'https://twitter.com/nemoryoliver';
-const kOpenSourceUrl = 'https://github.com/nemoryoliver/znn_playground';
 
-Address? viewingAddress;
+const kProjectGithubUrl = 'https://github.com/nemoryoliver/znn_playground';
+
+const kZenonSDKUrl = 'https://pub.dev/packages/znn_sdk_dart';
+const kZenonTwitterUrl = 'https://twitter.com/zenon_network';
+const kZenonMediumUrl = 'http://medium.com/@zenon.network';
+const kZenonTelegramUrl = 'https://t.me/joinchat/MLyPehLIbJj1nw1XOOOltg';
+const kZenonGithubUrl = 'http://github.com/zenonnetwork';
+const kZenonBitcoinTalkUrl =
+    'https://bitcointalk.org/index.php?topic=5279643.msg55303681#msg55303681';
+const kZenonDiscordUrl = 'https://discord.com/invite/XDDjECy';
+const kZenonYouTubeUrl =
+    'https://www.youtube.com/channel/UCDb8ZtqBt6l5l4HugCnJwhQ';
 
 const kTestAddress = 'z1qpjzv9humm37lk0wkq5l4m2vcpmxuwgtxn5fs2';
 const kTestMnemonic =
@@ -20,3 +30,6 @@ final communityFundAddress =
 
 final developerFundAddress =
     Address.parse('z1qpjzv9humm37lk0wkq5l4m2vcpmxuwgtxn5fs2');
+
+// variable to hold current address - temporary
+Address? viewingAddress;

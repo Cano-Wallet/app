@@ -1,7 +1,4 @@
-import 'package:app/core/controllers/global.controller.dart';
-import 'package:app/core/controllers/persistence.controller.dart';
 import 'package:app/core/managers/hive.manager.dart';
-import 'package:app/core/translations/constants.dart';
 import 'package:app/features/app/routes.dart';
 import 'package:app/features/settings/settings_screen.controller.dart';
 import 'package:flutter/foundation.dart';
