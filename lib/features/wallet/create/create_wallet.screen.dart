@@ -1,4 +1,5 @@
 import 'package:cano/core/utils/console.dart';
+import 'package:cano/core/utils/globals.dart';
 import 'package:cano/features/wallet/create/create_wallet_screen.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class CreateWalletScreen extends GetView<CreateWalletScreenController>
         padding: const EdgeInsets.all(15),
         child: Center(
           child: Container(
-            constraints: const BoxConstraints(maxWidth: 500),
+            constraints: kMaxContainerConstraints,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

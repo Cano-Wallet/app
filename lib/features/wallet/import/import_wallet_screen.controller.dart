@@ -1,7 +1,6 @@
 import 'package:cano/core/utils/console.dart';
 import 'package:cano/core/utils/ui_utils.dart';
 import 'package:cano/core/utils/utils.dart';
-import 'package:cano/core/managers/zenon.manager.dart';
 import 'package:cano/features/app/routes.dart';
 import 'package:cano/features/wallet/passphrase_card/passphrase.card.dart';
 import 'package:cano/features/wallet/passphrase_card/passphrase_card.controller.dart';

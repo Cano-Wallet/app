@@ -1,7 +1,7 @@
 name: cano
 description: A 3rd party wallet for https://zenon.network
 publish_to: "none"
-version: 0.1.1+1
+version: 0.2.0+1
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

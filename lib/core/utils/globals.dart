@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 // PROJECT
 const kProjectDescription =
     'A 3rd party & cross-platform wallet\nfor Zenon Network';
 const kProjectGithubUrl = 'https://github.com/Cano-Wallet/app';
+const kMaxContainerConstraints = BoxConstraints(maxWidth: 500);
 
 // DEVELOPER
 const kDeveloperName = 'Oliver Martinez';
