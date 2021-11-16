@@ -1,7 +1,7 @@
 name: app
-description: A community wallet for Zenon
+description: A 3rd party wallet for Zenon Network
 publish_to: "none"
-version: 0.1.0+1
+version: 0.1.1+1
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -16,15 +16,26 @@ dependencies:
   # STATE MANAGEMENT
   get: 4.3.8 # state management
 
-  # CRYPTO
+  # CRYPTOGRAPHY
   hex: ^0.2.0
   bip39: ^1.0.6
+
+  # NETWORK
+  http: ^0.13.4
+  connectivity_plus: 2.0.3
+
+  # IO
+  hive: 2.0.4
+  hive_flutter: 1.1.0
+  get_storage: 2.0.3 # persistence
+  path_provider: 2.0.7
+  file_picker: 4.2.3
 
   # TOOLS
   supercharged: 2.1.1
   app_settings: 4.1.1
   flutter_linkify: 5.0.2
-  url_launcher: 6.0.12
+  url_launcher: 6.0.13
   intl: 0.17.0 # number formatting
   timeago: 3.1.0
   logger: ^1.1.0
@@ -34,17 +45,6 @@ dependencies:
   device_info_plus: 3.1.1
   package_info_plus: ^1.3.0
 
-  # NETWORK
-  http: ^0.13.4
-  connectivity_plus: 2.0.2
-
-  # IO
-  hive: 2.0.4
-  hive_flutter: 1.1.0
-  get_storage: 2.0.3 # persistence
-  path_provider: ^2.0.6
-  file_picker: 4.2.1
-
   # UI
   flutter_svg: 0.23.0+1
   bubble_tab_indicator: 0.1.6
@@ -53,7 +53,7 @@ dependencies:
   desktop_window: ^0.4.0 #set desktop window size
   shimmer: 2.0.0 # loading effect
   simple_animations: 4.0.1
-  flex_color_scheme: ^3.0.1 # themes
+  flex_color_scheme: 4.0.0 # themes
 
 dev_dependencies:
   flutter_test:

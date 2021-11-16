@@ -13,6 +13,9 @@ class PersistenceController extends GetxController with ConsoleMixin {
   // TEMPORARY
   final viewingAddress = ''.val('viewing address');
 
+  // ZENON
+  final nodeAddress = 'peers.znn.space'.val('node address');
+
   // GENERAL
   final lastBuildNumber = 0.val('last build number');
   final currentId = ''.val('current id');

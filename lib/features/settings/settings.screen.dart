@@ -4,6 +4,7 @@ import 'package:app/core/managers/hive.manager.dart';
 import 'package:app/core/translations/constants.dart';
 import 'package:app/features/app/routes.dart';
 import 'package:app/features/settings/settings_screen.controller.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
@@ -86,11 +87,27 @@ class SettingsScreen extends GetView<SettingsScreenController> {
         // ),
         const Divider(),
         ListTile(
+          leading: const Icon(LineIcons.lock),
+          trailing: const Icon(LineIcons.angleRight),
+          title: const Text('Lock Wallet'),
+          onTap: () => Get.offAndToNamed(Routes.unlockWallet),
+        ),
+        const Divider(),
+        ListTile(
           leading: const Icon(LineIcons.syncIcon),
           trailing: const Icon(LineIcons.angleRight),
           title: const Text('Reset Wallet'),
           onTap: () => Get.toNamed(Routes.resetWallet),
         ),
+        if (kDebugMode) ...[
+          const Divider(),
+          ListTile(
+            title: const Text('Playground'),
+            leading: const Icon(LineIcons.play),
+            onTap: () => Get.offAndToNamed(Routes.playground),
+          ),
+        ],
+        const Divider(),
       ],
     );
 

@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:app/core/managers/zenon.manager.dart';
 import 'package:app/core/utils/console.dart';
-import 'package:app/core/utils/globals.dart';
 import 'package:app/features/app/routes.dart';
 import 'package:app/features/general/connectivity/connectivity_bar.controller.dart';
 import 'package:flutter/material.dart';

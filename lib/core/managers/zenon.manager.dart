@@ -21,11 +21,11 @@ class ZenonManager {
   static Future<Address?> get address async => await keyPair?.address;
 
   static Future<bool> initClient() async {
-    // TODO: select the peer address from persistence
-    return await zenon.wsClient.initialize(
-      'ws://$kTestPeerHost:$kTestPeerPort',
-      retry: false,
-    );
+    final wsAddress = 'ws://${PersistenceController.to.nodeAddress.val}';
+    final initialized =
+        await zenon.wsClient.initialize(wsAddress, retry: false);
+    console.info('Running on: $wsAddress');
+    return initialized;
   }
 
   // set the current key store

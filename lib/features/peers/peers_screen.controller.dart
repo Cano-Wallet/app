@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:app/core/animations/animations.dart';
 import 'package:app/core/controllers/base_list.controller.dart';
+import 'package:app/core/controllers/persistence.controller.dart';
 import 'package:app/core/utils/extensions.dart';
+import 'package:app/core/utils/ui_utils.dart';
 import 'package:app/core/utils/utils.dart';
 import 'package:app/features/general/selector.sheet.dart';
 import 'package:app/features/json_viewer/json_viewer.screen.dart';
@@ -47,6 +49,24 @@ class PeersScreenController extends BaseListController {
 
     data.assignAll(object.peers);
 
+    // add the known peers
+
+    data.insert(
+      0,
+      Peer.fromJson({
+        'ip': 'peers.zenon.wiki',
+        'publicKey': 'Community Node',
+      }),
+    );
+
+    data.insert(
+      0,
+      Peer.fromJson({
+        'ip': 'peers.znn.space',
+        'publicKey': 'Official Node',
+      }),
+    );
+
     // empty / success state
     change(
       null,
@@ -57,6 +77,8 @@ class PeersScreenController extends BaseListController {
   @override
   Widget itemBuilder(context, index) {
     final object = data[index] as Peer;
+
+    if (object.ip.contains('157.245.159.233')) console.info(object.ip);
 
     return ListItemAnimation(
       child: ListTile(
@@ -70,6 +92,20 @@ class PeersScreenController extends BaseListController {
   void onTap(Peer object) {
     SelectorSheet(
       items: [
+        SelectorItem(
+          title: 'Set as Node',
+          leading: const Icon(LineIcons.wiredNetwork),
+          onSelected: () {
+            PersistenceController.to.nodeAddress.val = '${object.ip}:35998';
+            // TODO: localize
+            UIUtils.showSnackBar(
+              title: 'Node Address Set',
+              message: 'App restart is required to propagate changes',
+              icon: const Icon(LineIcons.copy),
+              seconds: 4,
+            );
+          },
+        ),
         SelectorItem(
           title: 'Copy',
           leading: const Icon(LineIcons.copy),

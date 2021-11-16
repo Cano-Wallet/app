@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:app/core/utils/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,11 +17,24 @@ class AboutScreen extends GetView<AboutScreenController> {
     final _content = ListView(
       shrinkWrap: true,
       children: [
-        const ListTile(
-          leading: Icon(LineIcons.code),
-          title: Text('ZNN Dart SDK version'),
-          subtitle: Text(znnSdkVersion),
+        const SizedBox(height: 20),
+        const FlutterLogo(size: 50),
+        const SizedBox(height: 15),
+        Obx(
+          () => Text(
+            '${controller.packageInfo.value?.appName}',
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+          ),
         ),
+        const SizedBox(height: 10),
+        // TODO: localize
+        const Text(
+          'A 3rd party wallet for Zenon Network',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.grey),
+        ),
+        const SizedBox(height: 50),
         const Divider(),
         ExpansionTile(
           leading: const Icon(LineIcons.wiredNetwork),
@@ -76,12 +91,11 @@ class AboutScreen extends GetView<AboutScreenController> {
             style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
           ),
           children: [
-            // for desktop users
-            // const ListTile(
-            //   leading: Icon(Icons.info),
-            //   title: Text('Client hostname'),
-            //   subtitle: Text('xx'),
-            // ),
+            ListTile(
+              leading: const Icon(Icons.info),
+              title: const Text('Client hostname'),
+              subtitle: Text(Platform.localHostname),
+            ),
             ListTile(
               leading: const Icon(Icons.info),
               title: const Text('Operating System'),
@@ -92,12 +106,11 @@ class AboutScreen extends GetView<AboutScreenController> {
               title: const Text('Operating System Version'),
               subtitle: Obx(() => Text('${controller.clientOsVersion}')),
             ),
-            // for desktop users
-            // const ListTile(
-            //   leading: Icon(Icons.info),
-            //   title: Text('Processors'),
-            //   subtitle: Text('xx'),
-            // ),
+            ListTile(
+              leading: const Icon(Icons.info),
+              title: const Text('Processors'),
+              subtitle: Text(Platform.numberOfProcessors.toString()),
+            ),
           ],
         ),
         const Divider(),
@@ -126,24 +139,82 @@ class AboutScreen extends GetView<AboutScreenController> {
           ],
         ),
         const Divider(),
-        const ExpansionTile(
-          leading: Icon(LineIcons.peopleCarry),
-          title: Text(
+        ExpansionTile(
+          leading: const Icon(LineIcons.peopleCarry),
+          title: const Text(
             'Community',
-            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w500,
+            ),
           ),
           children: <Widget>[
             ListTile(
-              title: Text(
-                'Soon...',
-                style: TextStyle(fontWeight: FontWeight.w700),
-              ),
-            )
+              leading: const Icon(LineIcons.twitter),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon Twitter'),
+              subtitle: const Text('@Zenon_Network'),
+              onTap: () => launch('https://twitter.com/zenon_network'),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.medium),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon Medium'),
+              subtitle: const Text('@zenon.network'),
+              onTap: () => launch('http://medium.com/@zenon.network'),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.telegram),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon Telegram'),
+              subtitle: const Text('t.me/zenonnetwork'),
+              onTap: () =>
+                  launch('https://t.me/joinchat/MLyPehLIbJj1nw1XOOOltg'),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.github),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon GitHub'),
+              subtitle: const Text('@zenonnetwork'),
+              onTap: () => launch('http://github.com/zenonnetwork'),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.bitcoin),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon Bitcoin Talk'),
+              subtitle: const Text('Topic: 5279643'),
+              onTap: () => launch(
+                  'https://bitcointalk.org/index.php?topic=5279643.msg55303681#msg55303681'),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.discord),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon Discord'),
+              subtitle: const Text('Zenon'),
+              onTap: () => launch('https://discord.com/invite/XDDjECy'),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.youtube),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon YouTube'),
+              subtitle: const Text('Zenon'),
+              onTap: () => launch(
+                  'https://www.youtube.com/channel/UCDb8ZtqBt6l5l4HugCnJwhQ'),
+            ),
           ],
         ),
         const Divider(),
         ListTile(
+          leading: const Icon(LineIcons.code),
+          trailing: const Icon(LineIcons.alternateExternalLink),
+          title: const Text('SDK Version'),
+          subtitle: const Text(znnSdkVersion),
+          onTap: () => launch('https://pub.dev/packages/znn_sdk_dart'),
+        ),
+        const Divider(),
+        ListTile(
           leading: const Icon(LineIcons.download),
+          trailing: const Icon(LineIcons.alternateExternalLink),
           title: const Text('Check for updates'),
           subtitle: Obx(() => Text(controller.appVersion)),
           onTap: () {
@@ -151,23 +222,24 @@ class AboutScreen extends GetView<AboutScreenController> {
           },
         ),
         const Divider(),
-        const SizedBox(height: 30),
-        const Text(
-          'Developed by: $kDeveloperName',
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.grey),
+        ListTile(
+          leading: const Icon(LineIcons.github),
+          trailing: const Icon(LineIcons.alternateExternalLink),
+          title: const Text('Open Source Code'),
+          subtitle: const Text(kOpenSourceUrl),
+          onTap: () => launch(kOpenSourceUrl),
         ),
-        const SizedBox(height: 10),
+        const Divider(),
+        const SizedBox(height: 20),
         TextButton.icon(
           icon: const Icon(LineIcons.twitter),
           label: const Text('Follow $kDeveloperTwitterHandle'),
           onPressed: () => launch(kDeveloperTwitterUrl),
         ),
-        const SizedBox(height: 10),
-        TextButton.icon(
-          icon: const Icon(LineIcons.github),
-          label: const Text('Open Source'),
-          onPressed: () => launch(kOpenSourceUrl),
+        const Text(
+          'Developer',
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.grey),
         ),
         const SizedBox(height: 50),
       ],
