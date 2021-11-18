@@ -26,24 +26,47 @@ class _PillarsTabState extends State<PillarsTab>
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Obx(
-              () => Text(
-                '${controller.znnRewards()} tZNN',
-                style: Styles.dashboardNumberStyle,
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: const [
+                    Text(
+                      'tZNN',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    SizedBox(width: 5),
+                    Icon(Icons.circle, color: Colors.green, size: 10)
+                  ],
+                ),
+                Obx(
+                  () => Text(
+                    controller.znnRewards(),
+                    style: Styles.dashboardNumberStyle,
+                  ),
+                ),
+              ],
             ),
             OutlinedButton(
               style: Styles.outlinedButtonStyle20,
+              child: const Text('Collect'),
               onPressed: () {
                 //
               },
-              child: const Text('Collect'),
             ),
           ],
         ),
       ),
-      // spacer
-      const SizedBox(height: 10),
+      const SizedBox(height: 15),
+      Align(
+        alignment: Alignment.centerLeft,
+        child: TextButton.icon(
+          icon: const Icon(LineIcons.trophy),
+          label: const Text('Rewards History'),
+          onPressed: () => Get.toNamed(Routes.pillarRewards),
+        ),
+      ),
+      const SizedBox(height: 15),
     ];
 
     final _content = Padding(

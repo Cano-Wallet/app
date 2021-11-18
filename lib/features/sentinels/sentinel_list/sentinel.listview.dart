@@ -12,7 +12,10 @@ class SentinelListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SentinelListViewController(headers: headers));
+    final controller = Get.put(SentinelListViewController(
+      headers: headers,
+    ));
+
     return controller.content();
   }
 }

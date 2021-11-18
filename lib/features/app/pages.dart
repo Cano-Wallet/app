@@ -14,16 +14,22 @@ import 'package:cano/features/notifications/notifications.screen.dart';
 import 'package:cano/features/notifications/notifications_screen.controller.dart';
 import 'package:cano/features/peers/peers.screen.dart';
 import 'package:cano/features/peers/peers_screen.controller.dart';
+import 'package:cano/features/pillars/rewards/pillar_rewards.screen.dart';
+import 'package:cano/features/pillars/rewards/pillar_rewards_screen.controller.dart';
 import 'package:cano/features/pillars/spawn/spawn.screen.dart';
 import 'package:cano/features/pillars/spawn/spawn_screen.controller.dart';
 import 'package:cano/features/plasma/plasma.screen.dart';
 import 'package:cano/features/plasma/plasma_screen.controller.dart';
 import 'package:cano/features/playground/playground.screen.dart';
 import 'package:cano/features/playground/playground_screen.controller.dart';
+import 'package:cano/features/sentinels/rewards/sentinel_rewards.screen.dart';
+import 'package:cano/features/sentinels/rewards/sentinel_rewards_screen.controller.dart';
 import 'package:cano/features/sentinels/spawn/spawn.screen.dart';
 import 'package:cano/features/sentinels/spawn/spawn_screen.controller.dart';
 import 'package:cano/features/settings/settings.screen.dart';
 import 'package:cano/features/settings/settings_screen.controller.dart';
+import 'package:cano/features/staking/rewards/staking_rewards.screen.dart';
+import 'package:cano/features/staking/rewards/staking_rewards_screen.controller.dart';
 import 'package:cano/features/staking/stake/stake.screen.dart';
 import 'package:cano/features/staking/stake/stake_screen.controller.dart';
 import 'package:cano/features/tokens/tokens.screen.dart';
@@ -59,7 +65,7 @@ class AppPages {
     GetPage(
       name: Routes.main,
       page: () => const MainScreen(),
-      binding: MainBinding(),
+      binding: MainScreenBinding(),
       transition: Transition.fadeIn,
     ),
 
@@ -149,14 +155,29 @@ class AppPages {
       binding: StakeScreenBinding(),
     ),
     GetPage(
+      name: Routes.stakingRewards,
+      page: () => const StakingRewardsScreen(),
+      binding: StakingRewardsScreenBinding(),
+    ),
+    GetPage(
       name: Routes.spawnPillar,
       page: () => const SpawnPillarScreen(),
       binding: SpawnPillarScreenBinding(),
     ),
     GetPage(
+      name: Routes.pillarRewards,
+      page: () => const PillarRewardsScreen(),
+      binding: PillarRewardsScreenBinding(),
+    ),
+    GetPage(
       name: Routes.spawnSentinel,
       page: () => const SpawnSentinelScreen(),
       binding: SpawnSentinelScreenBinding(),
+    ),
+    GetPage(
+      name: Routes.sentinelRewards,
+      page: () => const SentinelRewardsScreen(),
+      binding: SentinelRewardsScreenBinding(),
     ),
 
     GetPage(

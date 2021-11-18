@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:cano/core/utils/console.dart';
-import 'package:cano/core/utils/utils.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
@@ -12,8 +11,8 @@ class DualCoinStatsCardController extends GetxController
   // VARIABLES
 
   // PROPERTIES
-  final znn = ''.obs;
-  final qsr = ''.obs;
+  final znn = 0.obs;
+  final qsr = 0.obs;
 
   // GETTERS
 
@@ -30,11 +29,11 @@ class DualCoinStatsCardController extends GetxController
 
     final znnToken =
         await zenon.embedded.token.getByZts(TokenStandard.bySymbol('tZNN'));
-    znn.value = Utils.formatNumber(znnToken!.totalSupply);
+    znn.value = znnToken!.totalSupply;
 
     final qsrToken =
         await zenon.embedded.token.getByZts(TokenStandard.bySymbol('tQSR'));
-    qsr.value = Utils.formatNumber(qsrToken!.totalSupply);
+    qsr.value = qsrToken!.totalSupply;
 
     console.info('done');
   }

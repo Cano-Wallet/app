@@ -1,7 +1,11 @@
 import 'package:cano/core/utils/styles.dart';
+import 'package:cano/core/utils/utils.dart';
 import 'package:cano/features/general/z_card.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:pie_chart/pie_chart.dart';
+import 'package:znn_sdk_dart/znn_sdk_dart.dart';
+import 'package:supercharged/supercharged.dart';
 
 import 'balance_card.controller.dart';
 
@@ -12,39 +16,88 @@ class BalanceUI extends GetView<BalanceCardController> {
   Widget build(BuildContext context) {
     return ZCard(
       title: 'Balance',
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'tZNN',
-                style: TextStyle(color: Colors.grey),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: const [
+                      Text(
+                        'tZNN',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      SizedBox(width: 5),
+                      Icon(Icons.circle, color: Colors.green, size: 10)
+                    ],
+                  ),
+                  Obx(
+                    () => Text(
+                      Utils.formatCurrency(AmountUtils.addDecimals(
+                        controller.znn(),
+                        znnDecimals,
+                      )),
+                      style: Styles.dashboardNumberStyle,
+                    ),
+                  ),
+                ],
               ),
-              Obx(
-                () => Text(
-                  controller.znn(),
-                  style: Styles.dashboardNumberStyle,
-                ),
+              const SizedBox(height: 15),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: const [
+                      Text(
+                        'tQSR',
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      SizedBox(width: 5),
+                      Icon(Icons.circle, color: Colors.blue, size: 10)
+                    ],
+                  ),
+                  Obx(
+                    () => Text(
+                      Utils.formatCurrency(AmountUtils.addDecimals(
+                        controller.qsr(),
+                        qsrDecimals,
+                      )),
+                      style: Styles.dashboardNumberStyle,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
-          const SizedBox(height: 15),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'tQSR',
-                style: TextStyle(color: Colors.grey),
+          const SizedBox(width: 15),
+          Obx(
+            () => PieChart(
+              dataMap: {
+                "tZNN": controller.znn().toDouble(),
+                "tQSR": controller.qsr().toDouble(),
+              },
+              colorList: const [
+                Colors.green,
+                Colors.blueAccent,
+              ],
+              animationDuration: 800.milliseconds,
+              chartRadius: 600 / 10,
+              initialAngleInDegree: 0,
+              chartType: ChartType.disc,
+              ringStrokeWidth: 10,
+              legendOptions: const LegendOptions(
+                showLegends: false,
               ),
-              Obx(
-                () => Text(
-                  controller.qsr(),
-                  style: Styles.dashboardNumberStyle,
-                ),
+              chartValuesOptions: const ChartValuesOptions(
+                showChartValues: false,
               ),
-            ],
+              // gradientList: ---To add gradient colors---
+              // emptyColorGradient: ---Empty Color gradient---
+            ),
           ),
         ],
       ),

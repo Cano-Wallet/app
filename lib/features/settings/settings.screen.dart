@@ -82,6 +82,8 @@ class SettingsScreen extends GetView<SettingsScreenController> {
         //     // Get.updateLocale(locale);
         //   },
         // ),
+        // group wallet
+        // dump mnemonic
         const Divider(),
         ListTile(
           leading: const Icon(LineIcons.lock),

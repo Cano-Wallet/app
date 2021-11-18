@@ -36,6 +36,9 @@ class ViewingAddressScreen extends StatelessWidget {
     }
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('View Mode'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Center(
@@ -47,8 +50,15 @@ class ViewingAddressScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Text(
-                    'Since KeyStores are not yet fully supported for mobile in the current Zenon Dart SDK, mobile users are limited to viewing features only, for now.',
+                    "Why View Mode?",
                     textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Since KeyStores are not yet fully supported for mobile in the current Zenon Dart SDK.\nMobile users are limited to viewing features only, for now until the Zenon devs release the full source with mobile support.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey),
                   ),
                   const SizedBox(height: 30),
                   // TODO: do proper validation here
@@ -56,7 +66,6 @@ class ViewingAddressScreen extends StatelessWidget {
                     controller: addressController,
                     maxLines: 2,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontWeight: FontWeight.w700),
                     textInputAction: TextInputAction.next,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (text) => validateAddress(text!),
@@ -65,6 +74,7 @@ class ViewingAddressScreen extends StatelessWidget {
                       hintText: 'Your Wallet Address',
                     ),
                   ),
+                  const SizedBox(height: 15),
                   TextButton.icon(
                     label: const Text('Continue'),
                     icon: const Icon(LineIcons.arrowRight),

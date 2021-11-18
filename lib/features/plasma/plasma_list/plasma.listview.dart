@@ -13,7 +13,10 @@ class PlasmaListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(PlasmaListViewController(headers: headers));
+    final controller = Get.put(PlasmaListViewController(
+      headers: headers,
+    ));
+
     return controller.content();
   }
 }

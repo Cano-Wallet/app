@@ -17,6 +17,7 @@ class ZDrawer extends StatelessWidget {
           onTap: () => Get.toNamed(Routes.addresses),
           child: Column(
             children: [
+              const SizedBox(height: 10),
               DiceBearAvatar(
                 seed: viewingAddress.toString(),
                 size: 70,
@@ -82,9 +83,7 @@ class ZDrawer extends StatelessWidget {
       data: Get.isDarkMode ? darkTheme : lightTheme,
       child: Drawer(
         child: ListView.separated(
-          itemBuilder: (context, index) {
-            return items[index];
-          },
+          itemBuilder: (context, index) => items[index],
           separatorBuilder: (context, index) => const SizedBox(height: 15),
           itemCount: items.length,
         ),

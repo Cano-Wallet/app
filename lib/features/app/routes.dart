@@ -17,8 +17,11 @@ abstract class Routes {
   static const accelerator = '/accelerator';
   static const send = '/send';
   static const stake = '/stake';
+  static const stakingRewards = '/staking_rewards';
   static const spawnPillar = '/spawn_pillar';
+  static const pillarRewards = '/pillar_rewards';
   static const spawnSentinel = '/spawn_sentinel';
+  static const sentinelRewards = '/sentinel_rewards';
 
   static const peers = '/peers';
   static const addresses = '/addresses';

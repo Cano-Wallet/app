@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'project_listview.controller.dart';
+import 'pillar_rewards_listview.controller.dart';
 
-class ProjectListView extends StatelessWidget {
+class PillarRewardsListView extends StatelessWidget {
   final List<Widget> headers;
 
-  const ProjectListView({
+  const PillarRewardsListView({
     Key? key,
     this.headers = const [],
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProjectListViewController(
+    final controller = Get.put(PillarRewardsListViewController(
       headers: headers,
     ));
 

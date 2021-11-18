@@ -29,16 +29,36 @@ class _SentinelsTabState extends State<SentinelsTab>
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Row(
+                  children: const [
+                    Text(
+                      'tZNN',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    SizedBox(width: 5),
+                    Icon(Icons.circle, color: Colors.green, size: 10)
+                  ],
+                ),
                 Obx(
                   () => Text(
-                    '${controller.znnRewards()} tZNN',
+                    controller.znnRewards(),
                     style: Styles.dashboardNumberStyle,
                   ),
                 ),
                 const SizedBox(height: 15),
+                Row(
+                  children: const [
+                    Text(
+                      'tQSR',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    SizedBox(width: 5),
+                    Icon(Icons.circle, color: Colors.blue, size: 10)
+                  ],
+                ),
                 Obx(
                   () => Text(
-                    '${controller.qsrRewards()} tQSR',
+                    controller.qsrRewards(),
                     style: Styles.dashboardNumberStyle,
                   ),
                 ),
@@ -46,16 +66,24 @@ class _SentinelsTabState extends State<SentinelsTab>
             ),
             OutlinedButton(
               style: Styles.outlinedButtonStyle20,
+              child: const Text('Collect'),
               onPressed: () {
                 //
               },
-              child: const Text('Collect'),
             ),
           ],
         ),
       ),
-      // spacer
-      const SizedBox(height: 10),
+      const SizedBox(height: 15),
+      Align(
+        alignment: Alignment.centerLeft,
+        child: TextButton.icon(
+          icon: const Icon(LineIcons.trophy),
+          label: const Text('Rewards History'),
+          onPressed: () => Get.toNamed(Routes.sentinelRewards),
+        ),
+      ),
+      const SizedBox(height: 15),
     ];
 
     final _content = Padding(

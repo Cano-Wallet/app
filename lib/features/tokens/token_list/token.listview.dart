@@ -13,7 +13,10 @@ class TokenListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(TokenListViewController(headers: headers));
+    final controller = Get.put(TokenListViewController(
+      headers: headers,
+    ));
+
     return controller.content();
   }
 }

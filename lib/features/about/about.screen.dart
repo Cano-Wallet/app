@@ -48,6 +48,17 @@ class AboutScreen extends GetView<AboutScreenController> {
           ),
           children: [
             ListTile(
+              leading: Image.asset(
+                Images.logo,
+                height: 25,
+                color: Colors.grey,
+              ),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Cano Website'),
+              subtitle: const Text(kAppWebsiteUrl),
+              onTap: () => launch(kAppWebsiteUrl),
+            ),
+            ListTile(
               leading: const Icon(LineIcons.github),
               trailing: const Icon(LineIcons.alternateExternalLink),
               title: const Text('Cano GitHub'),
@@ -182,15 +193,40 @@ class AboutScreen extends GetView<AboutScreenController> {
         ),
         const Divider(),
         ExpansionTile(
-          leading: const Icon(LineIcons.peopleCarry),
+          leading: Image.asset(
+            Images.zenon,
+            width: 13,
+            color: Colors.grey,
+          ),
           title: const Text(
-            'Community',
+            'Zenon',
             style: TextStyle(
               fontSize: 16.0,
               fontWeight: FontWeight.w500,
             ),
           ),
           children: <Widget>[
+            ListTile(
+              leading: const Icon(LineIcons.wikipediaW),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon Wiki'),
+              subtitle: const Text(kZenonWikiUrl),
+              onTap: () => launch(kZenonWikiUrl),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.wpexplorer),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon Testnet Explorer'),
+              subtitle: const Text(kZenonTestnetExplorerUrl),
+              onTap: () => launch(kZenonTestnetExplorerUrl),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.wpexplorer),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon Legacy Explorer'),
+              subtitle: const Text(kZenonLegacyExplorerUrl),
+              onTap: () => launch(kZenonLegacyExplorerUrl),
+            ),
             ListTile(
               leading: const Icon(LineIcons.twitter),
               trailing: const Icon(LineIcons.alternateExternalLink),
@@ -209,8 +245,15 @@ class AboutScreen extends GetView<AboutScreenController> {
               leading: const Icon(LineIcons.telegram),
               trailing: const Icon(LineIcons.alternateExternalLink),
               title: const Text('Zenon Telegram'),
-              subtitle: const Text('t.me/zenonnetwork'),
+              subtitle: const Text(kZenonTelegramUrl),
               onTap: () => launch(kZenonTelegramUrl),
+            ),
+            ListTile(
+              leading: const Icon(LineIcons.telegram),
+              trailing: const Icon(LineIcons.alternateExternalLink),
+              title: const Text('Zenon Community Telegram'),
+              subtitle: const Text(kZenonCommunityTelegramUrl),
+              onTap: () => launch(kZenonCommunityTelegramUrl),
             ),
             ListTile(
               leading: const Icon(LineIcons.github),

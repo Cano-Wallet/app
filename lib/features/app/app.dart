@@ -27,7 +27,7 @@ class App extends StatelessWidget {
       fallbackLocale: const Locale('en', 'US'),
       // NAVIGATION
       initialRoute: Routes.main,
-      initialBinding: MainBinding(),
+      initialBinding: MainScreenBinding(),
       getPages: AppPages.routes,
       defaultTransition: Transition.native,
       transitionDuration: 200.milliseconds,

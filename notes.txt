@@ -1,0 +1,6 @@
+
+# Generate asset references
+spider build
+
+# Build release apk
+fvm flutter build apk

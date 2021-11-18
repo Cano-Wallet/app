@@ -37,7 +37,6 @@ class CreateWalletPasswordScreen
                 TextField(
                   controller: controller.passwordController,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontWeight: FontWeight.w700),
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: true,
                   textInputAction: TextInputAction.next,
@@ -49,7 +48,6 @@ class CreateWalletPasswordScreen
                 TextField(
                   controller: controller.passwordConfirmController,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(fontWeight: FontWeight.w700),
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: true,
                   textInputAction: TextInputAction.send,

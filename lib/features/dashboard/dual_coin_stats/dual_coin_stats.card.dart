@@ -1,7 +1,9 @@
-import 'package:cano/core/utils/styles.dart';
+import 'package:cano/core/utils/utils.dart';
 import 'package:cano/features/general/z_card.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:pie_chart/pie_chart.dart';
+import 'package:supercharged/supercharged.dart';
 
 import 'dual_coin_stats_card.controller.dart';
 
@@ -12,28 +14,77 @@ class DualCoinStatsUI extends GetView<DualCoinStatsCardController> {
   Widget build(BuildContext context) {
     return ZCard(
       title: 'Dual Coin Stats',
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
-            'tZNN',
-            style: TextStyle(color: Colors.grey),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: const [
+                  Text(
+                    'tZNN',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  SizedBox(width: 5),
+                  Icon(Icons.circle, color: Colors.green, size: 10)
+                ],
+              ),
+              Obx(
+                () => Text(
+                  Utils.formatNumber(controller.znn()),
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 15),
+              Row(
+                children: const [
+                  Text(
+                    'tQSR',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  SizedBox(width: 5),
+                  Icon(Icons.circle, color: Colors.blue, size: 10)
+                ],
+              ),
+              Obx(
+                () => Text(
+                  Utils.formatNumber(controller.qsr()),
+                  style: const TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
           ),
+          const SizedBox(width: 15),
           Obx(
-            () => Text(
-              controller.znn(),
-              style: Styles.dashboardNumberStyle,
-            ),
-          ),
-          const SizedBox(height: 15),
-          const Text(
-            'tQSR',
-            style: TextStyle(color: Colors.grey),
-          ),
-          Obx(
-            () => Text(
-              controller.qsr(),
-              style: Styles.dashboardNumberStyle,
+            () => PieChart(
+              dataMap: {
+                "tZNN": controller.znn().toDouble(),
+                "tQSR": controller.qsr().toDouble(),
+              },
+              colorList: const [
+                Colors.green,
+                Colors.blueAccent,
+              ],
+              animationDuration: 800.milliseconds,
+              chartRadius: 600 / 10,
+              initialAngleInDegree: 0,
+              chartType: ChartType.ring,
+              ringStrokeWidth: 10,
+              legendOptions: const LegendOptions(
+                showLegends: false,
+              ),
+              chartValuesOptions: const ChartValuesOptions(
+                showChartValues: false,
+              ),
+              // gradientList: ---To add gradient colors---
+              // emptyColorGradient: ---Empty Color gradient---
             ),
           ),
         ],

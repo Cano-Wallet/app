@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'project_listview.controller.dart';
+import 'staking_rewards_listview.controller.dart';
 
-class ProjectListView extends StatelessWidget {
+class StakingRewardsListView extends StatelessWidget {
   final List<Widget> headers;
 
-  const ProjectListView({
+  const StakingRewardsListView({
     Key? key,
     this.headers = const [],
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProjectListViewController(
+    final controller = Get.put(StakingRewardsListViewController(
       headers: headers,
     ));
 

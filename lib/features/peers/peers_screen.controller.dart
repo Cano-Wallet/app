@@ -62,6 +62,14 @@ class PeersScreenController extends BaseListController {
     data.insert(
       0,
       Peer.fromJson({
+        'ip': 'testnet.znn.space',
+        'publicKey': 'Testnet Node',
+      }),
+    );
+
+    data.insert(
+      0,
+      Peer.fromJson({
         'ip': 'peers.znn.space',
         'publicKey': 'Official Node',
       }),

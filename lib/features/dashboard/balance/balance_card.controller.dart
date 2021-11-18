@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:cano/core/utils/console.dart';
 import 'package:cano/core/utils/globals.dart';
-import 'package:cano/core/utils/utils.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
@@ -13,8 +12,8 @@ class BalanceCardController extends GetxController
   // VARIABLES
 
   // PROPERTIES
-  final znn = ''.obs;
-  final qsr = ''.obs;
+  final znn = 0.obs;
+  final qsr = 0.obs;
 
   // GETTERS
 
@@ -29,16 +28,8 @@ class BalanceCardController extends GetxController
   Future<void> fetch() async {
     final accountInfo =
         await Zenon().ledger.getAccountInfoByAddress(viewingAddress!);
-
-    znn.value = Utils.formatCurrency(AmountUtils.addDecimals(
-      accountInfo.znn()!,
-      znnDecimals,
-    ));
-
-    qsr.value = Utils.formatCurrency(AmountUtils.addDecimals(
-      accountInfo.qsr()!,
-      qsrDecimals,
-    ));
+    znn.value = accountInfo.znn()!;
+    qsr.value = accountInfo.qsr()!;
 
     console.info('done');
   }
