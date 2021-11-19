@@ -305,7 +305,7 @@ class AboutScreen extends GetView<AboutScreenController> {
         const SizedBox(height: 20),
         TextButton.icon(
           icon: const Icon(LineIcons.twitter),
-          label: const Text('Follow $kDeveloperTwitterHandle'),
+          label: const Text(kDeveloperTwitterHandle),
           onPressed: () => launch(kDeveloperTwitterUrl),
         ),
         const Text(

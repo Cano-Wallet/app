@@ -1,3 +1,7 @@
+### Notes
+- Please don't use your main seed while testing until Cano is fully audited by the community
+- Click `Create Wallet` to generate
+
 ### Prerequisites
 
 * [Flutter SDK](https://flutter.dev)
@@ -7,7 +11,7 @@
 
 1. Clone the repo
 ```
-git clone https://github.com/nemoryoliver/znn_playground.git
+git clone https://github.com/Cano-Wallet/app.git
 ```
 2. Install package dependencies
 ```

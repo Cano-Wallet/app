@@ -51,17 +51,19 @@ class WelcomeScreen extends GetView<WelcomeScreenController> with ConsoleMixin {
                     TextButton.icon(
                       label: const Text('Create Wallet'),
                       icon: const Icon(LineIcons.plus),
-                      onPressed: GetPlatform.isDesktop
-                          ? () => Get.toNamed(Routes.createWallet)
-                          : null,
+                      // onPressed: GetPlatform.isDesktop
+                      //     ? () => Get.toNamed(Routes.createWallet)
+                      //     : null,
+                      onPressed: () => Get.toNamed(Routes.createWallet),
                     ),
                     const SizedBox(height: 15),
                     TextButton.icon(
                       label: const Text('Import Wallet'),
                       icon: const Icon(LineIcons.download),
-                      onPressed: GetPlatform.isDesktop
-                          ? () => Get.toNamed(Routes.importWallet)
-                          : null,
+                      // onPressed: GetPlatform.isDesktop
+                      //     ? () => Get.toNamed(Routes.importWallet)
+                      //     : null,
+                      onPressed: () => Get.toNamed(Routes.importWallet),
                     ),
                     const SizedBox(height: 15),
                     TextButton.icon(
