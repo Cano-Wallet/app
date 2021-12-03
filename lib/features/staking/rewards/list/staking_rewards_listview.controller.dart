@@ -62,7 +62,7 @@ class StakingRewardsListViewController extends BaseListController {
     final item = ListItemAnimation(
       child: ListTile(
         onTap: () => onTap(object),
-        title: Text('$qsr tQSR'),
+        title: Text('$qsr QSR'),
         trailing: Text(object.epoch.toString()),
       ),
     );

@@ -1,7 +1,6 @@
 import 'package:cano/core/utils/console.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 import 'package:bip39/bip39.dart' as bip39;
 
 enum PassphraseMode {
@@ -12,7 +11,6 @@ enum PassphraseMode {
 
 class PassphraseCardController extends GetxController with ConsoleMixin {
   // VARIABLES
-  final zenon = Zenon();
   final seedController = TextEditingController();
 
   String seed24 = '', seed12 = '';

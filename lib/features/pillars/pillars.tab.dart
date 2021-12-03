@@ -32,7 +32,7 @@ class _PillarsTabState extends State<PillarsTab>
                 Row(
                   children: const [
                     Text(
-                      'tZNN',
+                      'ZNN',
                       style: TextStyle(color: Colors.grey),
                     ),
                     SizedBox(width: 5),

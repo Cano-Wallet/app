@@ -32,7 +32,7 @@ class _StakingTabState extends State<StakingTab>
                 Row(
                   children: const [
                     Text(
-                      'tQSR',
+                      'QSR',
                       style: TextStyle(color: Colors.grey),
                     ),
                     SizedBox(width: 5),

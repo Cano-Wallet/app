@@ -51,19 +51,17 @@ class WelcomeScreen extends GetView<WelcomeScreenController> with ConsoleMixin {
                     TextButton.icon(
                       label: const Text('Create Wallet'),
                       icon: const Icon(LineIcons.plus),
-                      // onPressed: GetPlatform.isDesktop
-                      //     ? () => Get.toNamed(Routes.createWallet)
-                      //     : null,
-                      onPressed: () => Get.toNamed(Routes.createWallet),
+                      onPressed: GetPlatform.isDesktop
+                          ? () => Get.toNamed(Routes.createWallet)
+                          : null,
                     ),
                     const SizedBox(height: 15),
                     TextButton.icon(
                       label: const Text('Import Wallet'),
                       icon: const Icon(LineIcons.download),
-                      // onPressed: GetPlatform.isDesktop
-                      //     ? () => Get.toNamed(Routes.importWallet)
-                      //     : null,
-                      onPressed: () => Get.toNamed(Routes.importWallet),
+                      onPressed: GetPlatform.isDesktop
+                          ? () => Get.toNamed(Routes.importWallet)
+                          : null,
                     ),
                     const SizedBox(height: 15),
                     TextButton.icon(
@@ -75,9 +73,7 @@ class WelcomeScreen extends GetView<WelcomeScreenController> with ConsoleMixin {
                     TextButton.icon(
                       label: const Text('View Mode'),
                       icon: const Icon(LineIcons.eyeAlt),
-                      onPressed: GetPlatform.isMobile || kDebugMode
-                          ? () => Get.toNamed(Routes.viewingAddress)
-                          : null,
+                      onPressed: () => Get.toNamed(Routes.viewingAddress),
                     ),
                   ],
                 ),

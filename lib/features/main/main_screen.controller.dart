@@ -32,7 +32,6 @@ class MainScreenController extends GetxController
   }
 
   // FUNCTIONS
-
   void init() async {
     change(null, status: RxStatus.loading());
 

@@ -23,7 +23,7 @@ class DualCoinStatsUI extends GetView<DualCoinStatsCardController> {
               Row(
                 children: const [
                   Text(
-                    'tZNN',
+                    'ZNN',
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(width: 5),
@@ -43,7 +43,7 @@ class DualCoinStatsUI extends GetView<DualCoinStatsCardController> {
               Row(
                 children: const [
                   Text(
-                    'tQSR',
+                    'QSR',
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(width: 5),
@@ -65,8 +65,8 @@ class DualCoinStatsUI extends GetView<DualCoinStatsCardController> {
           Obx(
             () => PieChart(
               dataMap: {
-                "tZNN": controller.znn().toDouble(),
-                "tQSR": controller.qsr().toDouble(),
+                "ZNN": controller.znn().toDouble(),
+                "QSR": controller.qsr().toDouble(),
               },
               colorList: const [
                 Colors.green,

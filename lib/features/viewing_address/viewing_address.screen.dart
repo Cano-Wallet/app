@@ -85,7 +85,8 @@ class ViewingAddressScreen extends StatelessWidget {
                   TextButton.icon(
                     label: const Text('Use Provided Test Address'),
                     icon: const Icon(LineIcons.arrowRight),
-                    onPressed: () => addressController.text = kTestAddress,
+                    onPressed: () => addressController.text =
+                        developerFundAddress.toString(),
                   ),
                 ],
               ),

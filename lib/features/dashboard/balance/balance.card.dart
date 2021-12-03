@@ -28,7 +28,7 @@ class BalanceUI extends GetView<BalanceCardController> {
                   Row(
                     children: const [
                       Text(
-                        'tZNN',
+                        'ZNN',
                         style: TextStyle(color: Colors.grey),
                       ),
                       SizedBox(width: 5),
@@ -53,7 +53,7 @@ class BalanceUI extends GetView<BalanceCardController> {
                   Row(
                     children: const [
                       Text(
-                        'tQSR',
+                        'QSR',
                         style: TextStyle(color: Colors.grey),
                       ),
                       SizedBox(width: 5),
@@ -77,8 +77,8 @@ class BalanceUI extends GetView<BalanceCardController> {
           Obx(
             () => PieChart(
               dataMap: {
-                "tZNN": controller.znn().toDouble(),
-                "tQSR": controller.qsr().toDouble(),
+                "ZNN": controller.znn().toDouble(),
+                "QSR": controller.qsr().toDouble(),
               },
               colorList: const [
                 Colors.green,

@@ -69,7 +69,7 @@ class StakingListViewController extends BaseListController {
     final item = ListItemAnimation(
       child: ListTile(
         onTap: () => onTap(object),
-        title: Text('$znn tZNN'),
+        title: Text('$znn ZNN'),
         subtitle: Text(object.address.toString()),
         trailing: Column(
           children: [

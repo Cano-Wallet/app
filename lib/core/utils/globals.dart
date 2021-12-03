@@ -1,6 +1,7 @@
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 // APP
+const kAppName = 'Cano';
 const kAppDescription =
     'A 3rd party & cross-platform wallet\nfor Zenon Network'; // TODO: localize
 const kAppWebsiteUrl = 'https://canowallet.app';
@@ -32,9 +33,6 @@ const kZenonTestnetExplorerUrl = 'https://explorer.znn.space/';
 const kZenonLegacyExplorerUrl = 'https://explore.zenon.network/';
 
 // TEST
-const kTestAddress = 'z1qpjzv9humm37lk0wkq5l4m2vcpmxuwgtxn5fs2';
-const kTestMnemonic =
-    'inner benefit antique boring oxygen number material skate ivory maple spike stick noise follow guide cause clown speak fortune carpet shy lunch auto indoor';
 const kTestPassword = '1#TestPassword#1';
 
 // DONATION ADDRESS

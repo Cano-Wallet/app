@@ -14,17 +14,12 @@ class PersistenceController extends GetxController with ConsoleMixin {
   final viewingAddress = ''.val('viewing address');
 
   // ZENON
-  final nodeAddress = 'peers.znn.space:35998'.val('node address');
+  final nodeAddress = 'peers.zenon.network:443'.val('node address');
 
   // GENERAL
-  final maxUnlockAttempts = 5.val('max unlock attempts');
   final lastBuildNumber = 0.val('last build number');
   final currentId = ''.val('current id');
   final localeCode = 'en'.val('locale code');
-  final mainTabInitialIndex = 0.val('main tab initial index');
-  final followDialogShown = false.val('follow dialog shown');
-  final locationInfoJson = ''.val('location info json');
-  final simulateRefreshSession = false.val('simulate refresh session');
   // FONT
   final fontName = 'Roboto'.val('font name');
   final fontScaleFactor = 1.0.val('font scale factor');
@@ -37,16 +32,12 @@ class PersistenceController extends GetxController with ConsoleMixin {
   // APP LOCK
   final appLock = false.val('app lock');
   final appLockCode = ''.val('app lock code');
+  final maxUnlockAttempts = 5.val('max unlock attempts');
   // PRO
   final pro = false.val('pro');
 
   // BACKGROUND NOTIFICATIONS
   final bgNotifications = true.val('bg notifications');
-  final bgMessageNotifications = true.val('bg message notifications');
-  final bgMessageNotificationsUnread = 0.val('bg message notifications unread');
-  final bgFBNotifications = true.val('bg fb notifications');
-  final bgFBNotificationsUnread = 0.val('bg fb notifications unread');
-  final bgFriendNotifications = true.val('bg friend status notifications');
 
   // GETTERS
 

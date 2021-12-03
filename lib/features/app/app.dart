@@ -38,7 +38,7 @@ class App extends StatelessWidget {
       darkTheme: FlexColorScheme.dark(
         scheme: FlexScheme.jungle,
       ).toTheme, // dark
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       // FONT SCALE
       builder: (context, child) {
         final data = MediaQuery.of(context);

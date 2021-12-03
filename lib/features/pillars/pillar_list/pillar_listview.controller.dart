@@ -8,6 +8,7 @@ import 'package:cano/features/json_viewer/json_viewer.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 class PillarListViewController extends BaseListController {
@@ -23,6 +24,7 @@ class PillarListViewController extends BaseListController {
   // PROPERTIES
 
   // GETTERS
+  int get topWeight => (data.first as PillarInfo).weight;
 
   // INIT
   @override
@@ -55,10 +57,43 @@ class PillarListViewController extends BaseListController {
   Widget itemBuilder(context, index) {
     final object = data[index] as PillarInfo;
 
+    final footer = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        PercentageIndicator(
+          maxPercentage: 100,
+          percentage: object.giveMomentumRewardPercentage,
+          color: Colors.lightGreenAccent,
+          iconData: LineIcons.cube,
+        ),
+        PercentageIndicator(
+          maxPercentage: 100,
+          percentage: object.giveDelegateRewardPercentage,
+          color: Colors.pinkAccent,
+          iconData: LineIcons.handHoldingUsDollar,
+        ),
+        PercentageIndicator(
+          maxPercentage: topWeight,
+          percentage: object.weight,
+          label:
+              '${Utils.formatKNumber(AmountUtils.addDecimals(object.weight, znnDecimals))} ZNN',
+          color: Colors.blueAccent,
+          iconData: LineIcons.balanceScaleRightWeighted,
+        ),
+      ],
+    );
+
     final item = ListItemAnimation(
       child: ListTile(
         title: Text(object.name),
-        subtitle: Text(object.producerAddress.toString()),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(object.producerAddress.toString()),
+            const SizedBox(height: 5),
+            footer,
+          ],
+        ),
         onTap: () => onTap(object),
       ),
     );
@@ -80,7 +115,7 @@ class PillarListViewController extends BaseListController {
       items: [
         SelectorItem(
           title: 'Delegate',
-          leading: const Icon(LineIcons.peopleCarry),
+          leading: const Icon(LineIcons.handHoldingUsDollar),
           onSelected: () {
             //
           },
@@ -101,5 +136,41 @@ class PillarListViewController extends BaseListController {
         ),
       ],
     ).show();
+  }
+}
+
+class PercentageIndicator extends StatelessWidget {
+  final int percentage;
+  final int maxPercentage;
+  final String? label;
+  final Color color;
+  final IconData? iconData;
+
+  const PercentageIndicator({
+    Key? key,
+    this.percentage = 0,
+    this.maxPercentage = 100,
+    this.color = Colors.yellow,
+    required this.iconData,
+    this.label,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(iconData, color: color),
+        const SizedBox(width: 5),
+        CircularPercentIndicator(
+          radius: 18,
+          lineWidth: 4.0,
+          percent: percentage / maxPercentage,
+          progressColor: color,
+          backgroundColor: Colors.grey.shade800,
+        ),
+        const SizedBox(width: 5),
+        Text(label ?? '$percentage%'),
+      ],
+    );
   }
 }

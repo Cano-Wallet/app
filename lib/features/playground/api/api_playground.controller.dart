@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
-const _rpcUrl = 'ws://188.166.15.29:35998';
+const _rpcUrl = 'ws://45.92.156.219:35995';
 const _exampleMethod = 'embedded.pillar.checkNameAvailability';
 const _exampleParameters = 'nemoryoliver';
 
@@ -157,7 +157,7 @@ class APIPlaygroundController extends GetxController with ConsoleMixin {
     final stats = zenon.stats;
 
     final token =
-        await zenon.embedded.token.getByZts(TokenStandard.bySymbol('tZNN'));
+        await zenon.embedded.token.getByZts(TokenStandard.bySymbol('ZNN'));
     console.warning('Token: ${token!.toJson()}');
 
     console.warning('Network Info');
@@ -167,7 +167,14 @@ class APIPlaygroundController extends GetxController with ConsoleMixin {
 
     console.warning('OS Info');
     final osInfo = await stats.osInfo();
-    console.info('os info: $osInfo');
+    console.info('os: ${osInfo.os}');
+    console.info('platform: ${osInfo.platform}');
+    console.info('platformVersion: ${osInfo.platformVersion}');
+    console.info('kernelVersion: ${osInfo.kernelVersion}');
+    console.info('memoryTotal: ${osInfo.memoryTotal}');
+    console.info('memoryFree: ${osInfo.memoryFree}');
+    console.info('numCPU: ${osInfo.numCPU}');
+    console.info('numGoroutine: ${osInfo.numGoroutine}');
 
     console.warning('Process Info');
     final processInfo = await stats.processInfo();

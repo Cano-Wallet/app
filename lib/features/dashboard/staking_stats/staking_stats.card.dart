@@ -37,7 +37,7 @@ class StakingStatsUI extends GetView<StakingStatsCardController> {
               ),
               Obx(
                 () => Text(
-                  '${controller.entriesTotalAmount()} tZNN',
+                  '${controller.entriesTotalAmount()} ZNN',
                   style: Styles.dashboardNumberStyle,
                 ),
               ),

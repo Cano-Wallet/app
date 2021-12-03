@@ -32,7 +32,7 @@ class _SentinelsTabState extends State<SentinelsTab>
                 Row(
                   children: const [
                     Text(
-                      'tZNN',
+                      'ZNN',
                       style: TextStyle(color: Colors.grey),
                     ),
                     SizedBox(width: 5),
@@ -49,7 +49,7 @@ class _SentinelsTabState extends State<SentinelsTab>
                 Row(
                   children: const [
                     Text(
-                      'tQSR',
+                      'QSR',
                       style: TextStyle(color: Colors.grey),
                     ),
                     SizedBox(width: 5),

@@ -14,8 +14,6 @@ class AboutScreenBinding extends Bindings {
 }
 
 class AboutScreenController extends GetxController with ConsoleMixin {
-  static AboutScreenController get to => Get.find();
-
   // VARIABLES
 
   // PROPERTIES

@@ -27,7 +27,7 @@ class DelegationStatsUI extends GetView<DelegationStatsCardController> {
               ),
               Obx(
                 () => Text(
-                  '${controller.weight()} tZNN',
+                  '${controller.weight()} ZNN',
                   style: Styles.dashboardNumberStyle,
                 ),
               ),

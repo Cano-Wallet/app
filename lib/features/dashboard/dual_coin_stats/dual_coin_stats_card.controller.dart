@@ -28,12 +28,12 @@ class DualCoinStatsCardController extends GetxController
     final zenon = Zenon();
 
     final znnToken =
-        await zenon.embedded.token.getByZts(TokenStandard.bySymbol('tZNN'));
-    znn.value = znnToken!.totalSupply;
+        await zenon.embedded.token.getByZts(TokenStandard.bySymbol('ZNN'));
+    znn.value = znnToken?.totalSupply ?? 0;
 
     final qsrToken =
-        await zenon.embedded.token.getByZts(TokenStandard.bySymbol('tQSR'));
-    qsr.value = qsrToken!.totalSupply;
+        await zenon.embedded.token.getByZts(TokenStandard.bySymbol('QSR'));
+    qsr.value = qsrToken?.totalSupply ?? 0;
 
     console.info('done');
   }

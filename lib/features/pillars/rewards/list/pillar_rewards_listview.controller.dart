@@ -60,7 +60,7 @@ class PillarRewardsListViewController extends BaseListController {
     final item = ListItemAnimation(
       child: ListTile(
         onTap: () => onTap(object),
-        title: Text('$znn tZNN'),
+        title: Text('$znn ZNN'),
         trailing: Text(object.epoch.toString()),
       ),
     );

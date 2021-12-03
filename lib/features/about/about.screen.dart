@@ -17,16 +17,15 @@ class AboutScreen extends GetView<AboutScreenController> {
   Widget build(BuildContext context) {
     final _content = ListView(
       shrinkWrap: true,
+      padding: const EdgeInsets.all(20),
       children: [
         const SizedBox(height: 20),
         Image.asset(Images.logo, height: 50),
         const SizedBox(height: 15),
-        Obx(
-          () => Text(
-            '${controller.packageInfo.value?.appName}',
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 17),
-          ),
+        const Text(
+          kAppName,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 17),
         ),
         const SizedBox(height: 10),
         const Text(
@@ -43,7 +42,7 @@ class AboutScreen extends GetView<AboutScreenController> {
             color: Colors.grey,
           ),
           title: const Text(
-            'Cano',
+            kAppName,
             style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
           ),
           children: [
@@ -54,35 +53,35 @@ class AboutScreen extends GetView<AboutScreenController> {
                 color: Colors.grey,
               ),
               trailing: const Icon(LineIcons.alternateExternalLink),
-              title: const Text('Cano Website'),
+              title: const Text('$kAppName Website'),
               subtitle: const Text(kAppWebsiteUrl),
               onTap: () => launch(kAppWebsiteUrl),
             ),
             ListTile(
               leading: const Icon(LineIcons.github),
               trailing: const Icon(LineIcons.alternateExternalLink),
-              title: const Text('Cano GitHub'),
+              title: const Text('$kAppName GitHub'),
               subtitle: const Text(kAppGithubUrl),
               onTap: () => launch(kAppGithubUrl),
             ),
             ListTile(
               leading: const Icon(LineIcons.twitter),
               trailing: const Icon(LineIcons.alternateExternalLink),
-              title: const Text('Cano Twitter'),
+              title: const Text('$kAppName Twitter'),
               subtitle: const Text('@cano_wallet'),
               onTap: () => launch(kAppTwitterUrl),
             ),
             ListTile(
               leading: const Icon(LineIcons.instagram),
               trailing: const Icon(LineIcons.alternateExternalLink),
-              title: const Text('Cano Instagram'),
+              title: const Text('$kAppName Instagram'),
               subtitle: const Text('@cano_wallet'),
               onTap: () => launch(kAppInstagramUrl),
             ),
             ListTile(
               leading: const Icon(LineIcons.facebook),
               trailing: const Icon(LineIcons.alternateExternalLink),
-              title: const Text('Cano Facebook'),
+              title: const Text('$kAppName Facebook'),
               subtitle: const Text('@cano.wallet'),
               onTap: () => launch(kAppFacebookUrl),
             ),

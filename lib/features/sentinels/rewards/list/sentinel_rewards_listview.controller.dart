@@ -65,8 +65,8 @@ class SentinelRewardsListViewController extends BaseListController {
     final item = ListItemAnimation(
       child: ListTile(
         onTap: () => onTap(object),
-        title: Text('$znn tZNN'),
-        subtitle: Text('$qsr tQSR'),
+        title: Text('$znn ZNN'),
+        subtitle: Text('$qsr QSR'),
         trailing: Text(object.epoch.toString()),
       ),
     );

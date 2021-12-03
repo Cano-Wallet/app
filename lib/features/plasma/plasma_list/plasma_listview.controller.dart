@@ -61,7 +61,7 @@ class PlasmaListViewController extends BaseListController {
     final item = ListItemAnimation(
       child: ListTile(
         onTap: () => onTap(object),
-        title: Text('$qsr tQSR'),
+        title: Text('$qsr QSR'),
         subtitle: Text(object.beneficiary.toString()),
         trailing: OutlinedButton(
           style: Styles.outlinedButtonStyle20Red,

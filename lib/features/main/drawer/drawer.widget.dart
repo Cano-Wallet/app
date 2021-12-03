@@ -11,7 +11,7 @@ class ZDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _header = DrawerHeader(
+    final header = DrawerHeader(
       child: Center(
         child: InkWell(
           onTap: () => Get.toNamed(Routes.addresses),
@@ -38,7 +38,7 @@ class ZDrawer extends StatelessWidget {
     );
 
     final items = [
-      _header,
+      header,
       ListTile(
         title: const Text('Plasma'),
         leading: const Icon(LineIcons.chargingStation),
