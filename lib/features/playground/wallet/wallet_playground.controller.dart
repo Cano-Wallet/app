@@ -106,6 +106,9 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
 
     entropy.value = keyStore.entropy;
     seed.value = keyStore.seed!;
+
+    console.error('Entropy: ${keyStore.entropy}');
+    console.error('Seed: ${keyStore.seed}');
   }
 
   void accountChanged(String? value) {

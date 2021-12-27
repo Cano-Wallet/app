@@ -20,7 +20,7 @@ class HiveManager {
 
   // INIT
   static void init() async {
-    Hive.init("${znnDefaultPaths.cache.path}/hive/");
+    Hive.init("${znnDefaultPaths.cache.path}/hive");
 
     // REGISTER ADAPTERS
     Hive.registerAdapter(HiveNodeAdapter());

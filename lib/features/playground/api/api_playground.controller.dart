@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
-const _rpcUrl = 'ws://45.92.156.219:35995';
+const _rpcUrl = 'ws://chadasscapital.com:35998';
 const _exampleMethod = 'embedded.pillar.checkNameAvailability';
 const _exampleParameters = 'nemoryoliver';
 

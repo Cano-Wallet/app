@@ -4,10 +4,8 @@ import 'package:cano/core/utils/styles.dart';
 import 'package:cano/features/app/routes.dart';
 import 'package:cano/features/welcome/welcome_screen.controller.dart';
 import 'package:cano/resources/resources.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:line_icons/line_icons.dart';
 
 class WelcomeScreen extends GetView<WelcomeScreenController> with ConsoleMixin {
@@ -51,17 +49,13 @@ class WelcomeScreen extends GetView<WelcomeScreenController> with ConsoleMixin {
                     TextButton.icon(
                       label: const Text('Create Wallet'),
                       icon: const Icon(LineIcons.plus),
-                      onPressed: GetPlatform.isDesktop
-                          ? () => Get.toNamed(Routes.createWallet)
-                          : null,
+                      onPressed: () => Get.toNamed(Routes.createWallet),
                     ),
                     const SizedBox(height: 15),
                     TextButton.icon(
                       label: const Text('Import Wallet'),
                       icon: const Icon(LineIcons.download),
-                      onPressed: GetPlatform.isDesktop
-                          ? () => Get.toNamed(Routes.importWallet)
-                          : null,
+                      onPressed: () => Get.toNamed(Routes.importWallet),
                     ),
                     const SizedBox(height: 15),
                     TextButton.icon(

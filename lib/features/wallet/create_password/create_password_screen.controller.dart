@@ -5,7 +5,6 @@ import 'package:cano/core/utils/ui_utils.dart';
 import 'package:cano/features/app/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 

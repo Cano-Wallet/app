@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:cano/core/animations/animations.dart';
 import 'package:cano/core/controllers/base_list.controller.dart';
-import 'package:cano/core/utils/extensions.dart';
 import 'package:cano/core/utils/globals.dart';
 import 'package:cano/core/utils/utils.dart';
 import 'package:cano/features/general/selector.sheet.dart';
@@ -11,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
-import 'package:supercharged/supercharged.dart';
 
 class StakingRewardsListViewController extends BaseListController {
   final List<Widget> headers;

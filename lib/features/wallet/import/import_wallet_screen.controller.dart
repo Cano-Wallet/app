@@ -6,7 +6,6 @@ import 'package:cano/features/wallet/passphrase_card/passphrase.card.dart';
 import 'package:cano/features/wallet/passphrase_card/passphrase_card.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 

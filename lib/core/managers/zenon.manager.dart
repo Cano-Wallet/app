@@ -5,7 +5,6 @@ import 'package:cano/core/utils/console.dart';
 import 'package:cano/core/utils/utils.dart';
 import 'package:cano/features/app/routes.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
@@ -24,9 +23,13 @@ class ZenonManager {
 
   static Future<bool> initClient() async {
     final wsAddress = 'ws://${PersistenceController.to.nodeAddress.val}';
-    final initialized =
-        await zenon.wsClient.initialize(wsAddress, retry: false);
-    console.info('Running on: $wsAddress');
+    // const wsAddress = 'ws://localhost:35998';
+    final initialized = await zenon.wsClient.initialize(
+      wsAddress,
+      retry: false,
+    );
+
+    console.info('Node: $wsAddress, initialized: $initialized');
     return initialized;
   }
 
@@ -85,29 +88,9 @@ class ZenonManager {
   static Future<bool> authenticated() async {
     if (viewingAddress != null) return true;
 
-    // Since KeyStore is not yet supported on mobile
-    // we temporarily use persistence to determine if user has authenticated into the app
-    if (GetPlatform.isDesktop) {
-      if ((await keyStoreFiles()).isEmpty) return false;
-      await Get.toNamed(Routes.unlockWallet);
-      return true;
-    } else if (GetPlatform.isMobile) {
-      // TODO: scrap this when mobile support is out
-      final savedViewingAddress = PersistenceController.to.viewingAddress.val;
-      console.warning('savedViewingAddress: $savedViewingAddress');
-
-      if (savedViewingAddress.isEmpty ||
-          !Address.isValid(savedViewingAddress)) {
-        return false;
-      }
-
-      // set current viewing address
-      viewingAddress = Address.parse(savedViewingAddress);
-      return true;
-    } else {
-      console.error('unsupported platform');
-      return false;
-    }
+    if ((await keyStoreFiles()).isEmpty) return false;
+    await Get.toNamed(Routes.unlockWallet);
+    return true;
   }
 
   static Future<List<File>> keyStoreFiles() async {
