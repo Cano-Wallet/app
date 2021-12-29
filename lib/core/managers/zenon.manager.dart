@@ -24,10 +24,8 @@ class ZenonManager {
   static Future<bool> initClient() async {
     final wsAddress = 'ws://${PersistenceController.to.nodeAddress.val}';
     // const wsAddress = 'ws://localhost:35998';
-    final initialized = await zenon.wsClient.initialize(
-      wsAddress,
-      retry: false,
-    );
+    zenon.wsClient.setConfig(url: wsAddress);
+    final initialized = await zenon.wsClient.initialize();
 
     console.info('Node: $wsAddress, initialized: $initialized');
     return initialized;

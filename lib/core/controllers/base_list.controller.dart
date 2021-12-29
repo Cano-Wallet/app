@@ -95,6 +95,10 @@ class BaseListController extends GetxController with ConsoleMixin, StateMixin {
       change(null, status: RxStatus.error(e.toString()));
     }
 
+    if (e is ZnnSdkException) {
+      // reconnect if disconnected
+    }
+
     return console.error('Error: $e');
   }
 
@@ -135,7 +139,7 @@ class BaseListController extends GetxController with ConsoleMixin, StateMixin {
           child: TextButton.icon(
             label: const Text('Refresh'),
             icon: const Icon(LineIcons.syncIcon),
-            style: Styles.outlinedButtonStyle20,
+            style: Styles.outlinedButtonStyle,
             onPressed: reload,
           ),
         ),
@@ -145,7 +149,7 @@ class BaseListController extends GetxController with ConsoleMixin, StateMixin {
           child: TextButton.icon(
             label: const Text('Try again'),
             icon: const Icon(LineIcons.syncIcon),
-            style: Styles.outlinedButtonStyle20,
+            style: Styles.outlinedButtonStyle,
             onPressed: reload,
           ),
         ),

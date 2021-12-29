@@ -62,10 +62,8 @@ class APIPlaygroundController extends GetxController with ConsoleMixin {
 
     /// initialize web socket if not
     if (zenon.wsClient.isClosed()) {
-      await zenon.wsClient.initialize(
-        rpcUrlController.text,
-        retry: false,
-      );
+      zenon.wsClient.setConfig(url: rpcUrlController.text);
+      await zenon.wsClient.initialize();
 
       /// start subscribing to broadcasts
       // subscribe();

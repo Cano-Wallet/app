@@ -48,7 +48,7 @@ class _PillarsTabState extends State<PillarsTab>
               ],
             ),
             OutlinedButton(
-              style: Styles.outlinedButtonStyle20,
+              style: Styles.outlinedButtonStyle,
               child: const Text('Collect'),
               onPressed: () {
                 //

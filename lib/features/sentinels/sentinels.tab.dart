@@ -65,7 +65,7 @@ class _SentinelsTabState extends State<SentinelsTab>
               ],
             ),
             OutlinedButton(
-              style: Styles.outlinedButtonStyle20,
+              style: Styles.outlinedButtonStyle,
               child: const Text('Collect'),
               onPressed: () {
                 //

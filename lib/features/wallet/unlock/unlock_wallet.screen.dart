@@ -13,10 +13,10 @@ class UnlockWalletScreen extends GetView<UnlockWalletScreenController>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Center(
+      body: Center(
+        child: SingleChildScrollView(
           child: Container(
+            padding: const EdgeInsets.all(15),
             constraints: Styles.containerConstraints,
             child: Column(
               mainAxisSize: MainAxisSize.min,

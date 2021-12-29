@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "src/argon2.h"
+#include "argon2src/argon2.h"
 
 #define _CRT_SECURE_NO_WARNINGS
 

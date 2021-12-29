@@ -11,7 +11,7 @@ class SentinelsCardController extends GetxController
   // VARIABLES
 
   // PROPERTIES
-  final count = ''.obs;
+  final count = '...'.obs;
 
   // GETTERS
 

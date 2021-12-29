@@ -1,9 +1,11 @@
+import 'package:cano/core/utils/styles.dart';
 import 'package:cano/core/utils/utils.dart';
 import 'package:cano/features/general/z_card.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:supercharged/supercharged.dart';
+import 'package:znn_sdk_dart/znn_sdk_dart.dart';
 
 import 'dual_coin_stats_card.controller.dart';
 
@@ -32,11 +34,11 @@ class DualCoinStatsUI extends GetView<DualCoinStatsCardController> {
               ),
               Obx(
                 () => Text(
-                  Utils.formatNumber(controller.znn()),
-                  style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  Utils.formatNumber(AmountUtils.addDecimals(
+                    controller.znn(),
+                    znnDecimals,
+                  )),
+                  style: Styles.dashboardNumberStyle,
                 ),
               ),
               const SizedBox(height: 15),
@@ -52,11 +54,11 @@ class DualCoinStatsUI extends GetView<DualCoinStatsCardController> {
               ),
               Obx(
                 () => Text(
-                  Utils.formatNumber(controller.qsr()),
-                  style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  Utils.formatNumber(AmountUtils.addDecimals(
+                    controller.qsr(),
+                    qsrDecimals,
+                  )),
+                  style: Styles.dashboardNumberStyle,
                 ),
               ),
             ],

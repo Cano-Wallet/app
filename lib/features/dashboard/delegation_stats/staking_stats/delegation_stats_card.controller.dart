@@ -13,8 +13,8 @@ class DelegationStatsCardController extends GetxController
   // VARIABLES
 
   // PROPERTIES
-  final name = ''.obs;
-  final weight = ''.obs;
+  final name = '...'.obs;
+  final weight = '...'.obs;
 
   // GETTERS
 

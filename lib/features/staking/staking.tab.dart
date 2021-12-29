@@ -48,7 +48,7 @@ class _StakingTabState extends State<StakingTab>
               ],
             ),
             OutlinedButton(
-              style: Styles.outlinedButtonStyle20,
+              style: Styles.outlinedButtonStyle,
               child: const Text('Collect'),
               onPressed: () {
                 //

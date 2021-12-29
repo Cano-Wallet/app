@@ -117,7 +117,7 @@ class MainScreen extends GetView<MainScreenController> with ConsoleMixin {
           child: TextButton.icon(
             label: const Text('Try again'),
             icon: const Icon(LineIcons.syncIcon),
-            style: Styles.outlinedButtonStyle20,
+            style: Styles.outlinedButtonStyle,
             onPressed: controller.init,
           ),
         ),

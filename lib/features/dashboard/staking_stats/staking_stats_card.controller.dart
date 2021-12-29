@@ -13,8 +13,8 @@ class StakingStatsCardController extends GetxController
   // VARIABLES
 
   // PROPERTIES
-  final entriesCount = ''.obs;
-  final entriesTotalAmount = ''.obs;
+  final entriesCount = '...'.obs;
+  final entriesTotalAmount = '...'.obs;
 
   // GETTERS
 

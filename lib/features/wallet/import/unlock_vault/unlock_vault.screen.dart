@@ -15,10 +15,10 @@ class UnlockVaultScreen extends GetView<UnlockVaultScreenController>
       appBar: AppBar(
         title: const Text('Unlock Seed Vault'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Center(
+      body: Center(
+        child: SingleChildScrollView(
           child: Container(
+            padding: const EdgeInsets.all(15),
             constraints: Styles.containerConstraints,
             child: Column(
               mainAxisSize: MainAxisSize.min,
