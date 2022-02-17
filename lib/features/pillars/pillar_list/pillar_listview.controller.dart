@@ -89,7 +89,10 @@ class PillarListViewController extends BaseListController {
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(object.producerAddress.toString()),
+            Text(
+              object.producerAddress.toString(),
+              style: const TextStyle(fontSize: 12),
+            ),
             const SizedBox(height: 5),
             footer,
           ],
@@ -160,16 +163,19 @@ class PercentageIndicator extends StatelessWidget {
     return Row(
       children: [
         Icon(iconData, color: color),
-        const SizedBox(width: 5),
+        const SizedBox(width: 3),
         CircularPercentIndicator(
-          radius: 18,
+          radius: 10,
           lineWidth: 4.0,
           percent: percentage / maxPercentage,
           progressColor: color,
           backgroundColor: Colors.grey.shade800,
         ),
         const SizedBox(width: 5),
-        Text(label ?? '$percentage%'),
+        Text(
+          label ?? '$percentage%',
+          style: const TextStyle(fontSize: 12),
+        ),
       ],
     );
   }

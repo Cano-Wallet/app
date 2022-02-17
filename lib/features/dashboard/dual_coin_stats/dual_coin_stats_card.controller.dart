@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cano/core/providers/coingecko/coingecko_api.provider.dart';
 import 'package:cano/core/utils/console.dart';
 import 'package:get/get.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
@@ -13,6 +14,8 @@ class DualCoinStatsCardController extends GetxController
   // PROPERTIES
   final znn = 0.obs;
   final qsr = 0.obs;
+
+  final znnPrice = 0.0.obs;
 
   // GETTERS
 
@@ -34,7 +37,15 @@ class DualCoinStatsCardController extends GetxController
     final qsrToken =
         await zenon.embedded.token.getByZts(TokenStandard.bySymbol('QSR'));
     qsr.value = qsrToken?.totalSupply ?? 0;
+  }
 
-    console.info('done');
+  Future<void> fetchZNNPrice() async {
+    final coingecko = CoinGeckoApiProvider();
+
+    coingecko.fetchZNNPrice().then((value) {
+      znnPrice.value = value.zenon.usd;
+    }).onError((error, stackTrace) {
+      console.error('error 2: $error');
+    });
   }
 }

@@ -7,8 +7,8 @@ const kAppDescription =
 const kAppWebsiteUrl = 'https://canowallet.app';
 const kAppGithubUrl = 'https://github.com/Cano-Wallet/app';
 const kAppTwitterUrl = 'https://twitter.com/cano_wallet';
-const kAppFacebookUrl = 'https://facebook.com/cano.wallet';
-const kAppInstagramUrl = 'https://instagram.com/cano_wallet';
+// const kAppFacebookUrl = 'https://facebook.com/cano.wallet';
+// const kAppInstagramUrl = 'https://instagram.com/cano_wallet';
 const kAppEmail = 'support@canowallet.app'; // TODO: setup custom email
 
 // DEVELOPER

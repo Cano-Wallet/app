@@ -3,6 +3,7 @@ import 'package:cano/core/utils/utils.dart';
 import 'package:cano/features/general/z_card.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:intl/intl.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:znn_sdk_dart/znn_sdk_dart.dart';
@@ -29,15 +30,17 @@ class DualCoinStatsUI extends GetView<DualCoinStatsCardController> {
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(width: 5),
-                  Icon(Icons.circle, color: Colors.green, size: 10)
+                  Icon(Icons.circle, color: Colors.green, size: 10),
+                  Text(
+                    '',
+                    style: TextStyle(color: Colors.grey),
+                  ),
                 ],
               ),
               Obx(
                 () => Text(
-                  Utils.formatNumber(AmountUtils.addDecimals(
-                    controller.znn(),
-                    znnDecimals,
-                  )),
+                  // NumberFormat.currency().format(controller.znnPrice.value),
+                  controller.znnPrice.value.toString(),
                   style: Styles.dashboardNumberStyle,
                 ),
               ),
@@ -54,12 +57,16 @@ class DualCoinStatsUI extends GetView<DualCoinStatsCardController> {
               ),
               Obx(
                 () => Text(
-                  Utils.formatNumber(AmountUtils.addDecimals(
+                  Utils.formatCurrency(AmountUtils.addDecimals(
                     controller.qsr(),
                     qsrDecimals,
                   )),
                   style: Styles.dashboardNumberStyle,
                 ),
+              ),
+              ElevatedButton(
+                onPressed: controller.fetchZNNPrice,
+                child: const Text('Fetch'),
               ),
             ],
           ),
