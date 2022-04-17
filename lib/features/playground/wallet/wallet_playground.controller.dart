@@ -104,6 +104,8 @@ class WalletPlaygroundController extends GetxController with ConsoleMixin {
     final publicKey = await keyPair.getPublicKey();
     publicKeyHex.value = HEX.encode(publicKey);
 
+    console.info('public: $publicKey');
+
     entropy.value = keyStore.entropy;
     seed.value = keyStore.seed!;
 
